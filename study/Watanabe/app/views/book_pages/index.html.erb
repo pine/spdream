@@ -1,0 +1,37 @@
+# coding: utf-8
+
+<h1>BookPage</h1>
+ <%= link_to '本の追加', new_book_page_path %>
+ <p>
+
+
+<table border="1">
+  <tr>
+    <th>タイトル</th>
+    <th>あらすじ</th>
+    <th>Isbn10</th>
+    <th>Isbn13</th>
+    <th>資料ID</th>
+    <th>評価</th>
+    <th>詳細</th>
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+
+<% @book_pages.each do |book| %>
+  <tr>
+    <td><%= book.title %></td>
+    <td><%= book.outline %></td>
+    <td><%= book.isbn10 %></td>
+    <td><%= book.isbn13 %></td>
+    <td><%= book.materialid %></td>
+    <td><%= book.value %></td>
+    <td><%= link_to '詳細', book_page_path(book) %></td>
+    <td><%= link_to '編集', edit_book_page_path(book) %></td>
+    <td><%= link_to '削除', book_pages_path, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

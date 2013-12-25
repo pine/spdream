@@ -1,0 +1,40 @@
+<h1>New Book</h1>
+
+<%= form_for Book.new do |f| %>
+
+<div class="field">
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+</div>
+
+<div class="field">
+	<%= f.label :outline %>
+	<%= f.text_area :outline %>
+
+<div class="field">
+	<%= f.label :isbn10 %>
+	<%= f.text_field :isbn10 %>
+</div>
+
+<div class="field">
+	<%= f.label :isbn13 %>
+	<%= f.text_field :isbn13 %>
+</div>
+
+<div class="field">
+	<%= f.label :materialid %>
+	<%= f.text_field :materialid %>
+</div>
+
+<div class="field">
+	<%= f.label :value %>
+	<%= f.text_field :value %>
+</div>
+
+<div class="action">
+	<%= f.submit %>
+</div>
+
+<% end %>
+
+<%= link_to 'home', book_pages_path %>
