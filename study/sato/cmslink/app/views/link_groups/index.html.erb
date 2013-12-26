@@ -1,0 +1,27 @@
+<h1>Listing link_groups</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Intro</th>
+    <th>Priority</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @link_groups.each do |link_group| %>
+  <tr>
+    <td><%= link_group.title %></td>
+    <td><%= link_group.intro %></td>
+    <td><%= link_group.priority %></td>
+    <td><%= link_to 'Show', link_group %></td>
+    <td><%= link_to 'Edit', edit_link_group_path(link_group) %></td>
+    <td><%= link_to 'Destroy', link_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Link group', new_link_group_path %>
