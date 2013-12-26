@@ -1,0 +1,33 @@
+# coding: utf-8
+
+<h1>新規登録画面</h1>
+
+<%= form_for(@thesis) do |f| %>
+
+<div class="field">
+	<%= f.label :title %>
+	<%= f.text_field :title %>
+</div>
+
+<div class="field">
+	<%= f.label :author %>
+	<%= f.text_field :author %>
+</div>
+
+<div class="field">
+	<%= f.label :studentID %>
+	<%= f.text_field :studentID %>
+</div>
+
+<div class="field">
+	<%= f.label :year %>
+	<%= f.text_field :year %>
+</div>
+
+<div class="actions">
+	<%= f.submit %>
+</div>
+
+<% end %>
+
+<%= link_to '戻る', Theses_path %>
