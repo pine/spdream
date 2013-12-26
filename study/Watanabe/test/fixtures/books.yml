@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  isbn10: MyString
+  isbn13: MyString
+  opac_id: MyString
+  value: 1
+
+two:
+  title: MyString
+  isbn10: MyString
+  isbn13: MyString
+  opac_id: MyString
+  value: 1
