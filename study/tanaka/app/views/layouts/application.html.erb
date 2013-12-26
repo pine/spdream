@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Blog</title>
+  <title>Tanaka</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body style = "background-color:#eee">
+<body>
 
-<%= link_to (image_tag 'kirei.png', :size => '40x40'), '/'%>
 <%= yield %>
 
 </body>
