@@ -1,6 +1,9 @@
-Cms::Application.routes.draw do
+Cmslink::Application.routes.draw do
+  resources :link_groups
 
-  resources :books
+
+  resources :links
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -51,7 +54,7 @@ Cms::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'books#index'
+  # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 
