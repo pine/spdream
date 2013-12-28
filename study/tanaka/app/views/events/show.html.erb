@@ -4,37 +4,18 @@
   <b>Date:</b>
   <%= @event.date %>
 </p>
-
-<p>
-  <b>Time:</b>
-  <%= @event.time %>
-</p>
-
-<p>
-  <b>End date:</b>
-  <%= @event.end_date %>
-</p>
-
-<p>
-  <b>End time:</b>
-  <%= @event.end_time %>
-</p>
-
-<p>
-  <b>Type:</b>
-  <%= @event.type %>
-</p>
-
 <p>
   <b>Title:</b>
   <%= @event.title %>
 </p>
-
 <p>
   <b>Intro:</b>
   <%= @event.intro %>
 </p>
-
+<p>
+  <b>Photo:</b>
+  <%= image_tag @event.photo.url, :width=>'50' %>
+</p>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>

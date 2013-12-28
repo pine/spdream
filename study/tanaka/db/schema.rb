@@ -11,18 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131226033244) do
+ActiveRecord::Schema.define(:version => 20131228023934) do
 
-  create_table "events", :force => true do |t|
+  create_table "schedules", :force => true do |t|
     t.date     "date"
     t.time     "time"
     t.date     "end_date"
     t.time     "end_time"
-    t.integer  "type"
+    t.string   "type"
     t.string   "title"
     t.text     "intro"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "photo"
+    t.string   "photo_file_name"
+    t.integer  "photo_file_size"
+    t.string   "photo_content_type"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
 end
