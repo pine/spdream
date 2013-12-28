@@ -1,0 +1,39 @@
+# coding: utf-8
+
+<div id="notice"><%= notice %></div>
+
+<h1>論文TOP</h1>
+
+<table border="1" width="500" cellspacing="0" cellpadding="5">
+<tr>
+<th>タイトル</font></th>
+<th>著者</font></th>
+<th>学籍番号</th>
+<th>年度</th>
+<th></th>
+<th></th>
+</tr>
+
+<% @theses.each do |thesis| %>
+<% if thesis.enabled %>
+<tr>
+<td><%= thesis.title %></td>
+<td><%= thesis.author %></td>
+<td><%= thesis.student_id %></td>
+<td><%= thesis.year %></td>
+<th><%= link_to '編集', edit_thesis_path(thesis) %></th>
+<th><%= link_to '削除', edit_thesis_path(thesis) %></th>
+</tr>
+<% end %>
+<% end %>
+</table>
+<br>
+<%= link_to '新規登録', new_thesis_path %> | <%= link_to '削除履歴', deleted_theses_path %>
+
+<script>
+$(function() {
+	setTimeout(function() {
+		$('#notice').fadeOut('slow');
+	}, 800);
+});
+</script>

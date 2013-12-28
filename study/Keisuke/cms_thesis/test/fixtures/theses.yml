@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  author: MyString
+  student_id: MyString
+  year: 1
+  enabled: false
+  lab_id: 
+
+two:
+  title: MyString
+  author: MyString
+  student_id: MyString
+  year: 1
+  enabled: false
+  lab_id: 
