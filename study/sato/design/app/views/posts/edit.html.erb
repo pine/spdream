@@ -1,0 +1,21 @@
+<dvi id="notice"><%= notice %></dvi>
+
+<h1>Edit Post</h1>
+
+<p><%= render 'form' %></p>
+
+<div class="text-center">
+<!-- 
+	<%= link_to 'Home', posts_path %> | <%= link_to 'New Post', new_post_path%>
+-->
+	<button type="button" class="btn btn-default">
+		<%= link_to 'Goto Home', posts_path %>
+	</button>
+</dvi>
+
+<script>
+$(Function() (
+  setTimeout(function() (
+    $('#notice').fadeOut("slow")
+  ), 800);
+));
