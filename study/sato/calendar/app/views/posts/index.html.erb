@@ -1,0 +1,83 @@
+<div class="jumbotron">
+	<h1>
+		Hello, world!
+	</h1>
+	<p>
+		This is a Test Page using the Bootstrap.You can post a article, add comments, and delete them.
+	</p>
+	<p>
+		<div class="btn-group">
+			<a class="btn btn-primary btn-lg">
+				Primary
+			</a>
+			<a class="btn btn-info btn-lg">
+				Information
+			</a>
+			<a class="btn btn-success btn-lg">
+				Success
+			</a>
+			<a class="btn btn-warning btn-lg">
+				Warning
+			</a>
+			<a class="btn btn-danger btn-lg">
+				Danger
+			</a>
+		</div>
+	</p>
+</div>
+
+<h1>Posts</h1>
+
+
+
+<div class="row">
+	<div class="col-md-8">
+		<div class="row">
+			<ul class="nav nav-tabs">
+				<li class="active"><a href="#" data-toggle="tab">Notice</a></li>
+				<li><a href="#" data-toggle="tab">Ivent</a></li>
+				<li><a href="#" data-toggle="tab">New Book</a></li>
+			</ul>
+		</div>
+		<div class="row">
+			<table class="table table-hover table-responsive">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Comments</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @posts.each do |post| %>
+					<tr id="post_<%= post.id %>">
+   						<td><%= link_to post.title, post_path(post) %></td>
+					    <td><%= post.comments.size %></td>
+					    <td><%= link_to 'Click', edit_post_path(post) %></td>
+					    <td><%= link_to 'Click', post, :confirm=> 'Sure?',
+						:method => :delete,
+						:remote => true %></td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="text-center">
+			<button type="button" class="btn btn-default">
+				<%= link_to 'Goto Home', posts_path %>
+			</button>
+			<button type="button" class="btn btn-default">
+				<%= link_to 'New Post', new_post_path %>
+			</button>
+		</div>
+	</div>
+	<div class="col-md-4 hidden-sm">
+		<div class="well well-lg">
+			<h3>Calendar</h3>
+			<button type="button" class="btn btn-default">
+				<%= link_to 'View Calendar', calendar_path %>
+			</button>
+		</div>
+	</div>
+</div>
