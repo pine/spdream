@@ -1,0 +1,63 @@
+// *= require fonts
+
+@charset "utf-8";
+
+// ********************************************************
+//                    ドキュメント
+// ********************************************************
+
+// bootstrap-sass 公式サイト
+// https://github.com/twbs/bootstrap-sass
+// http://getbootstrap.com/customize/
+
+
+// ========================================================
+//                      SCSS 変数定義
+// ********************************************************
+
+// ----- Basics -------------------------------------------
+
+// [Components]
+// Rounded corners
+$border-radius-base: 0;
+$border-radius-large: 0;
+$border-radius-small: 0;
+
+
+// ===== Navbar ===========================================
+
+// [Base Styles]
+$navbar-height: 40px;
+
+// [Default Navbar]
+// Basics
+$navbar-default-color: #fff;
+$navbar-default-bg: #7f7f7f;
+
+// Links
+$navbar-default-link-color: #fff;
+
+
+// ********************************************************
+//                     Bootstrap 適用
+// ********************************************************
+
+@import "bootstrap";
+
+
+// ********************************************************
+//                       CSS 上書き
+// ********************************************************
+
+.navbar-brand {
+	letter-spacing: 4px;
+	font-size: 18px;
+	font-family: Calibri, sans-serif;
+}
+
+.navbar-brand strong {
+	margin-right: 6px;
+	font-size: 31px;
+	font-family: REZ, sans-serif;
+	font-weight: normal;
+}
