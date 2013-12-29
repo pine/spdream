@@ -1,0 +1,12 @@
+[1] rake db:create できない
+現象:
+>rake db:create
+rake aborted!
+You have already activated rake 10.1.1, but your Gemfile requires rake 10.1.0. U
+sing bundle exec may solve this.
+
+原因:
+Gemfile で要求される rake のバージョンとインストールされているバージョンが異なる。
+
+対処法:
+>gem install rake -v 10.1.0

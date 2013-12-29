@@ -1,0 +1,44 @@
+<%= form_for(@thesis) do |f| %>
+
+<% if @thesis.errors.any? %>
+ <ul>
+ 	<% @thesis.errors.full_messages.each do |msg| %>
+ 		<li><%= msg %></li>
+ 	<% end %>
+ </ul>
+<% end %>
+
+<table border="1" width="350" cellspacing="0" cellpadding="5">
+	<tr>
+	<div class="field">
+		<th>題名</th>
+		<th><%= f.text_field :title %></th>
+	</div>
+	</tr>
+	<tr>
+	<div class="field">
+		<th>著者</th>
+		<th><%= f.text_field :author %></th>
+	</div>
+	</tr>
+	<tr>
+	<div class="field">
+		<th>学籍番号</th>
+		<th><%= f.text_field :student_id %></th>
+	</div>
+	</tr>
+	<tr>
+	<div class="field">
+		<th>年度</th>
+		<th><%= f.text_field :year %></th>
+	</div>
+	</tr>
+	<tr>
+	</tr>
+</table>
+<br>
+<div class="actions">
+	<%= f.submit %>
+</div>
+<% end %>
+<br>
