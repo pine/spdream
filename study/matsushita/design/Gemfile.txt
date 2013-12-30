@@ -39,6 +39,6 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-# ƒƒOƒCƒ“ŠÖŒW
+# ãƒ­ã‚°ã‚¤ãƒ³é–¢ä¿‚
 gem 'devise'
 gem 'i18n_generators'

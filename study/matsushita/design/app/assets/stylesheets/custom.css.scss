@@ -37,6 +37,19 @@ $navbar-default-bg: #7f7f7f;
 // Links
 $navbar-default-link-color: #fff;
 
+// ===== Nav ==============================================
+
+$nav-link-padding: 10px 10px;
+
+
+// ===== Panels and wells =================================
+// [Common panel styles]
+$panel-border-radius: 8px;
+
+// [Contextual panel colors]
+$panel-default-border: #cbbedd;
+$panel-default-text: #000;
+$panel-default-heading-bg: transparent;
 
 // ********************************************************
 //                     Bootstrap 適用
@@ -60,4 +73,56 @@ $navbar-default-link-color: #fff;
 	font-size: 31px;
 	font-family: REZ, sans-serif;
 	font-weight: normal;
+}
+
+// ナビゲーションバーの右側
+.navbar-nav {
+	padding-right: 15px;
+}
+
+// ナビゲーションバーのリンク
+.navbar-nav a {
+	display: inline-block !important;
+}
+
+// ナビゲーションバーの左右のパイプ
+.navbar-nav li::before,
+.navbar-nav li:last-of-type::after {
+	content: "|";
+	color: $navbar-default-link-color;
+}
+
+// パネル
+.panel {
+	border-width: 3px;
+}
+
+.panel .panel-heading {
+	margin: 10px 22px 0;
+	padding: 2px 7px;
+	border-bottom: 2px dotted #b09ecb;
+	color: #7c5da9;
+	font-family: 'メイリオ', sans-serif;
+	font-size: 22px;
+}
+
+.panel-body p {
+	margin: 0 17px;
+	line-height: 1.2;
+	font-size: 15px;
+	font-family: 'メイリオ', sans-serif;
+}
+
+// ログイン
+#cms_login {
+	width: 650px;
+	
+	
+	
+	
+}
+
+body {
+	background-image: url(cms_bg.png);
+	background-position: 0 $navbar-height;
 }
