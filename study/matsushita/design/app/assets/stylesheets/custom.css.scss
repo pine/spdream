@@ -23,6 +23,16 @@ $border-radius-base: 0;
 $border-radius-large: 0;
 $border-radius-small: 0;
 
+// [Typography]
+// Generic font variables
+$font-family-sans-serif:  'メイリオ', sans-serif;
+
+// ----- Buttons ------------------------------------------
+
+// [Default]
+$btn-default-color: #fff;
+$btn-default-bg: #cbbedd;
+
 
 // ===== Navbar ===========================================
 
@@ -50,6 +60,23 @@ $panel-border-radius: 8px;
 $panel-default-border: #cbbedd;
 $panel-default-text: #000;
 $panel-default-heading-bg: transparent;
+
+
+// ===== Forms ============================================
+// [Inputs]
+$input-border: #b09ecb;
+
+// [Input sizes]
+$input-height-base: 32px;
+
+
+// ********************************************************
+//                     新規変数定義
+// ********************************************************
+
+$font-family-japanese-default: $font-family-sans-serif;
+$font-family-english-default: Calibri, sans-serif;
+
 
 // ********************************************************
 //                     Bootstrap 適用
@@ -83,13 +110,16 @@ $panel-default-heading-bg: transparent;
 // ナビゲーションバーのリンク
 .navbar-nav a {
 	display: inline-block !important;
+	font-family: $font-family-english-default;
+	font-size: 15px;
 }
 
 // ナビゲーションバーの左右のパイプ
+// 各項目の左、及び最後の項目の右に付ける
 .navbar-nav li::before,
 .navbar-nav li:last-of-type::after {
 	content: "|";
-	color: $navbar-default-link-color;
+	color: $navbar-default-link-color; // 文字色と同じ
 }
 
 // パネル
@@ -102,24 +132,50 @@ $panel-default-heading-bg: transparent;
 	padding: 2px 7px;
 	border-bottom: 2px dotted #b09ecb;
 	color: #7c5da9;
-	font-family: 'メイリオ', sans-serif;
 	font-size: 22px;
+	font-family: $font-family-japanese-default;
 }
 
-.panel-body p {
-	margin: 0 17px;
-	line-height: 1.2;
-	font-size: 15px;
-	font-family: 'メイリオ', sans-serif;
+.btn {
+	font-family: $font-family-japanese-default;
+}
+
+.panel-body {
+	p {
+		margin: 0 5px 0 17px;
+		line-height: 1.2;
+		font-size: 15px;
+		font-family: $font-family-japanese-default;
+	}
+	
+	
+	.control-label {
+		padding-right: 0;
+		text-align: right;
+		color: #7f7f7f;
+		font-family: $font-family-japanese-default;
+		font-weight: normal;
+		font-size: 15px;
+	}
+	
+	.form-control {
+		border-width: 2px;
+	}
+	
+	.btn {
+		width: 190px;
+	}
+	
+	form {
+		margin: 0 17px;
+		padding: 20px 30px 15px;
+	}
 }
 
 // ログイン
 #cms_login {
-	width: 650px;
-	
-	
-	
-	
+	margin-top: 30px;
+	width: 655px;
 }
 
 body {
