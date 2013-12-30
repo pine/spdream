@@ -1,4 +1,7 @@
 class Config1sController < ApplicationController
+  layout 'cms_main'
+  before_filter :authenticate_user!
+  
   # GET /config1s
   # GET /config1s.json
   def index

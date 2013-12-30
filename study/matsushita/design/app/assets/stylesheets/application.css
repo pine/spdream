@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require fonts
+ *= require scaffolds
  *= require_tree .
  */
 
