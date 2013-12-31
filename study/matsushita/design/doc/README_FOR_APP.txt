@@ -1,0 +1,13 @@
+■起動方法
+
+$ bundle install
+
+$ rake db:create
+$ rake db:migrate
+$ rake db:seed
+
+$ rails s
+
+■初期ユーザ名
+ユーザ名  : test@test.com
+パスワード: password
