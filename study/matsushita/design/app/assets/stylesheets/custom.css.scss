@@ -70,6 +70,12 @@ $input-border: #b09ecb;
 $input-height-base: 32px;
 
 
+// ===== List group =======================================
+// [Base styles]
+$list-group-bg: #cbbedd;
+$list-group-border: #fff;
+$list-group-border-radius: 8px;
+
 // ********************************************************
 //                     新規変数定義
 // ********************************************************
@@ -77,6 +83,11 @@ $input-height-base: 32px;
 $font-family-japanese-default: $font-family-sans-serif;
 $font-family-english-default: Calibri, sans-serif;
 
+// ===== List group =======================================
+$list-group-link-color: #fff;
+$list-group-spacing: 4px;
+$list-group-before-after-bg: #e5dfee;
+$list-group-before-after-border-radius: 8px;
 
 // ********************************************************
 //                     Bootstrap 適用
@@ -90,7 +101,7 @@ $font-family-english-default: Calibri, sans-serif;
 // ********************************************************
 
 .navbar-brand {
-	letter-spacing: 4px;
+	letter-spacing: 3px;
 	font-size: 18px;
 	font-family: Calibri, sans-serif;
 }
@@ -172,10 +183,98 @@ $font-family-english-default: Calibri, sans-serif;
 	}
 }
 
+.list-group {
+	border-color: $list-group-border;
+	border-width: $list-group-spacing;
+	border-style: solid;
+	border-radius: $list-group-border-radius;
+	
+	a {
+		color: $list-group-link-color;
+		
+		&:hover {
+			color: $list-group-bg;
+		}
+	}
+	
+	.list-group-item {
+		padding: 18px 10px;
+		border-width: 0;
+		border-bottom-width: $list-group-spacing;
+		text-align: center;
+		
+		&:first-child, &:last-child {
+			border-radius: 0;
+		}
+		
+		&:last-child {
+			border-bottom-width: 0;
+		}
+	}
+}
+
+.list-group::before,
+.list-group::after {
+	display: block;
+	height: 30px;
+	border-color: $list-group-border;
+	border-width: $list-group-spacing;
+	border-style: none;
+	content: "";
+	background-color: $list-group-before-after-bg;
+}
+
+.list-group::before {
+	border-bottom-style: solid;
+	border-top-left-radius: $list-group-border-radius;
+	border-top-right-radius: $list-group-border-radius;
+}
+
+.list-group::after {
+	border-top-style: solid;
+	border-bottom-left-radius: $list-group-border-radius;
+	border-bottom-right-radius: $list-group-border-radius;
+}
+
 // ログイン
 #cms_login {
 	margin-top: 30px;
 	width: 655px;
+}
+
+#cms_main {
+	min-height: 475px;
+}
+
+.cms-menu {
+	margin: 8px 40px 0 10px;
+	
+	.cms-menu-item {
+		padding: 10px 0 0 10px;
+		
+		.thumbnail {
+			margin-right: 5px;
+			width: 109px;
+			float: left;
+		}
+		
+		.caption {
+			@include clearfix;
+			padding: 10px 0 0 120px;
+			
+			h3 {
+				margin: 0;
+				padding: 0px;
+				font-size: 14px;
+				text-decoration: underline;
+			}
+			
+			p {
+				margin: 7px 0 0;
+				font-size: 12px;
+			}
+		}
+	}
 }
 
 body {
