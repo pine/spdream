@@ -1,4 +1,4 @@
-¡‹N“®•û–@
+â– èµ·å‹•æ–¹æ³•
 
 $ bundle install
 
@@ -8,6 +8,6 @@ $ rake db:seed
 
 $ rails s
 
-¡‰Šúƒ†[ƒU–¼
-ƒ†[ƒU–¼  : test@test.com
-ƒpƒXƒ[ƒh: password
+â– åˆæœŸãƒ¦ãƒ¼ã‚¶å
+ãƒ¦ãƒ¼ã‚¶å  : test@test.com
+ãƒ‘ã‚¹ãƒ¯ãƒ¼ãƒ‰: password
