@@ -1,14 +1,21 @@
-<h1>Listing calendars</h1>
+<h1>calendars</h1>
 
 <table>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Date</th>
+    <th>Time</th>
+    <th>Enddate</th>
+    <th>Endtime</th>
+    <th>title</th>
   </tr>
 
 <% @calendars.each do |calendar| %>
   <tr>
+    <td><%= calendar.date %></td>
+    <td><%= calendar.time %></td>
+    <td><%= calendar.end_date %></td>
+    <td><%= calendar.end_time %></td>
+    <td><%= calendar.title %></td>
     <td><%= link_to 'Show', calendar %></td>
     <td><%= link_to 'Edit', edit_calendar_path(calendar) %></td>
     <td><%= link_to 'Destroy', calendar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
