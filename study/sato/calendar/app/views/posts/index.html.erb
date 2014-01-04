@@ -75,9 +75,20 @@
 	<div class="col-md-4 hidden-sm">
 		<div class="well well-lg">
 			<h3>Calendar</h3>
+			
+			<div id="calendar_view"></div>
+			
+			<script>
+			
+			$("#calendar_view").load("<%= calendar_path %> .ec-calendar");
+			
+			</script>
+			
+			<!--
 			<button type="button" class="btn btn-default">
 				<%= link_to 'View Calendar', calendar_path %>
 			</button>
+			-->
 		</div>
 	</div>
 </div>
