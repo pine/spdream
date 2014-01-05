@@ -1,0 +1,39 @@
+# coding: utf-8
+
+<h1><%= @book.title %>　詳細</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>タイトル:</b>
+  <%= @book.title %>
+</p>
+
+<p>
+  <b>著者:</b>
+  <%= @book.auther %>
+</p>
+
+<p>
+  <b>あらすじ:</b>
+  <%= @book.outline %>
+</p>
+
+<p>
+  <b>Isbn:</b>
+  <%= @book.isbn %>
+</p>
+
+<p>
+  <b>資料id:</b>
+  <%= @book.opac_id %>
+</p>
+
+<p>
+  <b>評価:</b>
+  <%= @book.value %>
+</p>
+
+
+<%= link_to '編集', edit_book_path(@book) %> |
+<%= link_to '戻る', books_path %>
