@@ -1,0 +1,28 @@
+# coding: utf-8
+
+<h1>Opac+ タグ一覧</h1>
+
+<%= link_to 'タグ追加', new_tag_path %>
+
+<table border='1'>
+  <tr>
+    <th>表示順序</th>
+    <th>名前</th>
+    <th>有効状態</th>
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+
+<% @tags.each do |tag| %>
+  <tr>
+    <td><%= tag.priority %></td>
+    <td><%= link_to tag.name, tag_path(tag) %></td>
+    <td><%= tag.enabled %></td>
+    <td><%= link_to '編集', edit_tag_path(tag) %></td>
+    <td><%= link_to '削除', tag, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

@@ -1,4 +1,10 @@
 Opac::Application.routes.draw do
+  resources :categories
+
+
+  resources :tags
+
+
   resources :books
 
 
