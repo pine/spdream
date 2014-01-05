@@ -1,11 +1,16 @@
 Opac::Application.routes.draw do
+  resources :reviews
+
+
   resources :categories
 
 
   resources :tags
 
 
-  resources :books
+  resources :books do
+    resources :reviews
+  end
 
 
   # The priority is based upon order of creation:

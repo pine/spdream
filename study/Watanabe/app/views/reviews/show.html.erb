@@ -1,0 +1,45 @@
+# coding: utf-8
+
+<h1><%= @review.title %> 詳細</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>タイトル:</b>
+  <%= @review.title %>
+</p>
+
+<p>
+  <b>コメント:</b>
+  <%= @review.comment %>
+</p>
+
+<p>
+  <b>評価上:</b>
+  <%= @review.value_good %>
+</p>
+
+<p>
+  <b>評価下:</b>
+  <%= @review.value_bad %>
+</p>
+
+<p>
+  <b>公開状態:</b>
+  <%= @review.enabled %>
+</p>
+
+<p>
+  <b>日時:</b>
+  <%= @review.date %>
+</p>
+
+<p>
+  <b>蔵書id:</b>
+  <%= @review.book %>
+</p>
+
+
+
+<%= link_to '編集', edit_review_path(@review) %> |
+<%= link_to '戻る', reviews_path %>

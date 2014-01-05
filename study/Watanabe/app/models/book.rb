@@ -1,6 +1,8 @@
 class Book < ActiveRecord::Base
   attr_accessible :auther, :isbn, :opac_id, :outline, :title, :value
 
+  has_many :comments
+
    validates :title, :presence => true
    validates :auther, :presence => true
    validates :isbn, :presence => true
