@@ -1,0 +1,31 @@
+# coding: utf-8
+
+<h1>Opac+ カテゴリ一覧</h1>
+
+<%= link_to 'カテゴリ追加', new_category_path %>
+
+
+<table border='1'>
+  <tr>
+    <th>表示順序</th>
+    <th>親カテゴリid</th>
+    <th>階層</th>
+    <th>名前</th>
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+
+<% @categories.each do |category| %>
+  <tr>
+    <td><%= category.priority %></td>
+    <td><%= category.parent %></td>
+    <td><%= category.level %></td>
+    <td><%= link_to category.name, category_path(category) %></td>
+    <td><%= link_to '編集', edit_category_path(category) %></td>
+    <td><%= link_to '削除', category, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

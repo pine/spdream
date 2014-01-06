@@ -1,6 +1,6 @@
 # coding: utf-8
 
-<h1>蔵書詳細</h1>
+<h1><%= @book.title %>　詳細</h1>
 
 <p id="notice"><%= notice %></p>
 
@@ -10,17 +10,22 @@
 </p>
 
 <p>
-  <b>ISBN10:</b>
-  <%= @book.isbn10 %>
+  <b>著者:</b>
+  <%= @book.auther %>
 </p>
 
 <p>
-  <b>ISBN13:</b>
-  <%= @book.isbn13 %>
+  <b>あらすじ:</b>
+  <%= @book.outline %>
 </p>
 
 <p>
-  <b>OpacID:</b>
+  <b>Isbn:</b>
+  <%= @book.isbn %>
+</p>
+
+<p>
+  <b>資料id:</b>
   <%= @book.opac_id %>
 </p>
 

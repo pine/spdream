@@ -1,0 +1,78 @@
+<h1>Listing top</h1>
+
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Intro</th>
+    <th>Photo</th>
+  </tr>
+
+<% Schedule.where(:type => "Event").reverse_order.each do |schedule| %>
+  <tr>
+    <td><%= schedule.date %></td>
+    <td><%= schedule.title %></td>
+    <td><%= schedule.intro %></td>
+    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Intro</th>
+    <th>Photo</th>
+  </tr>
+<% Schedule.where(:type => Event).first(3) do |schedule| %>
+<tr>
+    <td><%= schedule.date %></td>
+    <td><%= schedule.title %></td>
+    <td><%= schedule.intro %></td>
+    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
+  </tr>
+<% end %>
+</table>
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Intro</th>
+    <th>Photo</th>
+  </tr>
+
+<% Schedule.where(:type => "News").each do |schedule| %>
+  <tr>
+    <td><%= schedule.date %></td>
+    <td><%= schedule.title %></td>
+    <td><%= schedule.intro %></td>
+    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Intro</th>
+    <th>Photo</th>
+  </tr>
+
+<% Schedule.where(:type => "Calendar").each do |schedule| %>
+  <tr>
+    <td><%= schedule.date %></td>
+    <td><%= schedule.title %></td>
+    <td><%= schedule.intro %></td>
+    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<br />

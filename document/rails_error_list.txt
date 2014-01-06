@@ -8,5 +8,8 @@ sing bundle exec may solve this.
 原因:
 Gemfile で要求される rake のバージョンとインストールされているバージョンが異なる。
 
-対処法:
+対処法 1:
+>bundle update
+
+対処法 2:
 >gem install rake -v 10.1.0

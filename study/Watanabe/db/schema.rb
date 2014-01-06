@@ -11,14 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131225182554) do
+ActiveRecord::Schema.define(:version => 20140105164110) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
-    t.string   "isbn10"
-    t.string   "isbn13"
+    t.string   "auther"
+    t.text     "outline"
+    t.string   "isbn"
     t.string   "opac_id"
     t.integer  "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "level"
+    t.integer  "priority"
+    t.integer  "parent_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+
+  create_table "reviews", :force => true do |t|
+    t.string   "title"
+    t.text     "comment"
+    t.integer  "value_good"
+    t.integer  "value_bad"
+    t.boolean  "enabled"
+    t.datetime "date"
+    t.integer  "book_id"
+    t.boolean  "deleted"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "reviews", ["book_id"], :name => "index_reviews_on_book_id"
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.text     "intro"
+    t.integer  "priority"
+    t.boolean  "enabled"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

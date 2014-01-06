@@ -1,3 +1,5 @@
+# coding: utf-8
+
 <%= form_for(@book) do |f| %>
   <% if @book.errors.any? %>
     <div id="error_explanation">
@@ -11,27 +13,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :title %><br />
+  <div class="field"
+    <%= f.label :タイトル %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :isbn10 %><br />
-    <%= f.number_field :isbn10 %>
+    <%= f.label :著者 %><br />
+    <%= f.text_field :auther %>
   </div>
   <div class="field">
-    <%= f.label :isbn13 %><br />
-    <%= f.number_field :isbn13 %>
+    <%= f.label :あらすじ %><br />
+    <%= f.text_area :outline %>
   </div>
   <div class="field">
-    <%= f.label :opac_id %><br />
-    <%= f.number_field :opac_id %>
+    <%= f.label :ISBN %><br />
+    <%= f.text_field :isbn %>
   </div>
   <div class="field">
-    <%= f.label :value %><br />
+    <%= f.label :資料ID %><br />
+    <%= f.text_field :opac_id %>
+  </div>
+  <div class="field">
+    <%= f.label :評価 %><br />
     <%= f.number_field :value %>
   </div>
   <div class="actions">
-    <%= f.submit "送信" %>
+    <%= f.submit %>
   </div>
 <% end %>

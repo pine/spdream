@@ -1,0 +1,19 @@
+<h1>news</h1>
+
+<table>
+  <tr>
+    <th>Date</th>
+    <th>Title</th>
+    <th>Intro</th>
+    <th>Photo</th>
+  </tr>
+
+<% Schedule.where(:type => "News").find(:limit => 3).each do |schedule| %>
+  <tr>
+    <td><%= schedule.date %></td>
+    <td><%= schedule.title %></td>
+    <td><%= schedule.intro %></td>
+    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
+  </tr>
+<% end %>
+</table>

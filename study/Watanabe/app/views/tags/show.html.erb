@@ -1,0 +1,29 @@
+# coding: utf-8
+
+<h1><%= @tag.name %>　詳細</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>名前:</b>
+  <%= @tag.name %>
+</p>
+
+<p>
+  <b>説明:</b>
+  <%= @tag.intro %>
+</p>
+
+<p>
+  <b>表示順序:</b>
+  <%= @tag.priority %>
+</p>
+
+<p>
+  <b>有効状態:</b>
+  <%= @tag.enabled %>
+</p>
+
+
+<%= link_to '編集', edit_tag_path(@tag) %> |
+<%= link_to '戻る', tags_path %>

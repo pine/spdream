@@ -1,6 +1,17 @@
-Cms::Application.routes.draw do
+Opac::Application.routes.draw do
+  resources :reviews
 
-  resources :books
+
+  resources :categories
+
+
+  resources :tags
+
+
+  resources :books do
+    resources :reviews
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -51,7 +62,7 @@ Cms::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'books#index'
+ root :to => 'books#index'
 
   # See how all your routes lay out with "rake routes"
 

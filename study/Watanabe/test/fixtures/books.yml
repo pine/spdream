@@ -2,14 +2,16 @@
 
 one:
   title: MyString
-  isbn10: MyString
-  isbn13: MyString
+  auther: MyString
+  outline: MyText
+  isbn: MyString
   opac_id: MyString
   value: 1
 
 two:
   title: MyString
-  isbn10: MyString
-  isbn13: MyString
+  auther: MyString
+  outline: MyText
+  isbn: MyString
   opac_id: MyString
   value: 1
