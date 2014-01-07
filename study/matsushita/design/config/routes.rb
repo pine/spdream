@@ -1,10 +1,14 @@
 Design::Application.routes.draw do
+  resources :events
+
+  get "configs/index"
   get "config_mains/index"
 
   devise_for :users
 
   resources :config1s
-
+  
+  match "headers_and_footers" => "headers_and_footers#index", as: :headers_and_footers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

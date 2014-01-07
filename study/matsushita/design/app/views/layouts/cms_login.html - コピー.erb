@@ -1,0 +1,10 @@
+<% content_for :navbar do %>
+				<li><a href="#">What's CMS</a></li>
+				<li><a href="#">Help</a></li>
+<% end %>
+
+<% content_for :content do %>
+<%= yield %>
+<% end %>
+
+<%= render file: 'layouts/application' %>
