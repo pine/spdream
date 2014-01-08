@@ -17,8 +17,13 @@ CmsThesis::Application.routes.draw do
   resources :theses, :except => :show do
     collection do
       get 'deleted'
+      get 'lab'
     end
   end
+  
+  post 'theses/:id' => 'theses#hide_and_restore' 
+
+  resources :labs 
 
   # Sample resource route with sub-resources:
   #   resources :products do

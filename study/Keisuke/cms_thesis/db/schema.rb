@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131226141826) do
+ActiveRecord::Schema.define(:version => 20140105145955) do
+
+  create_table "labs", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "theses", :force => true do |t|
     t.string   "title"
@@ -19,11 +25,11 @@ ActiveRecord::Schema.define(:version => 20131226141826) do
     t.string   "student_id"
     t.integer  "year"
     t.boolean  "enabled"
-    t.integer  "lab_id_id"
+    t.integer  "lab_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "theses", ["lab_id_id"], :name => "index_theses_on_lab_id_id"
+  add_index "theses", ["lab_id"], :name => "index_theses_on_lab_id"
 
 end
