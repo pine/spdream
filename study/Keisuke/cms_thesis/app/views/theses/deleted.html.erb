@@ -1,3 +1,4 @@
+# coding: utf-8
 <h1>削除履歴</h1>
 
 <div id="notice"><%= notice %></div>
@@ -9,8 +10,8 @@
 		<th>学籍番号</th>
 		<th>年度</th>
 		<th>研究室</th>
-		<th></th>
-		<th></th>
+		<th>復元</th>
+		<th>削除</th>
 	</tr>
 
 	<% @theses.each do |thesis| %>
@@ -37,11 +38,3 @@
 
 <%= link_to '戻る', theses_path %>
 <br>
-
-<script>
-$(function() {
-	setTimeout(function() {
-		$('#notice').fadeOut('slow');
-	}, 800);
-});
-</script>
