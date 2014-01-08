@@ -37,7 +37,7 @@
 			<div class="field">
 				<th>研究室</th>
 				<th>
-					<%= f.select :lab_id, Lab.all.map{|lab| [lab.name, lab.id]} %>
+					<%= f.select :lab_id, Lab.all.map{|lab| [lab.name, lab.id]}, :include_blank => '無所属' %>
 				</th>
 			</div>
 		</tr>
