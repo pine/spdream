@@ -1,21 +1,22 @@
-<p id="notice"><%= notice %></p>
+
+<% #coding: utf-8 %>
 
 <p>
-  <b>Date:</b>
+  <b>日付:</b>
   <%= @event.date %>
 </p>
 <p>
-  <b>Title:</b>
+  <b>タイトル:</b>
   <%= @event.title %>
 </p>
 <p>
-  <b>Intro:</b>
+  <b>内容:</b>
   <%= @event.intro %>
 </p>
 <p>
-  <b>Photo:</b>
+  <b>写真:</b>
   <%= image_tag @event.photo.url, :width=>'50' %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<%= link_to '編集', edit_event_path(@event) %> |
+<%= link_to 'ホーム', events_path %>

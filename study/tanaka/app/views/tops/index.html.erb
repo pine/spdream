@@ -3,18 +3,22 @@
 
 <table>
   <tr>
+   <th>Photo</th>
     <th>Date</th>
     <th>Title</th>
     <th>Intro</th>
-    <th>Photo</th>
+ 
   </tr>
 
-<% Schedule.where(:type => "Event").reverse_order.each do |schedule| %>
+<% Schedule.where(:type => Event).reverse_order.each do |schedule| %>
   <tr>
-    <td><%= schedule.date %></td>
-    <td><%= schedule.title %></td>
-    <td><%= schedule.intro %></td>
-    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
+    
+      <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
+      <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
+      <td><%= schedule.title %></td>
+      <td><%= schedule.intro %></td>
+    
+
   </tr>
 <% end %>
 </table>
@@ -27,12 +31,12 @@
     <th>Intro</th>
     <th>Photo</th>
   </tr>
-<% Schedule.where(:type => Event).first(3) do |schedule| %>
+<% Schedule.where(:type => Event).reverse_order.first(3).each do |schedule| %>
 <tr>
-    <td><%= schedule.date %></td>
+    <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
     <td><%= schedule.title %></td>
     <td><%= schedule.intro %></td>
-    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
+    <td><%= image_tag schedule.photo.url, :width=>'50' :alt => "画像" %></td>
   </tr>
 <% end %>
 </table>
@@ -41,15 +45,13 @@
     <th>Date</th>
     <th>Title</th>
     <th>Intro</th>
-    <th>Photo</th>
+
   </tr>
 
 <% Schedule.where(:type => "News").each do |schedule| %>
   <tr>
-    <td><%= schedule.date %></td>
+    <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
     <td><%= schedule.title %></td>
-    <td><%= schedule.intro %></td>
-    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
   </tr>
 <% end %>
 </table>
@@ -61,15 +63,14 @@
     <th>Date</th>
     <th>Title</th>
     <th>Intro</th>
-    <th>Photo</th>
+
   </tr>
 
 <% Schedule.where(:type => "Calendar").each do |schedule| %>
   <tr>
-    <td><%= schedule.date %></td>
+    <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
     <td><%= schedule.title %></td>
     <td><%= schedule.intro %></td>
-    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
   </tr>
 <% end %>
 </table>

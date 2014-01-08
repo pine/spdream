@@ -11,21 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140102143021) do
-
-  create_table "calendars", :force => true do |t|
-    t.string   "name"
-    t.datetime "start_at"
-    t.datetime "end_at"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20140106145954) do
 
   create_table "schedules", :force => true do |t|
     t.date     "date"
     t.time     "time"
-    t.date     "end_date"
-    t.time     "end_time"
     t.string   "type"
     t.string   "title"
     t.text     "intro"
@@ -34,8 +24,11 @@ ActiveRecord::Schema.define(:version => 20140102143021) do
     t.integer  "photo_file_size"
     t.string   "photo_content_type"
     t.datetime "photo_updated_at"
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "name"
   end
 
 end
