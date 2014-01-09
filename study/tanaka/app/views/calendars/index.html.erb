@@ -9,7 +9,7 @@
 
 <% @calendars.each do |calendar| %>
   <tr>
-   <td><%= calendar.start_at %></td>
+   <td><%= calendar.start_at.strptime("%Y-%m-%d %H:%M:%S") %></td>
     <td><%= calendar.end_at%></td>
     <td><%= calendar.name %></td>
 
