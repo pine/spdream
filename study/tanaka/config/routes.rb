@@ -1,12 +1,14 @@
 Tanaka::Application.routes.draw do
-  get "calendar/index"
-
+ 
   resources :calendars
   resources :events
   resources :news
   resources :tops
-  match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-  # The priority is based upon order of creation:
+   match '/calendar(/:year(/:month))' => 'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
+  get "calendar/index"
+
+    # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:

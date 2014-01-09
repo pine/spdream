@@ -13,7 +13,7 @@ class CalendarsController < ApplicationController
   # GET /calendars/1
   # GET /calendars/1.json
   def show
-    @calendar = Calendar.find(params[:id])
+    @calendars = Calendar.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -76,7 +76,7 @@ class CalendarsController < ApplicationController
     @calendar.destroy
 
     respond_to do |format|
-      format.html { redirect_to calendars_url }
+      format.html { redirect_to calendar_url }
       format.json { head :no_content }
     end
   end

@@ -3,8 +3,6 @@ class CreateSchedules < ActiveRecord::Migration
     create_table :schedules do |t|
       t.date :date
       t.time :time
-      t.date :end_date
-      t.time :end_time
       t.string :type
       t.string :title
       t.text :intro
@@ -21,6 +19,6 @@ class CreateSchedules < ActiveRecord::Migration
 
   def self.down
     drop
-    table :events
+    table :schedules
   end
 end

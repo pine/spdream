@@ -8,12 +8,12 @@
     <th>Photo</th>
   </tr>
 
-<% Schedule.where(:type => "News").reverse_order.each do |schedule| %>
+<% Schedule.where(:type => "News")reverse_order.first(3)..each do |schedule| %>
   <tr>
+     <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
     <td><%= schedule.date %></td>
     <td><%= schedule.title %></td>
     <td><%= schedule.intro %></td>
-    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
   </tr>
 <% end %>
 </table>
