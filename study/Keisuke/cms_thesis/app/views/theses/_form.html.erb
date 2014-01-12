@@ -33,11 +33,20 @@
 				<th><%= f.text_field :year %></th>
 			</div>
 		</tr>
+
 		<tr>
 			<div class="field">
 				<th>研究室</th>
 				<th>
 					<%= f.select :lab_id, Lab.all.map{|lab| [lab.name, lab.id]}, :include_blank => '無所属' %>
+				</th>
+			</div>
+		</tr>
+		<tr>
+			<div class="field">
+				<th>課程</th>
+				<th>
+					<%= f.select :course, [['学士'], ['修士'], ['博士']]%>
 				</th>
 			</div>
 		</tr>

@@ -6,6 +6,7 @@
 	<th>学籍番号</th>
 	<th>年度</th>
 	<th>研究室</th>
+	<th>課程</th>
 	<th>編集</th>
 	<th>削除</th>
 	</tr>
@@ -24,6 +25,7 @@
 					無所属
 				<% end %>
 			</td>
+			<td><%= thesis.course %></td>
 			<th><%= link_to '編集', edit_thesis_path(thesis) %></th>
 			<th><%= link_to '削除', thesis_path(thesis), :method => :pute %></th>
 			</tr>

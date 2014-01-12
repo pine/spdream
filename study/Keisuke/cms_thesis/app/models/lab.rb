@@ -1,4 +1,4 @@
 class Lab < ActiveRecord::Base
-  has_many :Theses
-  attr_accessible :name
+  belongs_to :faculty
+  attr_accessible :name, :faculty_id
 end

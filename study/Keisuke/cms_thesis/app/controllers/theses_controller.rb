@@ -7,7 +7,7 @@ class ThesesController < ApplicationController
 	end
 
 	def lab
-		@theses = Thesis.find(:all, :conditions => {:lab_id => params[:id]})
+		@theses = Thesis.find(:all, :conditions => {:lab_id => params[:id]}, :order => "year DESC, student_id ASC")
 		@lab = Lab.find(params[:id])
 	end
 
