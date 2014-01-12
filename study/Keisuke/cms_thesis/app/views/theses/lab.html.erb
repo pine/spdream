@@ -6,12 +6,4 @@
 <%= render 'index' %>
 
 <br>
-<%= link_to '戻る', theses_path %>
-
-<script>
-$(function() {
-	setTimeout(function() {
-		$('#notice').fadeOut('slow');
-	}, 800);
-});
-</script>
+<%= link_to '戻る', :back %>
