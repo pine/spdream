@@ -1,18 +1,15 @@
-<h1>event</h1>
-
-
+<% #coding: utf-8 %>
+<h1>過去のお知らせ一覧</h1>
 <table>
   <tr>
-    <th>Date</th>
-    <th>Title</th>
-    <th>Intro</th>
-    <th>Photo</th>
+    <th>日付</th>
+    <th>タイトル</th>
+    <th>内容</th>
   </tr>
 
-<% Schedule.where(:type => "Event").reverse_order.first(3).each do |schedule| %>
+<% Schedule.where(:type => "Event").reverse_order.each do |schedule| %>
   <tr>
-    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
-    <td><%= schedule.date %></td>
+    <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
     <td><%= schedule.title %></td>
     <td><%= schedule.intro %></td>
   </tr>

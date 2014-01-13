@@ -1,62 +1,16 @@
-<h1>Listing top</h1>
-
-
-<table>
-  <tr>
-   <th>Photo</th>
-    <th>Date</th>
-    <th>Title</th>
-    <th>Intro</th>
- 
-  </tr>
-
-<% Schedule.where(:type => Event).reverse_order.each do |schedule| %>
-  <tr>
-    
-      <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
-      <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
-      <td><%= schedule.title %></td>
-      <td><%= schedule.intro %></td>
-    
-
-  </tr>
-<% end %>
-</table>
-
+<h1>新着イベント</h1>
 
 <table>
-  <tr>
-    <th>Date</th>
-    <th>Title</th>
-    <th>Intro</th>
-    <th>Photo</th>
-  </tr>
 <% Schedule.where(:type => Event).reverse_order.first(3).each do |schedule| %>
 <tr>
+    <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
     <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
     <td><%= schedule.title %></td>
     <td><%= schedule.intro %></td>
-    <td><%= image_tag schedule.photo.url, :width=>'50' :alt => "画像" %></td>
   </tr>
 <% end %>
 </table>
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Title</th>
-    <th>Intro</th>
-
-  </tr>
-
-<% Schedule.where(:type => "News").each do |schedule| %>
-  <tr>
-    <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
-    <td><%= schedule.title %></td>
-  </tr>
-<% end %>
-</table>
-
-
+<%= link_to "過去のイベント", :controller => "tops", :action => "index_event" %>
 
 <table>
   <tr>
@@ -66,8 +20,10 @@
 
   </tr>
 
-<% Schedule.where(:type => "Calendar").each do |schedule| %>
+<h1>新着お知らせ</h1>
+<% Schedule.where(:type => "News").reverse_order.first(3).each do |schedule| %>
   <tr>
+    <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
     <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
     <td><%= schedule.title %></td>
     <td><%= schedule.intro %></td>
@@ -75,5 +31,6 @@
 <% end %>
 </table>
 
+<%= link_to "過去のお知らせ", :controller => "tops", :action => "index_news" %>
 
-<br />
+
