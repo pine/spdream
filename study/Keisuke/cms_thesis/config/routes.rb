@@ -19,6 +19,7 @@ CmsThesis::Application.routes.draw do
       get 'deleted'
       get 'lab'
       get 'faculty'
+      get 'all'
     end
   end
   

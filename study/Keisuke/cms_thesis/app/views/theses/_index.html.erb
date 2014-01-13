@@ -1,15 +1,16 @@
 <%#= 論文一覧表示 %>
+<% if @theses != nil then %>
 <table border="1" cellspacing="0" cellpadding="5">
 	<tr>
-	<th>タイトル</font></th>
-	<th>著者</font></th>
-	<th>学籍番号</th>
-	<th>年度</th>
-	<th>学群</th>
-	<th>研究室</th>
-	<th>課程</th>
-	<th>編集</th>
-	<th>削除</th>
+		<th>タイトル</font></th>
+		<th>著者</font></th>
+		<th>学籍番号</th>
+		<th>年度</th>
+		<th>学群</th>
+		<th>研究室</th>
+		<th>課程</th>
+		<th>編集</th>
+		<th>削除</th>
 	</tr>
 
 	<% @theses.each do |thesis| %>
@@ -40,3 +41,4 @@
 		<% end %>
 	<% end %>
 </table>
+<% end %>

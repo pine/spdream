@@ -2,6 +2,10 @@
 
 class ThesesController < ApplicationController
 	def index
+		@faculties = Faculty.all
+	end
+
+	def all
 		@theses = Thesis.all(:order => "year DESC, student_id ASC")
 		@faculties = Faculty.all
 	end
@@ -15,6 +19,7 @@ class ThesesController < ApplicationController
 	def lab
 		@theses = Thesis.find(:all, :conditions => {:faculty_id => params[:faculty_id], :lab_id => params[:lab_id]}, :order => "year DESC, student_id ASC")
 		@lab = Lab.find(params[:lab_id])
+		@faculty = Faculty.find(params[:faculty_id])
 	end
 
 	def new
