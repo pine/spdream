@@ -1,0 +1,24 @@
+# coding: utf-8
+<h1><%= @faculty.name %></h1>
+
+<%#= 研究室一覧表示 %>
+<table border="1" cellspacing="0" cellpadding="5">
+	<tr>
+		<% @labs.each do |lab| %>
+			<td><%= link_to lab.name, :controller => 'theses', :action => 'lab', :faculty_id => @faculty.id, :lab_id => lab.id %></td>
+		<% end %>
+	</tr>
+</table>
+
+<br>
+
+<%= link_to "研究室の編集", labs_path %>
+
+<br><br>
+
+<div id="notice"><%= notice %></div>
+
+<%= render 'index' %>
+
+<br>
+<%= link_to '戻る', :back %>

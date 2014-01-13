@@ -1,21 +1,20 @@
 # coding: utf-8
-
 <h1>論文TOP</h1>
 
 <div id="notice"><%= notice %></div>
 
-<%#= 研究室一覧表示（リンク先はlabビュー） %>
+<%#= 学群一覧表示 %>
 <table border="1" cellspacing="0" cellpadding="5">
 	<tr>
-		<% @labs.each do |lab| %>
-			<td><%= link_to lab.name, :controller => 'theses', :action => 'lab', :id => lab.id %></td>
+		<% @faculties.each do |faculty| %>
+			<td><%= link_to faculty.name, :controller => 'theses', :action => 'faculty', :id => faculty.id %></td>
 		<% end %>
 	</tr>
 </table>
 
 <br>
 
-<%= link_to "研究室の編集", labs_path %>
+<%= link_to "学群の編集", faculties_path %>
 
 <br><br>
 
@@ -23,12 +22,4 @@
 
 <br>
 
-<%= link_to '新規登録', new_thesis_path %> | <%= link_to '削除履歴', deleted_theses_path %>
-
-<script>
-$(function() {
-	setTimeout(function() {
-		$('#notice').fadeOut('slow');
-	}, 800);
-});
-</script>
+<%= link_to '論文新規登録', new_thesis_path %> | <%= link_to '削除履歴', deleted_theses_path %>
