@@ -33,7 +33,9 @@
           </li>
           <% end %>
         </ul>
-        <%= link_to "過去のお知らせ", :controller => "tops", :action => "index_news" %>
+        <p class="pull-right">
+          <%= link_to "過去のお知らせ", :controller => "tops", :action => "index_news" %>
+        </p>
       </div>
 
       <div class="tab-pane" id="2">
@@ -59,7 +61,9 @@
           </li>
           <% end %>
         </ul>
-        <%= link_to "過去のイベント", :controller => "tops", :action => "index_event" %>
+        <p class="pull-right">
+          <%= link_to "過去のイベント", :controller => "tops", :action => "index_event" %>
+        </p>
       </div>
 
       <div class="tab-pane" id="3">
@@ -92,19 +96,12 @@
     <div class="well">
       <h3>Calendar</h3>
       <div id="calendar_view">
-      <!--
+      
       <script>
       $("#calendar_view").load("<%= calendar_path %> .ec-calendar");
       </script>
-      -->
+      
       </div> 
     </div>
   </div>
 </div>
-
-
-<script>
-  $(function () {
-    $('.tabs a:last').tab('show')
-  })
-</script>
