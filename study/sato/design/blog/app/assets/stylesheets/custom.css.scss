@@ -1,33 +1,54 @@
 @import "bootstrap";
 
-$maincolor: #228A81;
-$maincolor_dark: #1A736C;
-$maincolor_bright: #A1C0A5;
-$subcolor_white: #EBF2CE;
+$maincolor: #B8D4C9;
+$maincolor_dark: #548C77;
+$maincolor_bright: #DBEAE4;
+$subcolor: #7F7F7F;
+$subcolor_bright: #A6A6A6;
+$subcolor_soft: #dddddd;
 $textcolor: #554A5B;
 
 /* universal */
 
+* {
+	margin: 0;
+	padding: 0;
+}
+
 html {
-  overflow-y: scroll;
+	overflow-y: scroll;
+	overflow-x: hidden;
 }
 
 body {
-	margin: 20px;
-	padding-top: 60px;
-	padding-bottom: 60px;
+	height: 100%;
 }
 
 section {
-  overflow: auto;
+	overflow: auto;
 }
 
 textarea {
 	resize: vertical;
 }
 
-#footer {
+#wrap {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 30px auto -40px;
+}
+
+#push {
 	height: 60px;
+}
+
+#footer {
+	margin-left: -60px;
+	margin-right: -60px;
+	height: 50px;
+	color: #fff;
+	background: $subcolor;
 }
 
 #footer > .container {
@@ -59,12 +80,13 @@ p {
   line-height: 1.7em;
 }
 
-a:link, a:hover, a:active {
-	color: $maincolor;
-}
-
-a:visited {
-	color: $maincolor_dark;
+a {
+	&:link, &:hover, &:active {
+		color: $maincolor;
+	}
+	&:visited {
+		color: $maincolor_dark;
+	}
 }
 
 /* customize */
@@ -72,43 +94,54 @@ a:visited {
 .btn-default {
 	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
 	background-color: #fff;
+	&:hover, &:active {
+		text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
+		background-color: $maincolor_bright;
+	}
 }
 
-.btn-default:hover, .btn-default:active {
-	text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.25);
-	background-color: $subcolor_white;
+.navbar {
+	min-height: 50px;
+	margin-bottom: 0px;
+	border: 1px solid transparent;
+	border-color: #ddd;
+	background-color: $subcolor;
 }
 
-.navbar-inverse, .navbar-inner {
-	background-color: #1b1b1b;
-	background-image: -moz-linear-gradient(top, $maincolor, $maincolor_dark);
-	background-image: -webkit-gradient(linear, 0 0, 0 100%, from($maincolor_dark), to($maincolor_dark));
-	background-image: -webkit-linear-gradient(top, $maincolor, $maincolor_dark);
-	background-image: -o-linear-gradient(top, $maincolor, $maincolor_dark);
-	background-image: linear-gradient(to bottom, $maincolor, $maincolor_dark);
-	background-repeat: repeat-x;
-	border-color: #252525;
-	filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ff222222', endColorstr='#ff111111', GradientType=0);
+.navbar-default .navbar-nav > li > a {
+	color: #ddd;
+	&:hover, &:active {
+		color: #bbb;
+	}
+}
+
+.navbar-default .navbar-brand {
+	color: #ddd;
+	&:hover, &:active {
+		color: #bbb;
+	}
 }
 
 a.list-group-item {
 	color: #fff;
-	background-color: $maincolor_bright;
-}
-
-a.list-group-item:hover, .list-group-item:focus {
-	color: $maincolor;
-	background-color: $subcolor_white;
-	border: 1px solid $subcolor_white;
+	background-color: $maincolor;
+	&:hover, &:focus {
+		color: $maincolor_dark;
+		background-color: $maincolor_bright;
+		border: 1px solid $maincolor_bright;
+	}
 }
 
 .well {
 	color: $textcolor;
-	background-color: $subcolor_white;
-	border: 0px;
+	background-color: #fff;
+	border: 1px solid $subcolor_soft;
 }
 
-.jumbotron {
-	color: $textcolor;
-	background-color: $subcolor_white;
+.nav-tabs {
+	margin: 0 15px 30px;
+}
+
+.pull-left {
+	margin: 0 10px 0;
 }

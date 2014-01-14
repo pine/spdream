@@ -30,17 +30,20 @@ class PostsController < ApplicationController
 
   def update
   	@post = Post.find(params[:id])
-	if @post.update_attributes(params[:post])
-		redirect_to posts_path, notice: '更新されました'
-	else
-		render action: 'edit'
-	end
+  	if @post.update_attributes(params[:post])
+	  	redirect_to posts_path, notice: '更新されました'
+	  else
+	  	render action: 'edit'
+	  end
   end
 
   def destroy
-	@post = Post.find(params[:id])
-	@post.destroy
-	render json: { post: @post }
+  	@post = Post.find(params[:id])
+  	@post.destroy
+  	render json: { post: @post }
   end
 
+  def user
+    @posts = Post.all(:order => "created_at DESC")
+  end
 end
