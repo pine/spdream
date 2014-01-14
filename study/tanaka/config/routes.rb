@@ -9,8 +9,8 @@ Tanaka::Application.routes.draw do
   match "tops", :controller => :tops, :action => :index ,:via => :GET
   match "tops/events", :controller => :tops, :action => :index_event ,:via => :GET
   match "tops/news", :controller => :tops, :action => :index_news ,:via => :GET
-  match "tops/events/show", :controller => :tops, :action => :show_event ,:via => :GET
-  match "tops/news/show", :controller => :tops, :action => :show_news ,:via => :GET
+  match "tops/events/:id", :controller => :tops, :action => :show_event ,:via => :GET
+  match "tops/news/:id", :controller => :tops, :action => :show_news ,:via => :GET
     # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,32 +1,25 @@
 <h1>新着イベント</h1>
 
 <table>
-<% Schedule.where(:type => Event).reverse_order.first(3).each do |schedule| %>
-<tr>
-    <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
-    <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
-    <td><%= schedule.title %></td>
-    <td><%= schedule.intro %></td>
-  </tr>
-<% end %>
+  <% Schedule.where(:type => Event).reverse_order.first(3).each do |schedule| %>
+    <tr>
+      <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
+      <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
+      <td><%= link_to (schedule.title), schedule %></td>
+      <td><%= br(schedule.intro) %></td>
+    </tr>
+  <% end %>
 </table>
 <%= link_to "過去のイベント", :controller => "tops", :action => "index_event" %>
 
 <table>
-  <tr>
-    <th>Date</th>
-    <th>Title</th>
-    <th>Intro</th>
-
-  </tr>
-
 <h1>新着お知らせ</h1>
 <% Schedule.where(:type => "News").reverse_order.first(3).each do |schedule| %>
   <tr>
     <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
     <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
-    <td><%= schedule.title %></td>
-    <td><%= schedule.intro %></td>
+    <td><%= link_to (schedule.title) , schedule %></td>
+    <td><%= br(schedule.intro) %></td>
   </tr>
 <% end %>
 </table>
