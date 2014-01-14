@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  opac_id: MyString
+  category_id: MyString
+  value_book: 1
+  title: MyString
+  comment: MyText
+
+two:
+  opac_id: MyString
+  category_id: MyString
+  value_book: 1
+  title: MyString
+  comment: MyText

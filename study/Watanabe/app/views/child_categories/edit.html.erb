@@ -5,4 +5,4 @@
 <%= render 'form' %>
 
 <%= link_to '詳細', @child_category %> |
-<%= link_to '戻る', show_categories_path(@category) %>
+<%= link_to '戻る', :controller => "categories", :action => "show", :id => @child_category.category_id %>

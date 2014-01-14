@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Opac:</strong>
+  <%= @order.opac_id %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @order.category_id %>
+</p>
+
+<p>
+  <strong>Value book:</strong>
+  <%= @order.value_book %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @order.title %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @order.comment %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

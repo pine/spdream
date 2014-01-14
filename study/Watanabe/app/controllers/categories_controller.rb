@@ -32,15 +32,7 @@ class CategoriesController < ApplicationController
     end
   end
 
-  def childnew
-    @child_category = ChildCategory.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @child_category }
-    end
-  end
-
+ 
   # GET /categories/1/edit
   def edit
     @category = Category.find(params[:id])
