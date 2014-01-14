@@ -30,6 +30,7 @@
     <th>名前</th>
     <th>説明</th>
     <th>親カテゴリ</th>
+    <th>編集</th>
     <th>削除</th>
   </tr>
 
@@ -38,8 +39,8 @@
     <td><%= child_category.priority %></td>
     <td><%= child_category.name %></td>
     <td><%= child_category.description %></td>
-    <td><%= child_category.category %></td>
-    <td><%= link_to '編集', edit_child_category_path(child_category) %></td>
+    <td><%= child_category.category.name %></td>
+    <td><%= link_to '編集', edit_child_category_path(child_category), :categoryid => @category.id %></td>
     <td><%= link_to '削除', child_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
