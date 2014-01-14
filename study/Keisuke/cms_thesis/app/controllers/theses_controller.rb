@@ -12,7 +12,7 @@ class ThesesController < ApplicationController
 
 	def faculty
 		@theses = Thesis.find(:all, :conditions => {:faculty_id => params[:id]}, :order => "year DESC, student_id ASC")
-		@labs = Lab.all
+		@labs = Lab.find(:all, :conditions => {:faculty_id => params[:id]})
 		@faculty = Faculty.find(params[:id])
 	end
 

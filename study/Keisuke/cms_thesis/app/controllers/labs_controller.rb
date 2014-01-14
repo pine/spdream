@@ -2,7 +2,7 @@
 
 class LabsController < ApplicationController
 	def index
-		@labs = Lab.all
+		@labs = Lab.find(:all, :conditions => {:faculty_id => params[:id]})
 	end
 
 	def new
