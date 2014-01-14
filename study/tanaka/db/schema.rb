@@ -24,8 +24,6 @@ ActiveRecord::Schema.define(:version => 20140106145954) do
     t.integer  "photo_file_size"
     t.string   "photo_content_type"
     t.datetime "photo_updated_at"
-    t.datetime "start_at"
-    t.datetime "end_at"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
     t.string   "name"
