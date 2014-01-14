@@ -5,6 +5,7 @@ class CreateReviews < ActiveRecord::Migration
       t.text :comment
       t.integer :value_good
       t.integer :value_bad
+      t.integer :value_book
       t.boolean :enabled
       t.timestamp :date
       t.references :book

@@ -1,0 +1,29 @@
+# coding: utf-8
+
+<h1><%= @child_category.name %> 詳細</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>名前:</b>
+  <%= @child_category.name %>
+</p>
+
+<p>
+  <b>説明:</b>
+  <%= @child_category.description %>
+</p>
+
+<p>
+  <b>表示順序:</b>
+  <%= @child_category.priority %>
+</p>
+
+<p>
+  <b>親カテゴリ:</b>
+  <%= @child_category.category %>
+</p>
+
+
+<%= link_to '編集', edit_child_category_path(@child_category) %> |
+<%= link_to '戻る', categories_path %>

@@ -1,12 +1,12 @@
 # coding: utf-8
 
-<%= form_for(@category) do |f| %>
-  <% if @category.errors.any? %>
+<%= form_for(@child_category) do |f| %>
+  <% if @child_category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
+      <h2><%= pluralize(@child_category.errors.count, "error") %> prohibited this child_category from being saved:</h2>
 
       <ul>
-      <% @category.errors.full_messages.each do |msg| %>
+      <% @child_category.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -24,6 +24,10 @@
   <div class="field">
     <%= f.label :表示順序 %><br />
     <%= f.number_field :priority %>
+  </div>
+  <div class="field">
+    <%= f.label :親カテゴリ %><br />
+    <%= f.select :category_id, Category.all.map{|category| [category.name, category.id]}%>
   </div>
   <div class="actions">
     <%= f.submit %>

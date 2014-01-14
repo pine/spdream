@@ -22,9 +22,19 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
+    <%= f.label :階層 %><br />
+    <%= f.number_field :level %>
+  </div>
+  <div class="field">
     <%= f.label :表示順序 %><br />
     <%= f.number_field :priority %>
   </div>
+  <div class="field">
+    <%= f.label :親カテゴリ %><br />
+    <%= f.select :category_id, Category.all.map{|category| [category.name, category.id]}%>
+    
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

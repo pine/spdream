@@ -1,4 +1,7 @@
 Opac::Application.routes.draw do
+  resources :child_categories
+
+
   resources :reviews
 
 
@@ -10,6 +13,14 @@ Opac::Application.routes.draw do
 
   resources :books do
     resources :reviews
+
+#    member do
+ #     get ''
+ #   end
+
+  #  collection do
+
+   # end
   end
 
 
