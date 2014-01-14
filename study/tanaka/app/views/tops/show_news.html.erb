@@ -1,19 +1,19 @@
-<h1>news</h1>
+<% #coding: utf-8 %>
 
-<table>
-  <tr>
-    <th>Date</th>
-    <th>Title</th>
-    <th>Intro</th>
-    <th>Photo</th>
-  </tr>
+<p>
+  <b>日付:</b>
+  <%= @news.date.strftime("%y年 %m月 %d日") %>
+</p>
+<p>
+  <b>タイトル:</b>
+  <%= @news.title %>
+</p>
+<p>
+  <b>内容:</b>
+  <%= br(@news.intro) %>
+</p>
+<p>
+  <b>写真:</b>
+  <%= image_tag @news.photo.url, :width=>'50' %>
+</p>
 
-<% Schedule.where(:type => "News").find(:limit => 3).each do |schedule| %>
-  <tr>
-    <td><%= schedule.date %></td>
-    <td><%= schedule.title %></td>
-    <td><%= schedule.intro %></td>
-    <td><%= image_tag schedule.photo.url, :width=>'50' %></td>
-  </tr>
-<% end %>
-</table>

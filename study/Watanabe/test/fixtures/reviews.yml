@@ -5,8 +5,9 @@ one:
   comment: MyText
   value_good: 1
   value_bad: 1
+  value_book: 1
   enabled: false
-  date: 2014-01-06 01:41:10
+  date: 2014-01-09 07:35:50
   book: 
   deleted: false
 
@@ -15,7 +16,8 @@ two:
   comment: MyText
   value_good: 1
   value_bad: 1
+  value_book: 1
   enabled: false
-  date: 2014-01-06 01:41:10
+  date: 2014-01-09 07:35:50
   book: 
   deleted: false

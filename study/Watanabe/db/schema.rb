@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140105164110) do
+ActiveRecord::Schema.define(:version => 20140114081557) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -27,20 +27,28 @@ ActiveRecord::Schema.define(:version => 20140105164110) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "level"
     t.integer  "priority"
-    t.integer  "parent_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "categories", ["parent_id"], :name => "index_categories_on_parent_id"
+  create_table "child_categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "priority"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "child_categories", ["category_id"], :name => "index_child_categories_on_category_id"
 
   create_table "reviews", :force => true do |t|
     t.string   "title"
     t.text     "comment"
     t.integer  "value_good"
     t.integer  "value_bad"
+    t.integer  "value_book"
     t.boolean  "enabled"
     t.datetime "date"
     t.integer  "book_id"

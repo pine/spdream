@@ -6,9 +6,8 @@ class Book < ActiveRecord::Base
    validates :title, :presence => true
    validates :auther, :presence => true
    validates :isbn, :presence => true
-   validates :isbn, :length => { :maximum => 13 }
-   validates :isbn, :length => { :minimum => 10 }
+   validates :isbn, :length => { :maximum => 13, :minimum => 10 }
    validates :opac_id, :presence => true
    validates :value, :presence => true
-   validates :value, inclusion: { in: 1..5 }
+   validates :value, :numericality => { :greater_than => 0, :less_than => 6 }
 end

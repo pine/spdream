@@ -15,20 +15,42 @@
 </p>
 
 <p>
-  <b>階層:</b>
-  <%= @category.level %>
-</p>
-
-<p>
   <b>表示順序:</b>
   <%= @category.priority %>
 </p>
 
-<p>
-  <b>親カテゴリid:</b>
-  <%= @category.parent %>
-</p>
+<h2>子カテゴリ</h2>
 
+<ul>
+<% if @category.child_categories.any? %>
+
+<table border='1'>
+  <tr>
+    <th>表示順序</th>
+    <th>名前</th>
+    <th>説明</th>
+    <th>親カテゴリ</th>
+    <th>削除</th>
+  </tr>
+
+<% @category.child_categories.each do |child_category| %>
+  <tr>
+    <td><%= child_category.priority %></td>
+    <td><%= child_category.name %></td>
+    <td><%= child_category.description %></td>
+    <td><%= child_category.category %></td>
+    <td><%= link_to '編集', edit_child_category_path(child_category) %></td>
+    <td><%= link_to '削除', child_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<% else %>
+<li>子カテゴリなし</li>
+<% end %>
+</ul>
+
+<p>
 
 <%= link_to '編集', edit_category_path(@category) %> |
 <%= link_to '戻る', categories_path %>

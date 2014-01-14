@@ -4,14 +4,20 @@ one:
   title: MyString
   author: MyString
   student_id: MyString
+  course: MyString
   year: 1
   enabled: false
-  lab_id: 
+  lab: 
+  teacher: 
+  faculty: 
 
 two:
   title: MyString
   author: MyString
   student_id: MyString
+  course: MyString
   year: 1
   enabled: false
-  lab_id: 
+  lab: 
+  teacher: 
+  faculty: 

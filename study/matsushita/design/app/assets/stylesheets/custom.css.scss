@@ -159,7 +159,6 @@ $list-group-before-after-border-radius: 8px;
 		font-family: $font-family-japanese-default;
 	}
 	
-	
 	.control-label {
 		padding-right: 0;
 		text-align: right;
@@ -198,7 +197,7 @@ $list-group-before-after-border-radius: 8px;
 	}
 	
 	.list-group-item {
-		padding: 18px 10px;
+		padding: 18px 0;
 		border-width: 0;
 		border-bottom-width: $list-group-spacing;
 		text-align: center;
@@ -231,9 +230,23 @@ $list-group-before-after-border-radius: 8px;
 }
 
 .list-group::after {
-	border-top-style: solid;
+	border-top-style: none;
 	border-bottom-left-radius: $list-group-border-radius;
 	border-bottom-right-radius: $list-group-border-radius;
+}
+
+
+.cms-sidemenu {
+	.cms-sidemenu-submenu {
+		.list-group-item {
+			padding: 9px 0;
+			background-color: #b09ecb;
+			
+			&:last-child {
+				border-bottom: $list-group-border $list-group-spacing solid;
+			}
+		}
+	}
 }
 
 // ログイン
@@ -242,19 +255,15 @@ $list-group-before-after-border-radius: 8px;
 	width: 655px;
 }
 
-#cms_main {
-	min-height: 475px;
-}
-
 .cms-menu {
 	margin: 8px 40px 0 10px;
 	
 	.cms-menu-item {
-		padding: 10px 0 0 10px;
+		padding: 10px 0 10px;
 		
 		.thumbnail {
 			margin-right: 5px;
-			width: 109px;
+			width: 110px;
 			float: left;
 		}
 		
@@ -272,10 +281,43 @@ $list-group-before-after-border-radius: 8px;
 			p {
 				margin: 7px 0 0;
 				font-size: 12px;
+				color: #000 !important;
 			}
 		}
 	}
 }
+
+#cms_main {
+	p {
+		color: #7c5da9;
+		font-size: 12px;
+	}
+	
+	.form-group {
+		margin-bottom: 5px;
+		
+		&:first-child {
+			margin-top: 32px;
+		}
+		
+		&:last-child {
+			margin-top: 28px;
+		}
+	}
+	
+	.control-label {
+		font-size: 13px;
+	}
+	
+	.form-control {
+		font-size: 11px;
+	}
+	
+	.col-sm-8 {
+		padding-left: 8px;
+	}
+}
+
 
 body {
 	background-image: url(cms_bg.png);

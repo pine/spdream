@@ -10,9 +10,17 @@
 </div>
 <div class="col-sm-9 col-md-8 col-lg-7">
 	<div class="panel panel-default" id="cms_main">
+		<script>
+			$(function(){
+				$("#cms_main").css({
+					height: $("#cms_sidemenu").css("height")
+				});
+			});
+		</script>
+		
 		<%= yield %>
 	</div>
 </div>
 <% end %>
 
-<%= render file: 'layouts/application' %>
+<%= render file: 'layouts/cms' %>
