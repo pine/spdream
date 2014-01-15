@@ -2,6 +2,7 @@ class TopsController < ApplicationController
 
 	def index
 		@tops = Schedule.all
+       
 	end
 
 	def index_event

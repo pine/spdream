@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  auther: MyString
+  outline: MyText
+  isbn: MyString
+  opac_id: MyString
+  value: 1
+
+two:
+  title: MyString
+  auther: MyString
+  outline: MyText
+  isbn: MyString
+  opac_id: MyString
+  value: 1

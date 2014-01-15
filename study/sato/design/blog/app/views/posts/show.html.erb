@@ -1,0 +1,45 @@
+<h1><%= @post.title %></h1>
+
+<p><%= @post.content %></p>
+
+<h2>Comments</h2>
+
+<ul>
+<% if @post.comments.any? %>
+	<% @post.comments.each do |comment| %>
+    	<li id="comment_<%= comment.id %>">
+    	<%= comment.body %> (by <%= comment.commenter %>)</li>
+    	<%= link_to 'delete', [comment.post, comment],
+      :confirm => 'Sure?',
+    	:method => :delete,
+    	:remote => true %>
+	<% end %>
+<% else %>
+	<li>no comment yet.</li>
+<% end %>
+</ul>
+
+<h2>Add a comment</h2>
+
+<%= simple_form_for ([@post, @comment]), 
+  :html => { :class => 'form-horizontal' } do |f| %>
+
+<%= f.input :commenter %>
+<%= f.input :body %>
+
+<div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel',
+      :default => t("helpers.links.cancel")), posts_path,
+      :class => 'btn' %>
+</div>
+<% end %>
+
+<div class="text-center">
+<!-- 
+  <%= link_to 'Home', posts_path %> | <%= link_to 'New Post', new_post_path%>
+-->
+  <button type="button" class="btn btn-default">
+    <%= link_to 'Goto Home', posts_path %>
+  </button>
+</dvi>

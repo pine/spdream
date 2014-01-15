@@ -1,0 +1,46 @@
+<% #coding: utf-8%>
+
+<h1>レビュー一覧</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>タイトル</th>
+      <th>コメント</th>
+      <th>いいね</th>
+      <th>よくないね</th>
+      <th>本の評価</th>
+   
+      <th>日付</th>
+      <th>蔵書ID</th>
+  
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.title %></td>
+        <td><%= review.comment %></td>
+        <td><%= review.value_good %></td>
+        <td><%= review.value_bad %></td>
+        <td><%= review.value_book %></td>
+      
+        <td><%= review.date %></td>
+        <td><%= review.book %></td>
+       
+        <td><%= link_to '詳細', review %></td>
+        <td><%= link_to '編集', edit_review_path(review) %></td>
+        <td><%= link_to '削除', review, method: :delete, data: { confirm: '削除しますか?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to '追加', new_review_path %>

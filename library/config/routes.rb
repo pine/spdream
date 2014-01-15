@@ -1,4 +1,77 @@
+# -*- coding: utf-8 -*-
+
 Library::Application.routes.draw do
+  # routes.txt より
+  # 詳細は rake routes 参照
+  #
+  # * 階層構造にしたい
+  #   scope 'パス' do ～ end で囲む
+  #
+  # * ルートを一つ作る
+  #   match 'URL' => 'コントローラー#メソッド', :as => '名前'
+  #   - 名前は、名前_path としてビューで使えます。
+  #
+  # * Scaffold のルート
+  #   resources :モデル名s
+  #
+  scope 'library' do
+    
+    # CMS
+    get 'cms-login' => 'login#login'
+   
+    scope 'cms-top' do
+      # /library/cms-top/main
+      get 'main' => 'cms_top#main', :as => 'cms_top_main'
+    end
+    
+    # from Watanabe routes.rb
+    scope 'cms-opacplus' do
+      resources :categories
+      resources :tags
+      resources :requests
+      
+      resources :books do
+        resources :reviews
+      end
+    end
+    
+    # from Keisuke routes.rb
+    resources :theses, :path => 'cms-thesis', :except => :show do
+      collection do
+        get 'deleted'
+        get 'lab' # /library/cms-thesis/lab
+        # get 'faculty'
+        get 'faculty/:id' =>'theses#faculty' # /library/cms-thesis/faculty/:id
+        get 'all'
+      end
+    end
+    
+    scope 'cms-thesis' do
+      resources :faculties
+      resources :labs
+      post ':id' => 'theses#hide_and_restore' # /library/cms-thesis/:id
+    end
+    
+    # User
+    
+    # from tanaka routes.rb
+    get 'index' => 'tops#index' # /library/index
+    
+    get'opacplus' => 'opacplus#index'
+    scope 'opacplus' do
+      resources :categories
+      resources :books
+    end
+    
+    resources :theses do
+      collection do
+        # get 'faculty'
+        get 'faculty/:id' => 'theses#faculty' # /library/thesis/faculty/:id
+        get 'lab' # /library/thesis/lab
+      end
+    end
+  end
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

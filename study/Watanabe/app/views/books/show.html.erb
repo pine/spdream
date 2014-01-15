@@ -21,7 +21,11 @@
 
 <p>
   <b>Isbn:</b>
-  <%= @book.isbn %>
+  <% if @book.isbn10 == '0' %>
+    <%= @book.isbn13 %>
+  <% else %>
+    <%= @book.isbn10 %>
+  <% end %>
 </p>
 
 <p>
@@ -33,6 +37,22 @@
   <b>評価:</b>
   <%= @book.value %>
 </p>
+
+<p>
+  <b>親カテゴリ:</b>
+  <%= @book.category.name %>
+</p>
+
+<p>
+  <b>子カテゴリ:</b>
+  <%= @book.child_category.name %>
+</p>
+
+<p>
+  <b>タグ:</b>
+  <%= @book.tag.name %>
+</p>
+
 
 
 <%= link_to '編集', edit_book_path(@book) %> |

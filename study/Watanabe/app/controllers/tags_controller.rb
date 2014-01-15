@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    @tags = Tag.find(:all, :order => "priority")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -59,6 +59,8 @@ class TagsController < ApplicationController
     @tag = Tag.find(params[:id])
 
     respond_to do |format|
+
+
       if @tag.update_attributes(params[:tag])
         format.html { redirect_to @tag, notice: 'Tag was successfully updated.' }
         format.json { head :no_content }

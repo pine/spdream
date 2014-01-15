@@ -1,18 +1,20 @@
-<h1>新着イベント</h1>
+<div class="row">
+  <div class="col-md-8">
 
+<<<<<<< HEAD
 <table>
   <% Schedule.where(:type => Event).reverse_order.first(3).each do |schedule| %>
     <% if (schedule.photo == "/photos/original/missing.png") then %>
       <tr>
         <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
-        <td><%= link_to (schedule.title), schedule %></td>
+        <td><%= link_to (schedule.title), :controller => 'tops', :action => 'show_event', :id => schedule.id %></td>
         <td><%= br(schedule.intro) %></td>
       </tr>
     <% else %>
       <tr>
         <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
         <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
-        <td><%= link_to (schedule.title), schedule %></td>
+        <td><%= link_to (schedule.title), :controller => 'tops', :action => 'show_event', :id => schedule.id %></td>
         <td><%= br(schedule.intro) %></td>
         <td><%= schedule.photo %></td>
       </tr>
@@ -29,12 +31,114 @@
   <tr>
     <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
     <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
-    <td><%= link_to (schedule.title) , schedule %></td>
+    <td><%= link_to (schedule.title) , :controller => 'tops', :action => 'show_news', :id => schedule.id %></td>
     <td><%= br(schedule.intro) %></td>
   </tr>
 <% end %>
 </table>
+=======
+    <div class="row">
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#1" data-toggle="tab">お知らせ</a></li>
+        <li><a href="#2" data-toggle="tab">イベント</a></li>
+        <li><a href="#3" data-toggle="tab">新着図書</a></li>
+      </ul>
+    </div>
 
-<%= link_to "過去のお知らせ", :controller => "tops", :action => "index_news" %>
+    <div class="tab-content">
+      <div class="tab-pane active" id="1">
+        <ul class="media-list">
+          <% Schedule.where(:type => News).reverse_order.first(3).each do |schedule| %>
+          <li class="media">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= link_to (schedule.title), :controller => 'tops', :action => 'show_news', :id => schedule.id %>
+              </div>
+              <div class="panel-body">
+                <a class="pull-left" href="#">
+                  <%= image_tag schedule.photo.url, :width => '50', :alt => "image" %>
+                </a>
+                <div class="media-body">
+                  <p>
+                    更新日 ： <%= schedule.date.strftime("%y年 %m月 %d日") %><br>
+                    <%= br(schedule.intro) %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+        <p class="pull-right">
+          <%= link_to "過去のお知らせ", :controller => "tops", :action => "index_news" %>
+        </p>
+      </div>
+>>>>>>> ad2f6876880eed2d4e3ec3bcc0db07055547f00f
 
+      <div class="tab-pane" id="2">
+        <ul class="media-list">
+          <% Schedule.where(:type => Event).reverse_order.first(3).each do |schedule| %>
+          <li class="media">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= link_to (schedule.title), schedule %>
+              </div>
+              <div class="panel-body">
+                <a class="pull-left" href="#">
+                  <%= image_tag schedule.photo.url, :width => '50', :alt => "image" %>
+                </a>
+                <div class="media-body">
+                  <p>
+                    更新日 ： <%= schedule.date.strftime("%y年 %m月 %d日") %><br>
+                    <%= br(schedule.intro) %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+        <p class="pull-right">
+          <%= link_to "過去のイベント", :controller => "tops", :action => "index_event" %>
+        </p>
+      </div>
 
+      <div class="tab-pane" id="3">
+        <a data-toggle="modal" href="#modal" class="btn btn-primary">
+          show me!
+        </a>
+
+        <div class="modal fade" id="modal">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                My modal
+              </div>
+              <div class="modal-body">
+                Hello World!
+              </div>
+              <div class="modal-footer">
+                <button class="btn btn-primary">OK</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4 hidden-sm hidden-xs">
+    <div class="well">
+      <h3>Calendar</h3>
+      <div id="calendar_view">
+      
+      <script>
+      $("#calendar_view").load("<%= calendar_path %> .ec-calendar");
+      </script>
+      
+      </div> 
+    </div>
+  </div>
+</div>

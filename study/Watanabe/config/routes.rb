@@ -1,4 +1,7 @@
 Opac::Application.routes.draw do
+  resources :child_categories
+
+
   resources :reviews
 
 
@@ -10,8 +13,16 @@ Opac::Application.routes.draw do
 
   resources :books do
     resources :reviews
+  #    member do
+  #      get ''
+  #    end
+
+  # collection do
+
+  # end
   end
 
+  resources :tops
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
