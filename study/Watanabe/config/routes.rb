@@ -13,16 +13,16 @@ Opac::Application.routes.draw do
 
   resources :books do
     resources :reviews
+  #    member do
+  #      get ''
+  #    end
 
-#    member do
- #     get ''
- #   end
+  # collection do
 
-  #  collection do
-
-   # end
+  # end
   end
 
+  resources :tops
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

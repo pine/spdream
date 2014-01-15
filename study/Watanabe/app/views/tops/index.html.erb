@@ -1,0 +1,60 @@
+<div class="row">
+  <div id="header">
+      <h1 class="header_title">目的別検索 OPAC+</h1>
+      <div class="header_intro">このページでは、図書館所蔵の本を目的別に探し、レビューを閲覧・投稿することができます。</div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-3">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="text-center">カテゴリ一覧</div>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <% @categories.each do |category| %>
+          <li>
+            <%= link_to category.name, category_path(category) %>
+            <ul>
+              <% @child_categories.each do |child_category| %>
+              <li>
+                <%= link_to child_category.name, child_category_path(category) %>
+              </li>
+              <% end %>
+            </ul>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-9">
+    <div class="well">
+      <h3 class="text-right">Category Name</h3>
+        <ul class="media-list">
+          <% @books.each do |book| %>
+          <li class="media">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= link_to book.title, book_path(book) %>
+              </div>
+              <div class="panel-body">
+                <a class="pull-left" href="#">
+                </a>
+                <div class="media-body">
+                  <p>
+                    著者：<%= book.auther %><br>
+                    評価：<% book.value.times do %>★<% end %><% (5-book.value).times do %>☆<% end %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+    </div>
+  </div>
+
+</div>
