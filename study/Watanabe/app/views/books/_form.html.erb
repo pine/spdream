@@ -26,8 +26,12 @@
     <%= f.text_area :outline %>
   </div>
   <div class="field">
-    <%= f.label :ISBN %><br />
-    <%= f.text_field :isbn %>
+    <%= f.label :isbn10 %><br />
+    <%= f.text_field :isbn10 %>
+  </div>
+  <div class="field">
+    <%= f.label :isbn13 %><br />
+    <%= f.text_field :isbn13 %>
   </div>
   <div class="field">
     <%= f.label :資料ID %><br />
@@ -36,6 +40,18 @@
   <div class="field">
     <%= f.label :評価 %><br />
     <%= f.number_field :value %>
+  </div>
+  <div class="field">
+    <%= f.label :親カテゴリ %><br />
+    <%= f.select :category_id, Category.all.map{|category| [category.name, category.id]}%>
+  </div>
+  <div class="field">
+    <%= f.label  :子カテゴリ %><br />
+    <%= f.select :child_category_id, ChildCategory.all.map{|child_category| [child_category.name, child_category.id]}%>
+  </div>
+  <div class="field">
+    <%= f.label :タグ %><br />
+    <%= f.collection_select(:tag_id, Tag.find(:all), :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>
