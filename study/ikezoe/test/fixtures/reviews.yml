@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  comment: MyText
+  value_good: 1
+  value_bad: 1
+  value_book: 1
+  enabled: false
+  date: 2014-01-15 14:02:09
+  book_id: 
+  deleted: false
+
+two:
+  title: MyString
+  comment: MyText
+  value_good: 1
+  value_bad: 1
+  value_book: 1
+  enabled: false
+  date: 2014-01-15 14:02:09
+  book_id: 
+  deleted: false
