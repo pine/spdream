@@ -5,4 +5,7 @@ class Tag < ActiveRecord::Base
   	validates :priority, :presence => true
     validates :priority, :numericality => {:greater_than => 0}
 
+  has_many :books
+
+
 end
