@@ -2,15 +2,26 @@
 
 <table>
   <% Schedule.where(:type => Event).reverse_order.first(3).each do |schedule| %>
-    <tr>
-      <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
-      <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
-      <td><%= link_to (schedule.title), schedule %></td>
-      <td><%= br(schedule.intro) %></td>
-    </tr>
+    <% if (schedule.photo == "/photos/original/missing.png") then %>
+      <tr>
+        <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
+        <td><%= link_to (schedule.title), schedule %></td>
+        <td><%= br(schedule.intro) %></td>
+      </tr>
+    <% else %>
+      <tr>
+        <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
+        <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
+        <td><%= link_to (schedule.title), schedule %></td>
+        <td><%= br(schedule.intro) %></td>
+        <td><%= schedule.photo %></td>
+      </tr>
+    <% end %>
   <% end %>
 </table>
 <%= link_to "過去のイベント", :controller => "tops", :action => "index_event" %>
+
+
 
 <table>
 <h1>新着お知らせ</h1>
