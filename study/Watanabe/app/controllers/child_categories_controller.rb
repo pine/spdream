@@ -2,7 +2,7 @@ class ChildCategoriesController < ApplicationController
   # GET /child_categories
   # GET /child_categories.json
   def index
-    @child_categories = ChildCategory.all
+    @child_categories = ChildCategory.find(:all, :order => "priority")
 
     respond_to do |format|
       format.html # index.html.erb
