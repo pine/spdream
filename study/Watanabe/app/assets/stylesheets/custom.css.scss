@@ -57,8 +57,8 @@ textarea {
 }
 
 #footer > .container {
-  pudding-left: 15px;
-  pudding-right: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 #header {
@@ -77,6 +77,22 @@ textarea {
 #header > .header_intro {
   font-size: 0.8em;
   text-align: right;
+}
+
+.inner_title {
+  margin: 5px 15px 15px;
+  padding: 5px;
+  border-bottom: dotted $maincolor;
+}
+
+.inner_title > h3{
+  margin: 5px;
+}
+
+.inner_title > .btn {
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  padding: 4px 12px;
 }
 
 /* Typography */

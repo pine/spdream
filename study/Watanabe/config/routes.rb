@@ -1,15 +1,11 @@
 Opac::Application.routes.draw do
   resources :child_categories
 
-
   resources :reviews
-
 
   resources :categories
 
-
   resources :tags
-
 
   resources :books do
     resources :reviews
@@ -22,7 +18,10 @@ Opac::Application.routes.draw do
   # end
   end
 
-  resources :tops
+  match "tops", :controller => :tops, :action => :index ,:via => :GET
+  match "tops/book", :controller => :tops, :action => :index_book ,:via => :GET
+  match "tops/book_info", :controller => :tops, :action => :show_book ,:via => :GET
+  match "tops/tag", :controller => :tops, :action => :index_tag ,:via => :GET
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

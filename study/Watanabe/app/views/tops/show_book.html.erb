@@ -1,0 +1,79 @@
+<!-- header -->
+<div class="row">
+  <div id="header">
+      <h1 class="header_title">目的別検索 OPAC+</h1>
+      <div class="header_intro">このページでは、図書館所蔵の本を目的別に探し、レビューを閲覧・投稿することができます。</div>
+  </div>
+</div>
+
+<!-- sidemenu -->
+<div class="row">
+  <div class="col-md-3">
+      <%= render 'category_menu' %>
+  </div>
+
+<!-- inner -->
+  <div class="col-md-9">
+    <div class="well">
+
+<!-- inner title -->
+      <div class="inner_title">
+        <button type="button" class="btn btn-default">
+          <%= link_to '戻る', tops_path %>
+        </button>
+        <h3 class="pull-right">Category Name</h3>
+      </div>
+
+<!-- inner contents - book basic information -->
+        <ul class="media-list">
+          <li class="media">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                Book Title
+              </div>
+              <div class="panel-body">
+                <a class="pull-left" href="#">
+                </a>
+                <div class="media-body">
+                  <p>
+                    著者：<br>
+                    説明：<br>
+                    評価：
+                  </p>
+                </div>
+              </div>
+            </div>
+          </li>
+<!-- inner contents - book review -->
+          <li class="media">
+            <div class="panel panel-default">
+              <% 3.times do %>
+              <div class="panel-heading">
+                Review Title
+              </div>
+              <div class="panel-body">
+                <a class="pull-left" href="#">
+                </a>
+                <div class="media-body">
+                  <p>
+                    レビューの内容です。レビューの内容です。レビューの内容です。<br>
+                    レビューの内容です。レビューの内容です。レビューの内容です。<br>
+                    レビューの内容です。レビューの内容です。レビューの内容です。
+                  </p>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </li>
+        </ul>
+    </div>
+    
+<!-- inner contents - back button -->
+    <div class="text-center">
+      <button type="button" class="btn btn-default">
+        <%= link_to 'トップページに戻る', tops_path %>
+      </button>
+    </div>
+  </div>
+
+</div>
