@@ -1,0 +1,25 @@
+<% #coding: utf-8 %>
+
+<p>
+  <b>日付:</b>
+  <%= @event.date.strftime("%Y年 %m月 %d日") %>
+</p>
+<p>
+  <b>タイトル:</b>
+  <%= @event.title %>
+</p>
+<p>
+  <b>内容:</b>
+  <%=br(@event.intro) %>
+</p>
+ <% if (@event.photo.url != "/photos/original/missing.png") then %>
+  <p>
+    <b>写真:</b>
+    <%= image_tag @event.photo.url, :width=>'50' %>
+  </p>
+ <% else %>
+  
+ <% end %>
+
+
+

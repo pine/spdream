@@ -1,0 +1,23 @@
+<% #coding: utf-8 %>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>日付:</b>
+  <%= @news.date %>
+</p>
+<p>
+  <b>タイトル:</b>
+  <%= @news.title %>
+</p>
+<p>
+  <b>内容:</b>
+  <%= br(@news.intro) %>
+</p>
+<p>
+  <b>写真:</b>
+  <%= image_tag @news.photo.url, :width=>'50' %>
+</p>
+
+<%= link_to '編集', edit_news_path(@news) %> |
+<%= link_to '戻る', news_index_path %>

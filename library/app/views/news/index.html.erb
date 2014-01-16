@@ -1,0 +1,27 @@
+<% #coding: utf-8 %>
+
+<h1>お知らせ一覧</h1>
+
+<%= link_to '新規作成', new_news_path %>
+
+<table>
+  <tr>
+    <th>日付</th>
+    <th>タイトル</th>
+    <th>内容</th>
+    <th>写真</th>
+  </tr>
+
+<% @news.each do |news| %>
+  <tr>
+    <td><%= news.date.strftime("%y年 %m月 %d日") %></td>
+    <td><%= link_to (news.title) , news%></td>
+    <td><%= br(news.intro) %></td>
+     <td><%= image_tag news.photo.url, :width=>'50' %></td>
+    <td><%= link_to '編集', edit_news_path(news) %></td>
+    <td><%= link_to '削除', news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />

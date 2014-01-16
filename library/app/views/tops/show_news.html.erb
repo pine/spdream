@@ -1,0 +1,22 @@
+<% #coding: utf-8 %>
+
+<p>
+  <b>日付:</b>
+  <%= @news.date.strftime("%Y年 %m月 %d日") %>
+</p>
+<p>
+  <b>タイトル:</b>
+  <%= @news.title %>
+</p>
+<p>
+  <b>内容:</b>
+  <%= br(@news.intro) %>
+</p>
+<% if (@news.photo.url != "/photos/original/missing.png") then %>
+  <p>
+    <b>写真:</b>
+    <%= image_tag @news.photo.url, :width=>'50' %>
+  </p>
+ <% else %>
+  
+ <% end %>

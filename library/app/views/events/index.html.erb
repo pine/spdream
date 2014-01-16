@@ -1,0 +1,28 @@
+<% #coding: utf-8 %>
+
+<h1>イベント一覧</h1>
+
+<%= link_to 'イベント作成', new_event_path %>
+
+<table>
+  <tr>
+    <th>日付</th>
+    <th>タイトル</th>
+    <th>内容</th>
+    <th>写真</th>
+  </tr>
+
+<% @events.each do |event| %>
+  <tr>
+    <td><%= event.date.strftime("%y年 %m月 %d日") %></td>
+    <td><%= event.title %></td>
+    <td><%= event.intro %></td>
+    <td><%= image_tag event.photo.url, :width=>'50' %></td>
+    <td><%= link_to '詳細', event %></td>
+    <td><%= link_to '編集', edit_event_path(event) %></td>
+    <td><%= link_to '削除', event, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
