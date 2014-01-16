@@ -2,43 +2,44 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Title:</strong>
+  <strong>タイトル:</strong>
   <%= @review.title %>
 </p>
 
 <p>
-  <strong>Comment:</strong>
+  <strong>コメント:</strong>
   <%= @review.comment %>
 </p>
 
 <p>
-  <strong>Value good:</strong>
+  <strong>いいね:</strong>
   <%= @review.value_good %>
 </p>
 
 <p>
-  <strong>Value bad:</strong>
+  <strong>よくないね:</strong>
   <%= @review.value_bad %>
 </p>
 
 <p>
-  <strong>Value book:</strong>
+  <strong>本の評価:</strong>
   <%= @review.value_book %>
+</p>
+
+
+<p>
+  <strong>日付:</strong>
+  <%= @review.date %>
+</p>
+
+<p>
+  <strong>蔵書ID:</strong>
+  <%= @review.book %>
 </p>
 
 <p>
   <strong>Enabled:</strong>
   <%= @review.enabled %>
-</p>
-
-<p>
-  <strong>Date:</strong>
-  <%= @review.date %>
-</p>
-
-<p>
-  <strong>Book:</strong>
-  <%= @review.book %>
 </p>
 
 <p>

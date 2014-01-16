@@ -33,10 +33,7 @@
     <%= f.label :本の評価 %><br>
     <%= f.number_field :value_book %>
   </div>
-  <div class="field">
-    <%= f.label :enabled %><br>
-    <%= f.check_box :enabled %>
-  </div>
+  
   <div class="field">
     <%= f.label :日付 %><br>
     <%= f.datetime_select :date %>
@@ -44,6 +41,10 @@
   <div class="field">
     <%= f.label :蔵書ID %><br>
     <%= f.text_field :book_id %>
+  </div>
+  <div class="field">
+    <%= f.label :enabled %><br>
+    <%= f.check_box :enabled %>
   </div>
   <div class="field">
     <%= f.label :deleted %><br>
