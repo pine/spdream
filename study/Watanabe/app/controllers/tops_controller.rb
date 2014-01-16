@@ -6,6 +6,7 @@ class TopsController < ApplicationController
         @categories = Category.find(:all, :order => "priority")
         @child_categories = ChildCategory.find(:all, :order => "priority")
 
+        # @categorie_id = Category.find(params[:id])
 	end
 
 	def index_book

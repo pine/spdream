@@ -32,7 +32,7 @@
 
   <div class="col-md-9">
     <div class="well">
-      <h3 class="text-right">Category Name</h3>
+      <h3 class="text-right">Category name</h3>
         <ul class="media-list">
           <% @books.each do |book| %>
           <li class="media">
@@ -54,6 +54,11 @@
           </li>
           <% end %>
         </ul>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-default">
+        <%= link_to 'トップページに戻る', tops_path %>
+      </button>
     </div>
   </div>
 
