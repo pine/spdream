@@ -4,14 +4,12 @@
   <tr>
     <th>日付</th>
     <th>タイトル</th>
-    <th>内容</th>
   </tr>
 
 <% Schedule.where(:type => "Event").reverse_order.each do |schedule| %>
   <tr>
-    <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
+    <td><%= schedule.date.strftime("%Y年 %m月 %d日") %></td>
     <td><%= link_to (schedule.title), :controller => 'tops', :action => 'show_event', :id => schedule %></td>
-    <td><%= br(schedule.intro) %></td>
   </tr>
 <% end %>
 </table>

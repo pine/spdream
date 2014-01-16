@@ -6,14 +6,14 @@
   <% Schedule.where(:type => Event).reverse_order.first(3).each do |schedule| %>
     <% if (schedule.photo == "/photos/original/missing.png") then %>
       <tr>
-        <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
+        <td><%= schedule.date.strftime("%Y年 %m月 %d日") %></td>
         <td><%= link_to (schedule.title), :controller => 'tops', :action => 'show_event', :id => schedule.id %></td>
         <td><%= br(schedule.intro) %></td>
       </tr>
     <% else %>
       <tr>
         <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
-        <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
+        <td><%= schedule.date.strftime("%Y年 %m月 %d日") %></td>
         <td><%= link_to (schedule.title), :controller => 'tops', :action => 'show_event', :id => schedule.id %></td>
         <td><%= br(schedule.intro) %></td>
         <td><%= schedule.photo %></td>
@@ -30,7 +30,7 @@
 <% Schedule.where(:type => "News").reverse_order.first(3).each do |schedule| %>
   <tr>
     <td><%= image_tag schedule.photo.url, :width=>'50' ,:alt => "画像" %></td>
-    <td><%= schedule.date.strftime("%y年 %m月 %d日") %></td>
+    <td><%= schedule.date.strftime("%Y年 %m月 %d日") %></td>
     <td><%= link_to (schedule.title) , :controller => 'tops', :action => 'show_news', :id => schedule.id %></td>
     <td><%= br(schedule.intro) %></td>
   </tr>
@@ -60,7 +60,7 @@
                 </a>
                 <div class="media-body">
                   <p>
-                    更新日 ： <%= schedule.date.strftime("%y年 %m月 %d日") %><br>
+                    更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
                     <%= br(schedule.intro) %>
                   </p>
                 </div>
@@ -89,7 +89,7 @@
                 </a>
                 <div class="media-body">
                   <p>
-                    更新日 ： <%= schedule.date.strftime("%y年 %m月 %d日") %><br>
+                    更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
                     <%= br(schedule.intro) %>
                   </p>
                 </div>
