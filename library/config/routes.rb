@@ -52,10 +52,21 @@ Library::Application.routes.draw do
       post ':id' => 'theses#hide_and_restore' # /library/cms-thesis/:id
     end
     
+    # from tanaka routes.rb
+    scope 'cms-event' do
+      resources :event
+      resources :news
+    end
     # User
     
     # from tanaka routes.rb
     get 'index' => 'tops#index' # /library/index
+    scope 'index' do
+      get 'events' => 'tops#index_event'
+      get 'news' => 'tops#index_news'
+      get 'event/:id' => 'tops#show_event'
+      get 'news/:id' => 'tops#show_news'
+    end
     
     get'opacplus' => 'opacplus#index'
     scope 'opacplus' do
