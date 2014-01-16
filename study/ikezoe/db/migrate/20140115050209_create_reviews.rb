@@ -10,8 +10,10 @@ class CreateReviews < ActiveRecord::Migration
       t.timestamp :date
       t.references :book, index: true
       t.boolean :deleted
+      t.foreign_key :animes, dependent: :delete
 
       t.timestamps
     end
+    add_index :reviews, :book_id
   end
 end
