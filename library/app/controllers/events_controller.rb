@@ -1,4 +1,6 @@
 class EventsController < ApplicationController
+  layout 'cms_main'
+  
   # GET /events
   # GET /events.json
   def index

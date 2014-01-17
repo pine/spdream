@@ -1,4 +1,6 @@
 class NewsController < ApplicationController
+  layout 'cms_main'
+  
   # GET /news
   # GET /news.json
   def index
