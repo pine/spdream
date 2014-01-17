@@ -32,6 +32,9 @@ CmsThesis::Application.routes.draw do
 
   resources :faculties
 
+  match "tops", :controller => :thesis_tops, :action => :index ,:via => :GET
+
+
   # Sample resource route with sub-resources:
   #   resources :products do
   #     resources :comments, :sales
