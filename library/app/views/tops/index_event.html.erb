@@ -1,15 +1,24 @@
 <% #coding: utf-8 %>
-<h1>過去のイベント一覧</h1>
+
+<!-- header -->
+<div class="row">
+  <div id="header">
+      <h1 class="header_title">過去のイベント一覧</h1>
+      <div class="header_intro">このページでは、過去に開催されたイベントの情報を閲覧できます。</div>
+  </div>
+</div>
+
+<!-- inner -->
 <table>
   <tr>
     <th>日付</th>
     <th>タイトル</th>
   </tr>
 
-<% Schedule.where(:type => "Event").reverse_order.each do |schedule| %>
+<% Schedule.where(:type => "Events").reverse_order.each do |schedule| %>
   <tr>
     <td><%= schedule.date.strftime("%Y年 %m月 %d日") %></td>
-    <td><%= link_to (schedule.title), :controller => 'tops', :action => 'show_event', :id => schedule %></td>
+    <td><%= link_to (schedule.title), :controller => 'tops', :action => 'show_news', :id => schedule%></td>
   </tr>
 <% end %>
 </table>

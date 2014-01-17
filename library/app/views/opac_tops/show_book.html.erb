@@ -40,9 +40,9 @@
                   <% end %>
                 </div>
                 <div class="media-body">
-                  著者： <%= @books.auther %><br>
-                  説明： <%= @books.outline %><br>
-                  評価： <% @books.value.times do %>★<% end %><% (5-@books.value).times do %>☆<% end %>
+                  著者 ： <%= @books.auther %><br>
+                  説明 ： <%= br(@books.outline) %><br>
+                  評価 ： <% @books.value.times do %>★<% end %><% (5-@books.value).times do %>☆<% end %>
                 </div>
               </div>
             </div>
@@ -56,9 +56,9 @@
               </div>
               <div class="panel-body">
                 <div class="media-body">
-                  日時： Review Timestamp<br>
-                  評価： Review Value_good, Value_bad<br>
-                  コメント： Review Comment
+                  日時 ： Review Timestamp<br>
+                  評価 ： Review Value_good, Value_bad<br>
+                  コメント ： Review Comment
                 </div>
               </div>
               <% end %>

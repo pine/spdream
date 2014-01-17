@@ -26,24 +26,24 @@
 
 <!-- inner contents - book index -->
         <ul class="media-list">
-          <% @child_categories.books.each do |book| %>
+          <% @child_categories.books.each do |books| %>
 
           <li class="media">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <%= link_to book.title, opacplus_bookinfo_path(book), :id => book.id %>
+                <%= link_to books.title, opacplus_bookinfo_path(books), :id => books.id %>
               </div>
               <div class="panel-body">
                 <div class="pull-left">
-                  <% if (book.photo.url == "/photos/original/missing.png") then %>
+                  <% if (books.photo.url == "/photos/original/missing.png") then %>
                   <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
                   <% else %>
-                  <%= image_tag book.photo.url, :width => '50', :alt => "image" %>
+                  <%= image_tag books.photo.url, :width => '50', :alt => "image" %>
                   <% end %>
                 </div>
                 <div class="media-body">
-                  著者：<%= book.auther %><br>
-                  評価：<% book.value.times do %>★<% end %><% (5-book.value).times do %>☆<% end %>
+                  著者 ：<%= books.auther %><br>
+                  評価 ：<% books.value.times do %>★<% end %><% (5-books.value).times do %>☆<% end %>
                 </div>
               </div>
             </div>

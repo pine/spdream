@@ -1,5 +1,5 @@
 class TopsController < ApplicationController
-	before_filter :authenticate_user!
+    layout 'application'
 	
 	def index
 		@tops = Schedule.all
@@ -15,7 +15,7 @@ class TopsController < ApplicationController
     end
 
     def show_event
-    	@event = Schedule.find(params[:id])
+    	@events = Schedule.find(params[:id])
     end
 
     def show_news

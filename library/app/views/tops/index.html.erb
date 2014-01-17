@@ -1,54 +1,40 @@
 <div class="row">
   <div class="col-md-8">
 
+<!-- tab menu -->
     <div class="row">
       <ul class="nav nav-tabs">
-        <li class="active"><a href="#1" data-toggle="tab">お知らせ</a></li>
-        <li><a href="#2" data-toggle="tab">イベント</a></li>
-        <li><a href="#3" data-toggle="tab">新着図書</a></li>
+        <li class="active"><a href="#news" data-toggle="tab">お知らせ</a></li>
+        <li><a href="#ivent" data-toggle="tab">イベント</a></li>
+        <li><a href="#newbook" data-toggle="tab">新着図書</a></li>
       </ul>
     </div>
 
+<!-- tab contents - news -->
     <div class="tab-content">
-      <div class="tab-pane active" id="1">
+      <div class="tab-pane active" id="news">
         <ul class="media-list">
           <% Schedule.where(:type => News).reverse_order.first(3).each do |schedule| %>
-            <% if (schedule.photo.url == "/photos/original/missing.png") then %>
-              <li class="media">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <%= link_to (schedule.title), :controller => 'tops', :action => 'show_news', :id => schedule.id %>
-                  </div>
-                  <div class="panel-body">
-                    <div class="media-body">
-                      <p>
-                        更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
-                        <%= br(schedule.intro) %>
-                      </p>
-                    </div>
-                  </div>
+            <li class="media">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <%= link_to (schedule.title), :controller => 'tops', :action => 'show_news', :id => schedule.id %>
                 </div>
-              </li>
-            <% else %>
-              <li class="media">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <%= link_to (schedule.title), :controller => 'tops', :action => 'show_news', :id => schedule.id %>
-                  </div>
-                  <div class="panel-body">
-                    <a class="pull-left" href="#">
+                <div class="panel-body">
+                  <a class="pull-left" href="#">
+                    <% if (schedule.photo.url == "/photos/original/missing.png") then %>
+                      <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
+                    <% else %>
                       <%= image_tag schedule.photo.url, :width => '50', :alt => "image" %>
-                    </a>
-                    <div class="media-body">
-                      <p>
-                        更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
-                        <%= br(schedule.intro) %>
-                      </p>
-                    </div>
+                    <% end %>
+                  </a>
+                  <div class="media-body">
+                    更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
+                    内容 ： <%= br(schedule.intro) %>
                   </div>
                 </div>
-              </li>
-            <% end %>
+              </div>
+            </li>
           <% end %>
         </ul>
         <p class="pull-right">
@@ -56,45 +42,30 @@
         </p>
       </div>
 
-      <div class="tab-pane" id="2">
+<!-- tab contents - ivent -->
+      <div class="tab-pane" id="ivent">
         <ul class="media-list">
           <% Schedule.where(:type => Event).reverse_order.first(3).each do |schedule| %>
-            <% if (schedule.photo.url == "/photos/original/missing.png") then %>
-              <li class="media">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <%= link_to (schedule.title), schedule %>
-                  </div>
-                  <div class="panel-body">
-                    <div class="media-body">
-                      <p>
-                        更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
-                        <%= br(schedule.intro) %>
-                      </p>
-                    </div>
-                  </div>
+            <li class="media">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <%= link_to (schedule.title), schedule %>
                 </div>
-              </li>
-            <% else %>
-              <li class="media">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <%= link_to (schedule.title), schedule %>
-                  </div>
-                  <div class="panel-body">
-                    <a class="pull-left" href="#">
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <% if (schedule.photo.url == "/photos/original/missing.png") then %>
+                      <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
+                    <% else %>
                       <%= image_tag schedule.photo.url, :width => '50', :alt => "image" %>
-                    </a>
-                    <div class="media-body">
-                      <p>
-                        更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
-                        <%= br(schedule.intro) %>
-                      </p>
-                    </div>
+                    <% end %>
+                  </div>
+                  <div class="media-body">
+                    更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
+                    内容 ： <%= br(schedule.intro) %>
                   </div>
                 </div>
-              </li>
-            <% end %>
+              </div>
+            </li>
           <% end %>
         </ul>
         <p class="pull-right">
@@ -102,48 +73,34 @@
         </p>
       </div>
 
-      <div class="tab-pane" id="3">
+<!-- tab contents - new book -->
+      <div class="tab-pane" id="newbook">
         <ul class="media-list">
           <% Book.find(:all , :order => "created_at DESC",:limit => 3).each do |books| %>
-            <% if (books.photo.url == "/photos/original/missing.png") then %>
-              <li class="media">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <%= books.title %>
-                  </div>
-                  <div class="panel-body">
-                    <div class="media-body">
-                      <p>
-                        <%= books.auther %>
-                        <%= br(books.outline) %>
-                      </p>
-                    </div>
-                  </div>
+            <li class="media">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <%= link_to books.title, opacplus_bookinfo_path(books), :id => books.id %>
                 </div>
-              </li>
-            <% else %>
-              <li class="media">
-                <div class="panel panel-default">
-                  <div class="panel-heading">
-                    <%= books.title %>
-                  </div>
-                  <div class="panel-body">
-                    <a class="pull-left" href="#">
+                <div class="panel-body">
+                  <div class="pull-left">
+                    <% if (books.photo.url == "/photos/original/missing.png") then %>
+                      <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
+                    <% else %>
                       <%= image_tag books.photo.url, :width => '50', :alt => "image" %>
-                    </a>
-                    <div class="media-body">
-                      <p>
-                        <%= books.auther %>
-                        <%= br(books.outline) %>
-                      </p>
-                    </div>
+                    <% end %>
+                  </div>
+                  <div class="media-body">
+                    著者 ： <%= books.auther %><br>
+                    説明 ： <%= br(books.outline) %>
                   </div>
                 </div>
-              </li>
-            <% end %>
-          <% end %>
+              </div>
+            </li>
+        <% end %>
 
-
+<!-- tab contents - modal window -->
+<!--
         <a data-toggle="modal" href="#modal" class="btn btn-primary">
           show me!
         </a>
@@ -164,16 +121,17 @@
             </div>
           </div>
         </div>
+-->
 
       </div>
     </div>
   </div>
 
+<!-- calendar -->
   <div class="col-md-4 hidden-sm hidden-xs">
     <div class="well">
       <h3>Calendar</h3>
       <div id="calendar_view">
-      
       
       
       </div> 

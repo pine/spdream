@@ -1,5 +1,14 @@
 <% #coding: utf-8 %>
 
+<!-- header -->
+<div class="row">
+  <div id="header">
+      <h1 class="header_title">過去のイベント一覧</h1>
+      <div class="header_intro">このページでは、過去に開催されたイベントの情報を閲覧できます。</div>
+  </div>
+</div>
+
+<!-- inner -->
 <p>
   <b>日付:</b>
   <%= @event.date.strftime("%Y年 %m月 %d日") %>
@@ -10,16 +19,16 @@
 </p>
 <p>
   <b>内容:</b>
-  <%=br(@event.intro) %>
+  <%= br(@event.intro) %>
 </p>
- <% if (@event.photo.url != "/photos/original/missing.png") then %>
+<% if (@event.photo.url != "/photos/original/missing.png") then %>
   <p>
     <b>写真:</b>
     <%= image_tag @event.photo.url, :width=>'50' %>
   </p>
- <% else %>
+<% else %>
   
- <% end %>
+<% end %>
 
 
 
