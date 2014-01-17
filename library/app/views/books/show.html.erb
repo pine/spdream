@@ -49,10 +49,9 @@
 </p>
 
 <p>
-  <b>タグ:</b>
-  <%= @book.tag.name %>
+  <b>画像:</b>
+  <%= image_tag @book.photo.url, :width=>'50' %>
 </p>
-
 
 
 <%= link_to '編集', edit_book_path(@book) %> |
