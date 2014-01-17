@@ -95,6 +95,11 @@ textarea {
   padding: 4px 12px;
 }
 
+.inner_contents {
+  margin: 15px 15px 40px;
+  padding: 5px;
+}
+
 /* Typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -117,6 +122,7 @@ h2 {
 p {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
+  text-indent: 10px;
   line-height: 18px;
 }
 
@@ -211,6 +217,10 @@ a.list-group-item {
 
 .panel-default {
   border-color: #dddddd;
+}
+
+.label {
+  line-height: 2;
 }
 
 /* Notice and Error Message*/

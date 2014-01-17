@@ -18,10 +18,10 @@ Opac::Application.routes.draw do
   # end
   end
 
-  match "tops", :controller => :tops, :action => :index ,:via => :GET
-  match "tops/book", :controller => :tops, :action => :index_book ,:via => :GET
-  match "tops/book_info", :controller => :tops, :action => :show_book ,:via => :GET
-  match "tops/tag", :controller => :tops, :action => :index_tag ,:via => :GET
+  match "tops", :controller => :opac_tops, :action => :index ,:via => :GET
+  match "tops/book", :controller => :opac_tops, :action => :index_book ,:via => :GET
+  match "tops/book_info", :controller => :opac_tops, :action => :show_book ,:via => :GET
+  match "tops/tag", :controller => :opac_tops, :action => :index_tag ,:via => :GET
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

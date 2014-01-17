@@ -1,4 +1,4 @@
-class TopsController < ApplicationController
+class OpacTopsController < ApplicationController
     layout 'user_opacplus'
 
 	def index
