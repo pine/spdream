@@ -50,8 +50,8 @@
     <%= f.select :child_category_id, ChildCategory.all.map{|child_category| [child_category.name, child_category.id]}%>
   </div>
   <div class="field">
-    <%= f.label :タグ %><br />
-    <%= f.collection_select(:tag_id, Tag.find(:all), :id, :name) %>
+    <%= f.label :photo %><br />
+    <%= f.file_field :photo %>
   </div>
   <div class="actions">
     <%= f.submit %>
