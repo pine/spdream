@@ -10,7 +10,7 @@ class TopsController < ApplicationController
 	end
 
     def index_news
-    	@newss = Schedule.all
+    	@news = Schedule.all
     end
 
     def show_event
