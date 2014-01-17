@@ -1,6 +1,4 @@
-<h1>学位論文</h1>
-
-<div id="notice"><%= notice %></div>
+<h1>論文TOP</h1>
 
 <%#= 学群一覧表示 %>
 <table border="1" cellspacing="0" cellpadding="5">
@@ -11,4 +9,8 @@
 	</tr>
 </table>
 
-<%= link_to 'すべての論文を表示する', all_thesis_tops_path %>
+<%= link_to "論文を表示しない", thesis_tops_path %>
+
+<br><br>
+
+<%= render 'index' %>

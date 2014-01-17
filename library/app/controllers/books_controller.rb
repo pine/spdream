@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  layout 'cms_main'
+  
   # GET /books
   # GET /books.json
   def index

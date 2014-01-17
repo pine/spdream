@@ -1,8 +1,10 @@
 # coding: utf-8
 
-<h1>蔵書編集</h1>
+<div class="panel-heading">蔵書編集</div>
 
-<%= render 'form' %>
+<div class="panel-body cms-menu">
+	<%= render 'form' %>
 
-<%= link_to '詳細', @book %> |
-<%= link_to '一覧', books_path %>
+	<%= link_to '詳細', @book %> |
+	<%= link_to '一覧', books_path %>
+</div>

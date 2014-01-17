@@ -1,0 +1,29 @@
+# coding: utf-8
+
+<h1>学群編集ページ</h1>
+
+<div id="notice"><%= notice %></div>
+
+<table border="1" cellspacing="0" cellpadding="5">
+	<tr>
+		<th>学群名</font></th>
+		<th>編集</th>
+		<th>削除</th>
+	</tr>
+	<% @faculties.each do |faculty| %>
+		<tr>
+			<td><%= faculty.name %></td>
+			<td><%= link_to'編集', edit_faculty_path(faculty) %></td>
+			<td><%= link_to'削除', faculty, :confirm => '削除しますか？',
+											:method => :delete %></td>
+		</tr>
+	<% end %>
+</table>
+
+<br>
+
+<%= link_to '新規登録', new_faculty_path %>
+
+<br><br>
+
+<%= link_to_function '戻る', 'history.back()' %>
