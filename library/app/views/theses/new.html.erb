@@ -1,7 +1,8 @@
-<h1>新規論文登録</h1>
+<div class="panel-heading">新規論文登録</div>
 
-<%= render 'form' %>
-
-<%= link_to_function '戻る', 'history.back()' %>
+<div class="panel-body">
+  <%= render 'form' %>
+  <%= link_to_function '戻る', 'history.back()' %>
+</div>
 
 <%= javascript_include_tag 'cms_theses' %>

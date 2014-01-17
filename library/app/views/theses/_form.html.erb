@@ -1,6 +1,8 @@
-<%= form_for(@thesis) do |f| %>
-
-
+<%= simple_form_for(
+			@thesis,
+			html: { class: 'form-horizontal', role: 'form' }
+		) do |f| %>
+  
 	<% if @thesis.errors.any? %>
 		<ul>
  			<% @thesis.errors.full_messages.each do |msg| %>
@@ -8,72 +10,118 @@
  			<% end %>
  		</ul>
 	<% end %>
-
-	<table border="1" width="350" cellspacing="0" cellpadding="5">
-		<tr>
-			<div class="field">
-				<th>題名</th>
-				<th><%= f.text_field :title %></th>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<th>著者</th>
-				<th><%= f.text_field :author %></th>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<th>学籍番号</th>
-				<th><%= f.text_field :student_id %></th>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<th>年度</th>
-				<th><%= f.text_field :year %></th>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<th>学群</th>
-				<th>
-					<%= f.select :faculty_id,
+	
+	<div class="form-group">
+		<%= f.label(
+    		:title,
+    		label: 'タイトル&nbsp;:',
+    		class: 'control-label col-sm-3'
+    	) %>
+    
+    <div class="col-sm-8">
+	    <%= f.text_field(
+	    		:title,
+	    		autofocus: true,
+	    		class: 'form-control'
+	    	) %>
+    </div>
+  </div>
+	
+	<div class="form-group">
+		<%= f.label(
+    		:author,
+    		label: '著者&nbsp;:',
+    		class: 'control-label col-sm-3'
+    	) %>
+    
+    <div class="col-sm-8">
+	    <%= f.text_field(
+	    		:author,
+	    		class: 'form-control'
+	    	) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label(
+    		:student_id,
+    		label: '学籍番号&nbsp;:',
+    		class: 'control-label col-sm-3'
+    	) %>
+    
+    <div class="col-sm-8">
+	    <%= f.text_field(
+	    		:student_id,
+	    		class: 'form-control'
+	    	) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label(
+    		:year,
+    		label: '年度&nbsp;:',
+    		class: 'control-label col-sm-3'
+    	) %>
+    
+    <div class="col-sm-8">
+	    <%= f.text_field(
+	    		:year,
+	    		class: 'form-control'
+	    	) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label(
+    		:fuculty_id,
+    		label: '学群&nbsp;:',
+    		class: 'control-label col-sm-3'
+    	) %>
+    
+    <div class="col-sm-8">
+	    <%= f.select :faculty_id,
 						Faculty.all.map {|faculty|
 							[faculty.name, faculty.id]
 						},
 						{ },
 						{ :id => 'facultys' }
 						%>
-				</th>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<th>研究室</th>
-				<th>
-					<%= f.select :lab_id, [],
+    </div>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label(
+    		:lab_id,
+    		label: '研究室&nbsp;:',
+    		class: 'control-label col-sm-3'
+    	) %>
+    
+    <div class="col-sm-8">
+	    <%= f.select :lab_id, [],
 						{ :include_blank => '無所属' },
 						{ :id => 'labs' }
 					 %>
-				</th>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<th>課程</th>
-				<th>
-					<%= f.select :course, [['学士'], ['修士'], ['博士']]%>
-				</th>
-			</div>
-		</tr>
-	</table>
-
-	<br>
-
-	<div class="actions">
-		<%= f.submit %>
-	</div>
+    </div>
+  </div>
+  
+  <div class="form-group">
+		<%= f.label(
+    		:course,
+    		label: '課程&nbsp;:',
+    		class: 'control-label col-sm-3'
+    	) %>
+    
+    <div class="col-sm-8">
+	    <%= f.select :course, [['学士'], ['修士'], ['博士']]%>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-12 text-center">
+      <%= f.button :submit, '送信', class: 'btn btn-default' %>
+    </div>
+  </div>
 <% end %>
 
 <br>
