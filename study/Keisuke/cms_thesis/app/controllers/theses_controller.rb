@@ -83,4 +83,8 @@ class ThesesController < ApplicationController
 		@theses = Thesis.all(:order => "year DESC, student_id ASC")
 	end
 
+	def download
+   		@filepath = Rails.root + 'public/nuko.jpg'
+    	send_file(@filepath)
+	end
 end

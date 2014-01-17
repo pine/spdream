@@ -21,6 +21,9 @@ CmsThesis::Application.routes.draw do
       get 'faculty'
       get 'all'
     end
+    member do
+      get 'download' => 'theses#download'
+    end
   end
   
   post 'theses/:id' => 'theses#hide_and_restore' 

@@ -16,7 +16,7 @@
 	<% @theses.each do |thesis| %>
 		<% if thesis.enabled %>
 			<tr>
-			<td><%= thesis.title %></td>
+			<td><%= link_to thesis.title, :action => 'download', :id => thesis.id %></td>
 			<td><%= thesis.author %></td>
 			<td><%= thesis.student_id %></td>
 			<td><%= thesis.year %></td>

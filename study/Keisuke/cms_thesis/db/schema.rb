@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140112084831) do
+ActiveRecord::Schema.define(:version => 20140116112159) do
 
   create_table "faculties", :force => true do |t|
     t.string   "name"
@@ -41,11 +41,13 @@ ActiveRecord::Schema.define(:version => 20140112084831) do
     t.string   "course"
     t.integer  "year"
     t.boolean  "enabled"
-    t.integer  "lab_id",     :null => false
-    t.integer  "teacher_id", :null => false
-    t.integer  "faculty_id", :null => false
+    t.integer  "lab_id"
+    t.integer  "teacher_id"
+    t.integer  "faculty_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "data"
+    t.string   "file"
   end
 
   add_index "theses", ["faculty_id"], :name => "index_theses_on_faculty_id"

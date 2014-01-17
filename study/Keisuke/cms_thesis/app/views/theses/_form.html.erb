@@ -1,5 +1,6 @@
 <%= form_for(@thesis) do |f| %>
 
+
 	<% if @thesis.errors.any? %>
 		<ul>
  			<% @thesis.errors.full_messages.each do |msg| %>
