@@ -53,8 +53,8 @@ Library::Application.routes.draw do
     end
     
     # from tanaka routes.rb
-    scope 'cms-event' do
-      resources :event
+    scope 'cms-schedule' do
+      resources :events
       resources :news
     end
     # User
