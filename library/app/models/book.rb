@@ -1,7 +1,7 @@
 class Book < ActiveRecord::Base
   belongs_to :category
   belongs_to :child_category
-  belongs_to :tag
-  attr_accessible :auther, :isbn10, :isbn13, :opac_id, :outline, :title, :value, :category_id, :child_category_id, :tag_id
+  attr_accessible :auther, :deleted, :isbn10, :isbn13, :opac_id, :outline, :photo, :title, :value, :category_id, :child_category_id
+  has_attached_file :photo
+  # attr_accessible :title, :body
 end
-

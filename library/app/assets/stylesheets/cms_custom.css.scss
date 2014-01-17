@@ -1,0 +1,323 @@
+@charset "utf-8";
+
+// ********************************************************
+//                    ドキュメント
+// ********************************************************
+
+// bootstrap-sass 公式サイト
+// https://github.com/twbs/bootstrap-sass
+// http://getbootstrap.com/customize/
+
+
+// ========================================================
+//                      SCSS 変数定義
+// ********************************************************
+
+// ----- Basics -------------------------------------------
+
+// [Components]
+// Rounded corners
+$border-radius-base: 0;
+$border-radius-large: 0;
+$border-radius-small: 0;
+
+// [Typography]
+// Generic font variables
+$font-family-sans-serif:  'メイリオ', sans-serif;
+
+// ----- Buttons ------------------------------------------
+
+// [Default]
+$btn-default-color: #fff;
+$btn-default-bg: #cbbedd;
+
+
+// ===== Navbar ===========================================
+
+// [Base Styles]
+$navbar-height: 40px;
+
+// [Default Navbar]
+// Basics
+$navbar-default-color: #fff;
+$navbar-default-bg: #7f7f7f;
+
+// Links
+$navbar-default-link-color: #fff;
+
+// ===== Nav ==============================================
+
+$nav-link-padding: 10px 10px;
+
+
+// ===== Panels and wells =================================
+// [Common panel styles]
+$panel-border-radius: 8px;
+
+// [Contextual panel colors]
+$panel-default-border: #cbbedd;
+$panel-default-text: #000;
+$panel-default-heading-bg: transparent;
+
+
+// ===== Forms ============================================
+// [Inputs]
+$input-border: #b09ecb;
+
+// [Input sizes]
+$input-height-base: 32px;
+
+
+// ===== List group =======================================
+// [Base styles]
+$list-group-bg: #cbbedd;
+$list-group-border: #fff;
+$list-group-border-radius: 8px;
+
+// ********************************************************
+//                     新規変数定義
+// ********************************************************
+
+$font-family-japanese-default: $font-family-sans-serif;
+$font-family-english-default: Calibri, sans-serif;
+
+// ===== List group =======================================
+$list-group-link-color: #fff;
+$list-group-spacing: 4px;
+$list-group-before-after-bg: #e5dfee;
+$list-group-before-after-border-radius: 8px;
+
+// ********************************************************
+//                     Bootstrap 適用
+// ********************************************************
+
+@import "bootstrap";
+
+
+// ********************************************************
+//                       CSS 上書き
+// ********************************************************
+
+.navbar-brand {
+	letter-spacing: 3px;
+	font-size: 18px;
+	font-family: Calibri, sans-serif;
+}
+
+.navbar-brand strong {
+	margin-right: 6px;
+	font-size: 31px;
+	font-family: REZ, sans-serif;
+	font-weight: normal;
+}
+
+// ナビゲーションバーの右側
+.navbar-nav {
+	padding-right: 15px;
+}
+
+// ナビゲーションバーのリンク
+.navbar-nav a {
+	display: inline-block !important;
+	font-family: $font-family-english-default;
+	font-size: 15px;
+}
+
+// ナビゲーションバーの左右のパイプ
+// 各項目の左、及び最後の項目の右に付ける
+.navbar-nav li::before,
+.navbar-nav li:last-of-type::after {
+	content: "|";
+	color: $navbar-default-link-color; // 文字色と同じ
+}
+
+// パネル
+.panel {
+	border-width: 3px;
+}
+
+.panel .panel-heading {
+	margin: 10px 22px 0;
+	padding: 2px 7px;
+	border-bottom: 2px dotted #b09ecb;
+	color: #7c5da9;
+	font-size: 22px;
+	font-family: $font-family-japanese-default;
+}
+
+.btn {
+	font-family: $font-family-japanese-default;
+}
+
+.panel-body {
+	p {
+		margin: 0 5px 0 17px;
+		line-height: 1.2;
+		font-size: 15px;
+		font-family: $font-family-japanese-default;
+	}
+	
+	.control-label {
+		padding-right: 0;
+		text-align: right;
+		color: #7f7f7f;
+		font-family: $font-family-japanese-default;
+		font-weight: normal;
+		font-size: 15px;
+	}
+	
+	.form-control {
+		border-width: 2px;
+	}
+	
+	.btn {
+		width: 190px;
+	}
+	
+	form {
+		margin: 0 17px;
+		padding: 20px 30px 15px;
+	}
+}
+
+.list-group {
+	border-color: $list-group-border;
+	border-width: $list-group-spacing;
+	border-style: solid;
+	border-radius: $list-group-border-radius;
+	
+	a {
+		color: $list-group-link-color;
+		
+		&:hover {
+			color: $list-group-bg;
+		}
+	}
+	
+	.list-group-item {
+		padding: 18px 0;
+		border-width: 0;
+		border-bottom-width: $list-group-spacing;
+		text-align: center;
+		
+		&:first-child, &:last-child {
+			border-radius: 0;
+		}
+		
+		&:last-child {
+			border-bottom-width: 0;
+		}
+	}
+}
+
+.list-group::before,
+.list-group::after {
+	display: block;
+	height: 30px;
+	border-color: $list-group-border;
+	border-width: $list-group-spacing;
+	border-style: none;
+	content: "";
+	background-color: $list-group-before-after-bg;
+}
+
+.list-group::before {
+	border-bottom-style: solid;
+	border-top-left-radius: $list-group-border-radius;
+	border-top-right-radius: $list-group-border-radius;
+}
+
+.list-group::after {
+	border-top-style: none;
+	border-bottom-left-radius: $list-group-border-radius;
+	border-bottom-right-radius: $list-group-border-radius;
+}
+
+
+.cms-sidemenu {
+	.cms-sidemenu-submenu {
+		.list-group-item {
+			padding: 9px 0;
+			background-color: #b09ecb;
+			
+			&:last-child {
+				border-bottom: $list-group-border $list-group-spacing solid;
+			}
+		}
+	}
+}
+
+// ログイン
+#cms_login {
+	margin-top: 30px;
+	width: 655px;
+}
+
+.cms-menu {
+	margin: 8px 40px 0 10px;
+	
+	.cms-menu-item {
+		padding: 10px 0 10px;
+		
+		.thumbnail {
+			margin-right: 5px;
+			width: 110px;
+			float: left;
+		}
+		
+		.caption {
+			@include clearfix;
+			padding: 10px 0 0 120px;
+			
+			h3 {
+				margin: 0;
+				padding: 0px;
+				font-size: 14px;
+				text-decoration: underline;
+			}
+			
+			p {
+				margin: 7px 0 0;
+				font-size: 12px;
+				color: #000 !important;
+			}
+		}
+	}
+}
+
+#cms_main {
+	p {
+		color: #7c5da9;
+		font-size: 12px;
+	}
+	
+	.form-group {
+		margin-bottom: 5px;
+		
+		&:first-child {
+			margin-top: 32px;
+		}
+		
+		&:last-child {
+			margin-top: 28px;
+		}
+	}
+	
+	.control-label {
+		font-size: 13px;
+	}
+	
+	.form-control {
+		font-size: 11px;
+	}
+	
+	.col-sm-8 {
+		padding-left: 8px;
+	}
+}
+
+
+body {
+	background-image: url(cms_bg.png);
+	background-position: 0 $navbar-height;
+}
