@@ -3,11 +3,11 @@
 		メインメニュー
 	</a>
 	
-	<a href="" class="list-group-item">
+	<a href="<%= events_path %>" class="list-group-item">
 		イベント編集
 	</a>
 	
-	<a href="#" class="list-group-item">
+	<a href="<%= news_index_path %>" class="list-group-item">
 		お知らせ編集
 	</a>
 	
@@ -15,10 +15,15 @@
 		カレンダー編集
 	</a>
 	
-	<a href="#" class="list-group-item">
+	<a href="<%= cms_top_theses_path %>" class="list-group-item">
 		学位論文編集
 	</a>
 	
+	<div class="hide cms-sidemenu-submenu" id="theses_menu">
+		<a href="<%= theses_path %>" class="list-group-item">論文編集</a>
+		<a href="<%= faculties_path %>" class="list-group-item">学群編集</a>
+		<a href="<%= labs_path %>" class="list-group-item">研究室編集</a>
+	</div>
 	
 	<a href="<%= cms_top_books_path %>" class="list-group-item">
 		蔵書検索管理
@@ -30,7 +35,7 @@
 		<a href="<%= tags_path %>" class="list-group-item">タグ編集</a>
 	</div>
 	
-	<a href="<%=  %>" class="list-group-item">
+	<a href="<%= cms_top_config_path %>" class="list-group-item">
 		設定
 	</a>
 	

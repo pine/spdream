@@ -1,5 +1,6 @@
 class TopsController < ApplicationController
-
+	before_filter :authenticate_user!
+	
 	def index
 		@tops = Schedule.all
         @books = Book.all

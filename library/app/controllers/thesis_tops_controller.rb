@@ -1,5 +1,6 @@
 class ThesisTopsController < ApplicationController
     layout 'user_thesis'
+    before_filter :authenticate_user!
 
 	def index
         @faculties = Faculty.all

@@ -17,14 +17,21 @@ Library::Application.routes.draw do
   scope 'library' do
     
     # CMS
-    get 'cms-login' => 'login#login'
-   
+    get 'cms-login' => redirect('/library/cms-login/sign_in')
+    devise_for :users, :path => 'cms-login'
+    
     scope 'cms-top' do
       # /library/cms-top/main
       get 'main' => 'cms_top#main', :as => 'cms_top_main'
       
       # /library/cms-top/books
       get 'books' => 'cms_top#books', :as => 'cms_top_books'
+      
+      # /library/cms-top/theses
+      get 'theses' => 'cms_top#theses', :as => 'cms_top_theses'
+      
+      # /library/cms-top/config
+      get 'config' => 'cms_top#config_page', :as => 'cms_top_config'
     end
     
     # from Watanabe routes.rb
@@ -116,7 +123,10 @@ Library::Application.routes.draw do
       end
     end
   end
-
+  
+  # リダイレクト処理
+  root :to => redirect('/library/index')
+  get '/library' => redirect('/library/index')
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

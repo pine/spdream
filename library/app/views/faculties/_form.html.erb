@@ -1,4 +1,7 @@
-<%= form_for(@faculty) do |f| %>
+<%= simple_form_for(
+		@faculty,
+		html: { class: 'form-horizontal', role: 'form' }
+		) do |f| %>
 
 	<% if @faculty.errors.any? %>
 		<ul>
@@ -7,19 +10,26 @@
  			<% end %>
  		</ul>
 	<% end %>
-
-	<table border="1" width="350" cellspacing="0" cellpadding="5">
-		<tr>
-			<div class="field">
-				<th>学群名</th>
-				<th><%= f.text_field :name %></th>
-			</div>
-		</tr>
-	</table>
-
-	<br>
-
-	<div class="actions">
-		<%= f.submit %>
-	</div>
+	
+	<div class="form-group">
+		<%= f.label(
+    		:name,
+    		label: '学群名&nbsp;:',
+    		class: 'control-label col-sm-3'
+    	) %>
+    
+    <div class="col-sm-8">
+	    <%= f.text_field(
+	    		:name,
+	    		autofocus: true,
+	    		class: 'form-control'
+	    	) %>
+    </div>
+  </div>
+	
+  <div class="form-group">
+    <div class="col-sm-12 text-center">
+      <%= f.button :submit, '送信', class: 'btn btn-default' %>
+    </div>
+  </div>
 <% end %>

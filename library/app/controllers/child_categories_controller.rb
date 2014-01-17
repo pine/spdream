@@ -1,5 +1,6 @@
 class ChildCategoriesController < ApplicationController
   layout 'cms_main'
+  before_filter :authenticate_user!
   
   # GET /child_categories
   # GET /child_categories.json

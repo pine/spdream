@@ -1,6 +1,9 @@
 # coding: utf-8
 
-<%= form_for(@book) do |f| %>
+<%= simple_form_for(
+		@book,
+		html: { class: 'form-horizontal', role: 'form' }
+	) do |f| %>
   <% if @book.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:</h2>
@@ -13,47 +16,153 @@
     </div>
   <% end %>
 
-  <div class="field"
-    <%= f.label :タイトル %><br />
-    <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label(
+    		:title,
+    		label: 'タイトル&nbsp;:',
+    		class: 'control-label col-sm-3'
+    	) %>
+    
+    <div class="col-sm-8">
+	    <%= f.text_field(
+	    		:title,
+	    		autofocus: true,
+	    		class: 'form-control'
+	    	) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :著者 %><br />
-    <%= f.text_field :auther %>
+  
+  <div class="form-group">
+    <%= f.label(
+          :auther,
+          label: '作者&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+    <div class="col-sm-8">
+      <%= f.text_field(
+            :auther,
+            class: 'form-control'
+          ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :あらすじ %><br />
-    <%= f.text_area :outline %>
+  
+  <div class="form-group">
+    <%= f.label(
+          :outline,
+          label: 'あらすじ&nbsp;:',
+          class: 'control-label col-sm-3'
+          ) %>
+    
+    <div class="col-sm-8">
+      <%= f.text_area(
+            :outline,
+            class: 'form-control'
+            ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :isbn10 %><br />
-    <%= f.text_field :isbn10 %>
+  
+  <div class="form-group">
+    <%= f.label(
+          :isbn10,
+          label: 'ISBN 10&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+    <div class="col-sm-8">
+      <%= f.text_field(
+            :isbn10,
+            class: 'form-control'
+          ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :isbn13 %><br />
-    <%= f.text_field :isbn13 %>
+  
+  <div class="form-group">
+    <%= f.label(
+          :isbn13,
+          label: 'ISBN 13&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+    <div class="col-sm-8">
+      <%= f.text_field(
+            :isbn13,
+            class: 'form-control'
+          ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :資料ID %><br />
-    <%= f.text_field :opac_id %>
+  
+  <div class="form-group">
+    <%= f.label(
+          :opac_id,
+          label: '資料 ID&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+    <div class="col-sm-8">
+      <%= f.text_field(
+            :opac_id,
+            class: 'form-control'
+          ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :評価 %><br />
-    <%= f.number_field :value %>
+  
+  <div class="form-group">
+    <%= f.label(
+          :value,
+          label: '評価&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+    <div class="col-sm-8">
+      <%= f.text_field(
+            :value,
+            class: 'form-control'
+          ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :親カテゴリ %><br />
-    <%= f.select :category_id, Category.all.map{|category| [category.name, category.id]}%>
+  
+  <div class="form-group">
+    <%= f.label(
+          :category_id,
+          label: '親カテゴリ&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+    <div class="col-sm-8">
+      <%= f.select(
+            :category_id,
+            Category.all.map{|category| [category.name, category.id]},
+            class: 'form-control'
+          ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label  :子カテゴリ %><br />
-    <%= f.select :child_category_id, ChildCategory.all.map{|child_category| [child_category.name, child_category.id]}%>
+  
+  <div class="form-group">
+    <%= f.label(
+          :child_category_id,
+          label: '子カテゴリ&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+    <div class="col-sm-8">
+      <%= f.select(
+            :child_category_id,
+            ChildCategory.all.map{|child_category| [child_category.name, child_category.id]},
+            class: 'form-control'
+          ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :photo %><br />
-    <%= f.file_field :photo %>
+  
+  <div class="form-group">
+    <%= f.label(
+          :phtoto,
+          label: '画像&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+    <div class="col-sm-8">
+      <%= f.file_field(
+            :photo
+          ) %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <div class="form-group">
+    <div class="col-sm-12 text-center">
+      <%= f.button :submit, '送信', class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

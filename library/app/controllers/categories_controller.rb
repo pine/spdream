@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   layout 'cms_main'
+  before_filter :authenticate_user!
   
   # GET /categories
   # GET /categories.json

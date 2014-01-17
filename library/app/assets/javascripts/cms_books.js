@@ -1,3 +1,1 @@
-$(function(){
-	$("#books_menu").removeClass("hide");
-});
+$("#books_menu").removeClass("hide");
