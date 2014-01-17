@@ -29,6 +29,7 @@ Library::Application.routes.draw do
       resources :categories
       resources :tags
       resources :requests
+      resources :child_categories
       
       resources :books do
         resources :reviews
