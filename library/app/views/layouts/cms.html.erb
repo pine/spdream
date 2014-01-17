@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CMS for KUT Library</title>
+		<%= stylesheet_link_tag    'cms', :media => "all" %>
+		<%= javascript_include_tag 'cms' %>
+		<%= csrf_meta_tags %>
+	</head>
+	<body>
+	
+	<div class="navbar navbar-default">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="#"><strong>CMS</strong> for KUT Library</a>
+		</div>
+		
+		<div class="navbar-collapse collapse">
+			<ul class="nav navbar-nav navbar-right">
+				<%= yield :navbar if content_for?(:navbar) %>
+			</ul>
+		</div>
+		
+	</div>
+	
+	<div class="container">
+		<div class="row">
+			<%= content_for?(:content) ? yield(:content) : yield %>
+		</div>
+	</div>
+	
+	</body>
+</html>

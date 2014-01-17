@@ -1,0 +1,16 @@
+<% content_for :navbar do %>
+				<li><a href="#">What's CMS</a></li>
+				<li><a href="#">Help</a></li>
+<% end %>
+
+<% content_for :content do %>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<div class="center-block" id="cms_login">
+		<div class="panel panel-default">
+			<%= yield %>
+		</div>
+	</div>
+</div>
+<% end %>
+
+<%= render file: 'layouts/cms' %>
