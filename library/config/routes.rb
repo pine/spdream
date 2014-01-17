@@ -84,6 +84,12 @@ Library::Application.routes.draw do
     end
   end
   
+  match "tops", :controller => :opac_tops, :action => :index ,:via => :GET
+  match "tops/book", :controller => :opac_tops, :action => :index_book ,:via => :GET
+  match "tops/book_info", :controller => :opac_tops, :action => :show_book ,:via => :GET
+  match "tops/tag", :controller => :opac_tops, :action => :index_tag ,:via => :GET
+
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
