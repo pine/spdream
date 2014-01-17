@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Kochi University of Technology</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+
+
+	<nav class="navbar navbar-default" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+	        <a class="navbar-brand" href="#">高知工科大学 附属情報図書館</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="">トップページ</a></li>
+                <li><a href="https://www-opac.lib.kochi-tech.ac.jp/mylimedio/startPortal.do">マイライブラリ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+		<div id="wrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="list-group">
+							<a href="#" class="list-group-item">トップページ</a>
+							<a href="#" class="list-group-item">利用案内</a>
+							<a href="#" class="list-group-item">蔵書検索 OPAC</a>
+							<a href="#" class="list-group-item">目的別検索 OPAC+</a>
+							<a href="#" class="list-group-item">マイライブラリ</a>
+							<a href="#" class="list-group-item">学位論文</a>
+							<a href="#" class="list-group-item">リポジトリ</a>
+							<a href="#" class="list-group-item">電子ジャーナル</a>
+							<a href="#" class="list-group-item">リンク</a>
+						</div>
+					</div>
+					<div class="col-md-9">
+						<%= yield %>
+					</div>
+				</div>
+			</div>
+			<div id="push">
+			</div>
+		</div>
+		<div id="footer">
+			<div class="container">
+				<p class="pull-right">
+					<small>Copyright © 2013 SP-Dream. All Rights Reserved.</small>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

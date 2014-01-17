@@ -11,6 +11,85 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20140115090302) do
+
+  create_table "books", :force => true do |t|
+    t.string   "title"
+    t.string   "auther"
+    t.text     "outline"
+    t.string   "isbn10",            :default => "0"
+    t.string   "isbn13",            :default => "0"
+    t.string   "opac_id"
+    t.integer  "value"
+    t.integer  "category_id"
+    t.integer  "child_category_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "books", ["category_id"], :name => "index_books_on_category_id"
+  add_index "books", ["child_category_id"], :name => "index_books_on_child_category_id"
+  add_index "books", ["tag_id"], :name => "index_books_on_tag_id"
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "priority"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "child_categories", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "priority"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "child_categories", ["category_id"], :name => "index_child_categories_on_category_id"
+
+  create_table "reviews", :force => true do |t|
+    t.string   "title"
+    t.text     "comment"
+    t.integer  "value_good"
+    t.integer  "value_bad"
+    t.integer  "value_book"
+    t.boolean  "enabled"
+    t.datetime "date"
+    t.integer  "book_id"
+    t.boolean  "deleted"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "reviews", ["book_id"], :name => "index_reviews_on_book_id"
+
+  create_table "schedules", :force => true do |t|
+    t.date     "date"
+    t.time     "time"
+    t.string   "type"
+    t.string   "title"
+    t.text     "intro"
+    t.string   "photo"
+    t.string   "photo_file_name"
+    t.integer  "photo_file_size"
+    t.string   "photo_content_type"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "name"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
+    t.text     "intro"
+    t.integer  "priority"
+    t.boolean  "enabled"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
 end
