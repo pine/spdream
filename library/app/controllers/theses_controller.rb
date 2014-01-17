@@ -1,6 +1,8 @@
 # coding: utf-8
 
 class ThesesController < ApplicationController
+	layout 'cms_main'
+	
 	def index
 		@faculties = Faculty.all
 	end

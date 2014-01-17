@@ -1,6 +1,8 @@
 # coding: utf-8
 
 class LabsController < ApplicationController
+	layout 'cms_main'
+  
 	def index
 		@labs = Lab.find(:all, :conditions => {:faculty_id => params[:id]})
 	end
