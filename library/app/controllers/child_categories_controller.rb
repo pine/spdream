@@ -1,4 +1,6 @@
 class ChildCategoriesController < ApplicationController
+  layout 'cms_main'
+  
   # GET /child_categories
   # GET /child_categories.json
   def index

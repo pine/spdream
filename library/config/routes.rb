@@ -34,7 +34,7 @@ Library::Application.routes.draw do
       resources :requests
       resources :child_categories
       
-      resources :books, :as => 'cms_books' do
+      resources :books do
         resources :reviews
       end
     end

@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  layout 'cms_main'
+  
   # GET /categories
   # GET /categories.json
   def index

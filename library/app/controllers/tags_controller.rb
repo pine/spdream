@@ -1,4 +1,6 @@
 class TagsController < ApplicationController
+  layout 'cms_main'
+  
   # GET /tags
   # GET /tags.json
   def index
