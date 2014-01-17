@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   layout 'cms_main'
+  before_filter :authenticate_user!
   
   # GET /events
   # GET /events.json

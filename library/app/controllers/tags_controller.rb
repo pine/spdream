@@ -1,5 +1,6 @@
 class TagsController < ApplicationController
   layout 'cms_main'
+  before_filter :authenticate_user!
   
   # GET /tags
   # GET /tags.json

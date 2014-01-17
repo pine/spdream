@@ -1,6 +1,7 @@
 class OpacTopsController < ApplicationController
     layout 'user_opacplus'
-
+  before_filter :authenticate_user!
+  
 	def index
     	@books = Book.all
         @categories = Category.find(:all, :order => "priority")

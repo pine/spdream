@@ -2,6 +2,7 @@
 
 class LabsController < ApplicationController
 	layout 'cms_main'
+  before_filter :authenticate_user!
   
 	def index
 		@labs = Lab.find(:all, :conditions => {:faculty_id => params[:id]})

@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   layout 'cms_main'
+  before_filter :authenticate_user!
   
   # GET /books
   # GET /books.json
