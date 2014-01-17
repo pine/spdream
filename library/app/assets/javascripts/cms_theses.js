@@ -1,3 +1,1 @@
-$(function(){
-	$("#theses_menu").removeClass("hide");
-});
+$("#theses_menu").removeClass("hide");
