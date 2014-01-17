@@ -22,6 +22,9 @@ Library::Application.routes.draw do
     scope 'cms-top' do
       # /library/cms-top/main
       get 'main' => 'cms_top#main', :as => 'cms_top_main'
+      
+      # /library/cms-top/books
+      get 'books' => 'cms_top#books', :as => 'cms_top_books'
     end
     
     # from Watanabe routes.rb
@@ -31,7 +34,7 @@ Library::Application.routes.draw do
       resources :requests
       resources :child_categories
       
-      resources :books do
+      resources :books, :as => 'cms_books' do
         resources :reviews
       end
     end

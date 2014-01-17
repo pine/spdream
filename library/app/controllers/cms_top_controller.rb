@@ -4,4 +4,7 @@ class CmsTopController < ApplicationController
   
   def main
   end
+  
+  def books
+  end
 end
