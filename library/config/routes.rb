@@ -58,6 +58,7 @@ Library::Application.routes.draw do
       resources :events
       resources :news
     end
+
     # User
     
     # from tanaka routes.rb
@@ -71,8 +72,26 @@ Library::Application.routes.draw do
     
     get'opacplus' => 'opacplus#index'
     scope 'opacplus' do
-      resources :categories
-      resources :books
+      match "index",
+        :controller => :opac_tops,
+        :action => :index,
+        :via => :GET,
+        :as => 'opacplus_index'
+      match "book",
+        :controller => :opac_tops,
+        :action => :index_book,
+        :via => :GET,
+        :as => 'opacplus_book'
+      match "bookinfo",
+        :controller => :opac_tops,
+        :action => :show_book,
+        :via => :GET,
+        :as => 'opacplus_bookinfo'
+      match "tag",
+        :controller => :opac_tops,
+        :action => :index_tag,
+        :via => :GET,
+        :as => 'opacplus_tag'
     end
     
     resources :theses do
@@ -83,11 +102,6 @@ Library::Application.routes.draw do
       end
     end
   end
-  
-  match "tops", :controller => :opac_tops, :action => :index ,:via => :GET
-  match "tops/book", :controller => :opac_tops, :action => :index_book ,:via => :GET
-  match "tops/book_info", :controller => :opac_tops, :action => :show_book ,:via => :GET
-  match "tops/tag", :controller => :opac_tops, :action => :index_tag ,:via => :GET
 
   
   # The priority is based upon order of creation:

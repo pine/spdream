@@ -4,7 +4,7 @@ class OpacTopsController < ApplicationController
 	def index
     	@books = Book.all
         @categories = Category.find(:all, :order => "priority")
-        @child_categories = ChildCategory.find(:all, :order => "priority")
+        # @child_categories = ChildCategory.find(:all, :order => "priority")
 	end
 
 	def index_book
