@@ -1,0 +1,25 @@
+# coding: utf-8
+<h1>論文TOP</h1>
+
+<div id="notice"><%= notice %></div>
+
+<%#= 学群一覧表示 %>
+<table border="1" cellspacing="0" cellpadding="5">
+	<tr>
+		<% @faculties.each do |faculty| %>
+			<td><%= link_to faculty.name, :controller => 'theses', :action => 'faculty', :id => faculty.id %></td>
+		<% end %>
+	</tr>
+</table>
+
+<br>
+
+<%= link_to "学群の編集", faculties_path %>
+
+<br>
+
+<%= link_to 'すべての論文を表示する', all_theses_path %>
+
+<br><br>
+
+<%= link_to '論文新規登録', new_thesis_path %> | <%= link_to '削除履歴', deleted_theses_path %>

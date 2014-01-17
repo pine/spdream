@@ -53,6 +53,17 @@ Library::Application.routes.draw do
       post ':id' => 'theses#hide_and_restore' # /library/cms-thesis/:id
     end
     
+    resources :thesis_tops, :path => 'thesis', :only => :index do
+      collection do
+        get 'lab'
+        get 'faculty'
+        get 'all'
+        get 'download' => 'thesis_tops#download'
+      end
+      member do
+      end
+    end 
+
     # from tanaka routes.rb
     scope 'cms-schedule' do
       resources :events

@@ -1,0 +1,14 @@
+<h1>論文TOP</h1>
+
+<div id="notice"><%= notice %></div>
+
+<%#= 学群一覧表示 %>
+<table border="1" cellspacing="0" cellpadding="5">
+	<tr>
+		<% @faculties.each do |faculty| %>
+			<td><%= link_to faculty.name, :controller => 'thesis_tops', :action => 'faculty', :id => faculty.id %></td>
+		<% end %>
+	</tr>
+</table>
+
+<%= link_to 'すべての論文を表示する', all_thesis_tops_path %>

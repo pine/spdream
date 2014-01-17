@@ -1,0 +1,33 @@
+<%= form_for(@lab) do |f| %>
+
+	<% if @lab.errors.any? %>
+		<ul>
+ 			<% @lab.errors.full_messages.each do |msg| %>
+ 				<li><%= msg %></li>
+ 			<% end %>
+ 		</ul>
+	<% end %>
+
+	<table border="1" width="350" cellspacing="0" cellpadding="5">
+		<tr>
+			<div class="field">
+				<th>研究室</th>
+				<th><%= f.text_field :name %></th>
+			</div>
+		</tr>
+		<tr>
+			<div class="field">
+				<th>学群</th>
+				<th>
+					<%= f.select :faculty_id, Faculty.all.map{|faculty| [faculty.name, faculty.id]}%>
+				</th>
+			</div>
+		</tr>
+	</table>
+
+	<br>
+
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
