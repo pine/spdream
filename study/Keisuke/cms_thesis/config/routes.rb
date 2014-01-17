@@ -14,6 +14,7 @@ CmsThesis::Application.routes.draw do
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+  # 論文CMS側
   resources :theses, :except => :show do
     collection do
       get 'deleted'
@@ -25,14 +26,23 @@ CmsThesis::Application.routes.draw do
       get 'download' => 'theses#download'
     end
   end
-  
-  post 'theses/:id' => 'theses#hide_and_restore' 
-
+  post 'theses/:id' => 'theses#hide_and_restore'
   resources :labs 
-
   resources :faculties
 
-  match "tops", :controller => :thesis_tops, :action => :index ,:via => :GET
+  # 論文ユーザ側
+  resources :thesis_tops, :only => :index do
+    collection do
+      get 'lab'
+      get 'faculty'
+      get 'all'
+      get 'download' => 'thesis_tops#download'
+    end
+    member do
+    end
+  end 
+
+#  match "tops", :controller => :thesis_tops, :action => :index ,:via => :GET
 
 
   # Sample resource route with sub-resources:
