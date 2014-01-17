@@ -91,12 +91,12 @@ Library::Application.routes.draw do
         :action => :index,
         :via => :GET,
         :as => 'opacplus_index'
-      match "book",
+      match "book/:id" => 'opac_tops#index_book',
         :controller => :opac_tops,
         :action => :index_book,
         :via => :GET,
         :as => 'opacplus_book'
-      match "bookinfo",
+      match "bookinfo:id" => 'opac_tops#show_book',
         :controller => :opac_tops,
         :action => :show_book,
         :via => :GET,

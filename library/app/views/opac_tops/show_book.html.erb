@@ -21,7 +21,7 @@
         <button type="button" class="btn btn-default">
           <%= link_to '戻る', opacplus_index_path %>
         </button>
-        <h3 class="pull-right">Category Name / カテゴリ名</h3>
+        <h3 class="pull-right">Category : <%= @child_categories.name %></h3>
       </div>
 
 <!-- inner contents - book basic information -->
@@ -29,17 +29,20 @@
           <li class="media">
             <div class="panel panel-default">
               <div class="panel-heading">
-                Book Title
+                <%= @books.title %>
               </div>
               <div class="panel-body">
-                <a class="pull-left" href="#">
-                </a>
+                <div class="pull-left">
+                  <% if (@books.photo.url == "/photos/original/missing.png") then %>
+                  <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
+                  <% else %>
+                  <%= image_tag @books.photo.url, :width => '50', :alt => "image" %>
+                  <% end %>
+                </div>
                 <div class="media-body">
-                  <p>
-                    著者：<br>
-                    説明：<br>
-                    評価：
-                  </p>
+                  著者： <%= @books.auther %><br>
+                  説明： <%= @books.outline %><br>
+                  評価： <% @books.value.times do %>★<% end %><% (5-@books.value).times do %>☆<% end %>
                 </div>
               </div>
             </div>
@@ -52,14 +55,10 @@
                 Review Title
               </div>
               <div class="panel-body">
-                <a class="pull-left" href="#">
-                </a>
                 <div class="media-body">
-                  <p>
-                    レビューの内容です。レビューの内容です。レビューの内容です。<br>
-                    レビューの内容です。レビューの内容です。レビューの内容です。<br>
-                    レビューの内容です。レビューの内容です。レビューの内容です。
-                  </p>
+                  日時： Review Timestamp<br>
+                  評価： Review Value_good, Value_bad<br>
+                  コメント： Review Comment
                 </div>
               </div>
               <% end %>

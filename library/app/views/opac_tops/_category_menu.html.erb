@@ -4,18 +4,20 @@
   </div>
   <div class="panel-body">
     <ul>
+
       <% @categories.each do |category| %>
       <li>
         <%= link_to category.name, category_path(category) %>
         <ul>
           <% category.child_categories.each do |child_category| %>
           <li>
-            <%= link_to child_category.name, child_category_path(category) %>
+            <%= link_to child_category.name, opacplus_book_path(child_category), :id => child_category.id %>
           </li>
           <% end %>
         </ul>
       </li>
       <% end %>
+
     </ul>
   </div>
 </div>
