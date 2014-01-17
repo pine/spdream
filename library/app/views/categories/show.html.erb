@@ -1,0 +1,56 @@
+# coding: utf-8
+
+<h1><%= @category.name %> 詳細</h1>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>名前:</b>
+  <%= @category.name %>
+</p>
+
+<p>
+  <b>説明:</b>
+  <%= @category.description %>
+</p>
+
+<p>
+  <b>表示順序:</b>
+  <%= @category.priority %>
+</p>
+
+<h2>子カテゴリ</h2>
+
+<ul>
+<% if @category.child_categories.any? %>
+
+<table border='1'>
+  <tr>
+    <th>表示順序</th>
+    <th>名前</th>
+    <th>編集</th>
+    <th>削除</th>
+  </tr>
+
+
+
+<% @category.child_categories.each do |child_category| %>
+
+  <tr>
+    <td><%= child_category.priority %></td>
+    <td><%= link_to child_category.name, child_category_path(child_category), :categoryid => @category.id %></td>
+    <td><%= link_to '編集', edit_child_category_path(child_category), :categoryid => @category.id %></td>
+    <td><%= link_to '削除', child_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<% else %>
+<li>子カテゴリなし</li>
+<% end %>
+</ul>
+
+<p>
+
+<%= link_to '編集', edit_category_path(@category) %> |
+<%= link_to '戻る', categories_path %>

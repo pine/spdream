@@ -1,0 +1,29 @@
+# coding: utf-8
+
+<h1>Listing child_categories</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Category</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @child_categories.each do |child_category| %>
+  <tr>
+    <td><%= child_category.name %></td>
+    <td><%= child_category.description %></td>
+    <td><%= child_category.category %></td>
+    <td><%= link_to 'Show', child_category %></td>
+    <td><%= link_to 'Edit', edit_child_category_path(child_category) %></td>
+    <td><%= link_to 'Destroy', child_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Child category', new_child_category_path %>

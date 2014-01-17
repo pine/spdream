@@ -1,0 +1,105 @@
+<!-- header -->
+<div class="row">
+  <div id="header">
+      <h1 class="header_title">目的別検索 OPAC+</h1>
+      <div class="header_intro">このページでは、図書館所蔵の本を目的別に探し、レビューを閲覧・投稿することができます。</div>
+  </div>
+</div>
+
+<!-- sidemenu -->
+<div class="row">
+  <div class="col-md-3">
+      <%= render 'category_menu' %>
+  </div>
+
+<!-- inner -->
+  <div class="col-md-9">
+    <div class="well">
+
+<!-- inner title -->
+      <div class="inner_title">
+        <button type="button" class="btn btn-default">
+          <%= link_to '戻る', tops_path %>
+        </button>
+        <h3 class="pull-right">OPAC+とは？</h3>
+      </div>
+
+<!-- inner contents - opacplus introduction -->
+      <div class="inner_contents">
+        <p>
+          OPAC+は、図書館の利用者の皆さまが求める本に出会えるように支援するシステムです。カテゴリからの蔵書検索と、利用者によるレビューの閲覧と投稿ができます。
+        </p>
+        <p>
+          左のサイドバーより、お好きなカテゴリから本を探してみて下さい。図書館の利用者・管理者による信頼できるレビューや評価が閲覧できます。また、下部のボタンからは読み終わった本に対してレビューを投稿し、他の利用者に良い本を教えることもできます。
+        </p>
+        <p>
+          お問い合せは、高知工科大学 附属情報図書館 受付まで。
+        </p>
+        <div class="text-center">
+          <button type="button" class="btn btn-default">
+            <%= link_to 'カテゴリの本一覧に行く', tops_book_path %>
+          </button>
+          <button type="button" class="btn btn-default">
+            <%= link_to '本の詳細情報を見る', tops_book_info_path %>
+          </button>
+        </div>
+      </div>
+
+<!-- inner title -->
+      <div class="inner_title">
+        <button type="button" class="btn btn-default">
+          <%= link_to '戻る', tops_path %>
+        </button>
+        <h3 class="pull-right">本のレビューを投稿する</h3>
+      </div>
+
+<!-- inner contents - review -->
+      <div class="inner_contents">
+        <p>
+          こちらにOPAC+の説明文が入ります。こちらにOPAC+の説明文が入ります。<br>
+          こちらにOPAC+の説明文が入ります。こちらにOPAC+の説明文が入ります。
+        </p>
+        <div class="text-center">
+          <button type="button" class="btn btn-default">
+            <%= link_to '本のレビューを投稿する', tops_book_path %>
+          </button>
+        </div>
+      </div>
+
+<!-- inner title -->
+      <div class="inner_title">
+        <button type="button" class="btn btn-default">
+          <%= link_to '戻る', tops_path %>
+        </button>
+        <h3 class="pull-right">注目のタグから探す</h3>
+      </div>
+
+<!-- inner contents - tag -->
+      <div class="inner_contents">
+        <span class="label label-default">ラベル</span>
+        <span class="label label-default">ラベル1</span>
+        <span class="label label-default">ラベル2</span>
+        <span class="label label-default">ラベル3</span>
+        <span class="label label-default">ラベル4</span>
+        <span class="label label-default">ラベル5</span>
+        <span class="label label-default">ラベル6</span>
+        <span class="label label-default">ラベル7</span>
+        <span class="label label-default">ラベル8</span>
+        <span class="label label-default">ラベル9</span>
+        <span class="label label-default">ラベル10</span>
+        <span class="label label-default">ラベル111</span>
+        <span class="label label-default">ラベル1110</span>
+        <span class="label label-default">ラベル1111</span>
+        <span class="label label-default">ラベル11110</span>
+        <span class="label label-default">ラベル11111</span>
+        <span class="label label-default">ラベル1</span>
+        <span class="label label-default">ラベル2</span>
+        <span class="label label-default">ラベル3</span>
+        <span class="label label-default">ラベル4</span>
+        <span class="label label-default">ラベル5</span>
+      </div>
+
+    </div>
+  </div>
+
+</div>
