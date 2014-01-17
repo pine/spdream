@@ -1,8 +1,14 @@
 # coding: utf-8
-<h1>研究室名変更</h1>
+<div class="panel-heading">研究室名変更</div>
+
+<div class="panel-body">
 
 <div id="notice"><%= notice %></div>
 
 <%= render 'form' %>
 
 <%= link_to_function '戻る', 'history.back()' %>
+
+</div>
+
+<%= javascript_include_tag 'cms_theses' %>
