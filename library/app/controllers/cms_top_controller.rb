@@ -7,4 +7,8 @@ class CmsTopController < ApplicationController
   
   def books
   end
+  
+  def config_page
+  end
 end
+

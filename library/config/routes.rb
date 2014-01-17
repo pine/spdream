@@ -28,6 +28,9 @@ Library::Application.routes.draw do
       
       # /library/cms-top/theses
       get 'theses' => 'cms_top#theses', :as => 'cms_top_theses'
+      
+      # /library/cms-top/config
+      get 'config' => 'cms_top#config_page', :as => 'cms_top_config'
     end
     
     # from Watanabe routes.rb
