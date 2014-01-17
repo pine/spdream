@@ -37,7 +37,13 @@
 			<div class="field">
 				<th>学群</th>
 				<th>
-					<%= f.select :faculty_id, Faculty.all.map{|faculty| [faculty.name, faculty.id]}%>
+					<%= f.select :faculty_id,
+						Faculty.all.map {|faculty|
+							[faculty.name, faculty.id]
+						},
+						{ },
+						{ :id => 'facultys' }
+						%>
 				</th>
 			</div>
 		</tr>
@@ -45,7 +51,10 @@
 			<div class="field">
 				<th>研究室</th>
 				<th>
-					<%= f.select :lab_id, Lab.all.map{|lab| [lab.name, lab.id]}, :include_blank => '無所属' %>
+					<%= f.select :lab_id, [],
+						{ :include_blank => '無所属' },
+						{ :id => 'labs' }
+					 %>
 				</th>
 			</div>
 		</tr>
@@ -67,3 +76,39 @@
 <% end %>
 
 <br>
+
+<script>
+
+!function() {
+	var labsInitialCount = 1;
+	var labsData = <%= raw Lab.all.to_json %>;
+	var labsElement = $('#labs');
+	var facultysElement = $('#facultys');
+	
+	function updateLabs() {
+		// 以前のデータを削除
+		var options = labsElement.find('option');
+		
+		for(var i = labsInitialCount; i < options.length; ++i) {
+			$(options[i]).remove();
+		}
+		
+		// 新規のデータを追加
+		var facultyId = facultysElement.val();
+		
+		$.each(labsData, function(index, data){
+			if (data.faculty_id == facultyId) {
+				labsElement.append(
+					$('<option />')
+						.text(data.name)
+						.attr('value', data.id)
+				);
+			}
+		});
+	}
+	
+	updateLabs();
+	facultysElement.on('change', updateLabs)
+}();
+
+</script>
