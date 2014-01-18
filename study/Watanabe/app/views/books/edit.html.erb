@@ -2,7 +2,9 @@
 
 <h1>蔵書編集</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to '詳細', @book %> |
-<%= link_to '一覧', books_path %>
+	<%= link_to '詳細', @book %> |
+	<%= link_to '一覧', books_path %>
+
+<%= javascript_include_tag "cms_books" %>

@@ -11,26 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116155250) do
+ActiveRecord::Schema.define(:version => 20140118070823) do
 
   create_table "books", :force => true do |t|
+    t.string   "photo"
     t.string   "title"
     t.string   "auther"
     t.text     "outline"
-    t.string   "isbn10",            :default => "0"
-    t.string   "isbn13",            :default => "0"
+    t.string   "isbn10",             :default => "0"
+    t.string   "isbn13",             :default => "0"
     t.string   "opac_id"
     t.integer  "value"
     t.integer  "category_id"
     t.integer  "child_category_id"
-    t.integer  "tag_id"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.boolean  "deleted"
+    t.string   "tag0"
+    t.string   "tag1"
+    t.string   "tag2"
+    t.string   "tag3"
+    t.string   "tag4"
+    t.string   "tag5"
+    t.string   "tag6"
+    t.string   "tag7"
+    t.string   "photo_file_name"
+    t.integer  "photo_file_size"
+    t.string   "photo_content_type"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
   add_index "books", ["category_id"], :name => "index_books_on_category_id"
   add_index "books", ["child_category_id"], :name => "index_books_on_child_category_id"
-  add_index "books", ["tag_id"], :name => "index_books_on_tag_id"
 
   create_table "categories", :force => true do |t|
     t.string   "name"

@@ -48,12 +48,74 @@
   <%= @book.child_category.name %>
 </p>
 
+<% if @book.photo_file_name == '' %>
+<% else %>
 <p>
-  <b>タグ:</b>
-  <%= @book.tag.name %>
+  <b>画像:</b>
+  <%= image_tag @book.photo.url, :width=>'50' %>
 </p>
+<% end %>
 
+  <% if @book.tag0 == '' && @book.tag1 == '' && @book.tag2 == '' && @book.tag3 == '' && @book.tag4 == '' && @book.tag5 == '' && @book.tag6 == '' && @book.tag7 == '' %>
+    <p>
+      <b>タグなし</b>
+  　 </p>
 
+  <%else%>
+
+    <table border='1'>
+      <% if @book.tag0 != '' %>
+        <tr>
+          <th>タグ1</th>
+          <th><%= @book.tag0 %></th>
+        </tr>
+      <% end %>
+      <% if @book.tag1 != '' %>
+        <tr>
+          <th>タグ2</th>
+          <th><%= @book.tag1 %></th>
+        </tr>
+      <% end %>
+      <% if @book.tag2 != '' %>
+        <tr>
+          <th>タグ3</th>
+          <th><%= @book.tag2 %></th>
+        </tr>
+      <% end %>
+      <% if @book.tag3 != '' %>
+        <tr>
+          <th>タグ4</th>
+          <th><%= @book.tag3 %></th>
+        </tr>
+      <% end %>
+      <% if @book.tag4 != '' %>
+        <tr>
+          <th>タグ5</th>
+          <th><%= @book.tag4 %></th>
+        </tr>
+      <% end %>
+      <% if @book.tag5 != '' %>
+        <tr>
+          <th>タグ6</th>
+          <th><%= @book.tag5 %></th>
+        </tr>
+      <% end %>
+      <% if @book.tag6 != '' %>
+        <tr>
+          <th>タグ7</th>
+          <th><%= @book.tag6 %></th>
+        </tr>
+      <% end %>
+      <% if @book.tag7 != '' %>
+        <tr>
+          <th>タグ8</th>
+          <th><%= @book.tag7 %></th>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
 
 <%= link_to '編集', edit_book_path(@book) %> |
 <%= link_to '戻る', books_path %>
+
+<%= javascript_include_tag 'cms_books' %>
