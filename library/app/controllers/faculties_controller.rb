@@ -35,7 +35,7 @@ class FacultiesController < ApplicationController
 	end
 
 	def destroy
-		@faculty = faculty.find(params[:id])
+		@faculty = Faculty.find(params[:id])
 		@faculty.destroy
 		redirect_to faculties_path, notice: '削除しました'
 	end
