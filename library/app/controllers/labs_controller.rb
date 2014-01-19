@@ -15,7 +15,8 @@ class LabsController < ApplicationController
 	def create
 		@lab = Lab.new(params[:lab])
 		if @lab.save
-			redirect_to labs_path, notice: '登録しました'
+			flash[:notice] = '作成しました'
+			redirect_to :controller => 'labs', :action => 'index', :id => @lab.faculty_id
 		else
 			render action: 'new'
 		end
@@ -28,7 +29,8 @@ class LabsController < ApplicationController
 	def update
 		@lab = Lab.find(params[:id])
 		if @lab.update_attributes(params[:lab])
-			redirect_to labs_path, notice: '更新しました'
+			flash[:notice] = '更新しました'
+			redirect_to :controller => 'labs', :action => 'index', :id => @lab.faculty_id
 		else
 			render action: 'edit'
 		end
@@ -37,6 +39,7 @@ class LabsController < ApplicationController
 	def destroy
 		@lab = Lab.find(params[:id])
 		@lab.destroy
-		redirect_to labs_path, notice: '削除しました'
+		flash[:notice] = '削除しました'
+		redirect_to :controller => 'labs', :action => 'index', :id => @lab.faculty_id
 	end
 end
