@@ -11,7 +11,7 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :value
       t.references :category
       t.references :child_category
-      t.boolean :deleted
+      t.boolean :enabled
       t.string :tag0
       t.string :tag1
       t.string :tag2

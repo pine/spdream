@@ -39,15 +39,15 @@
   </div>
   <div class="field">
     <%= f.label :評価 %><br />
-    <%= f.number_field :value %>
+    <%= f.select :value, [['1'], ['2'], ['3'], ['4'], ['5']]%>
   </div>
   <div class="field">
     <%= f.label :親カテゴリ %><br />
-    <%= f.select :category_id, Category.all.map{|category| [category.name, category.id]}, :include_blank => true %>
+    <%= f.select :category_id, Category.all.map{|category| [category.name, category.id]}%>
   </div>
   <div class="field">
     <%= f.label  :子カテゴリ %><br />
-    <%= f.select :child_category_id, ChildCategory.all.map{|child_category| [child_category.name, child_category.id]}, :include_blank => true %>
+    <%= f.select :child_category_id, ChildCategory.all.map{|child_category| [child_category.name, child_category.id]}%>
   </div>
   <div class="field">
     <%= f.label :photo %><br />

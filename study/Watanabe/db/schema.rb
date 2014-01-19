@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140118065616) do
+ActiveRecord::Schema.define(:version => 20140119110856) do
 
   create_table "books", :force => true do |t|
     t.string   "photo"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20140118065616) do
     t.integer  "value"
     t.integer  "category_id"
     t.integer  "child_category_id"
-    t.boolean  "deleted"
+    t.boolean  "enabled"
     t.string   "tag0"
     t.string   "tag1"
     t.string   "tag2"

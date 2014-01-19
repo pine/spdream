@@ -110,8 +110,9 @@
           class: 'control-label col-sm-3'
         ) %>
     <div class="col-sm-8">
-      <%= f.text_field(
+      <%= f.select(
             :value,
+            [['1'], ['2'], ['3'], ['4'], ['5']],
             class: 'form-control'
           ) %>
     </div>
@@ -127,7 +128,6 @@
       <%= f.select(
             :category_id,
             Category.all.map{|category| [category.name, category.id]},
-            :include_blank => true ,
             class: 'form-control'
           ) %>
     </div>
@@ -143,7 +143,6 @@
       <%= f.select(
             :child_category_id,
             ChildCategory.all.map{|child_category| [child_category.name, child_category.id]},
-             :include_blank => true ,
             class: 'form-control'
           ) %>
     </div>

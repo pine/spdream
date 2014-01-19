@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class BooksController < ApplicationController
   # GET /books
   # GET /books.json
@@ -41,6 +43,8 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(params[:book])
+    @book.enabled = true
+
 
     respond_to do |format|
       if @book.save
@@ -76,8 +80,37 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to books_url }
+      format.html { redirect_to deleted_books_path }
       format.json { head :no_content }
     end
   end
+
+ def hide_and_restore
+    @book = Book.find(params[:id])
+
+    if @book.enabled == true then
+      @book.enabled = false
+    else
+      @book.enabled = true
+    end
+
+    if @book.update_attributes(params[:book])
+      if @book.enabled == false then
+        redirect_to books_path, notice: '削除しました'
+      else
+        redirect_to deleted_books_path, notice: '復元しました'
+      end
+    else
+      if @book.enabled == false then
+        render action: 'index'
+      else
+        render action: 'deleted'
+      end
+    end
+  end
+
+  def deleted
+    @books = Book.all
+  end
+
 end

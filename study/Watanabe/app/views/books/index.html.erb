@@ -1,11 +1,12 @@
 # coding: utf-8
 
-<div class="panel-heading">Opac+ 蔵書一覧</div>
+<h1>Opac+ 蔵書一覧</h1>
 
-<div class="panel-body cms-menu">
-	<%= link_to '蔵書追加', new_book_path %>
+	<%= link_to '蔵書追加', new_book_path %> | <%= link_to '削除履歴', deleted_books_path %>
 
 	<p>
+
+<% if @books != nil then %>
 
 	<table border='1'>
 	  <tr>
@@ -17,17 +18,18 @@
 	  </tr>
 
 	<% @books.each do |book| %>
-	  <tr>
-	    <td><%= link_to book.title, book_path(book) %></td>
-	    <td><%= book.auther %></td>
-	    <td><%= book.value %></td>
-	    <td><%= link_to '編集', edit_book_path(book) %></td>
-	    <td><%= link_to '削除', book, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
-	  </tr>
+		<% if book.enabled %>
+		  <tr>
+		    <td><%= link_to book.title, book_path(book) %></td>
+		    <td><%= book.auther %></td>
+		    <td><%= book.value %></td>
+		    <td><%= link_to '編集', edit_book_path(book) %></td>
+		    <td><%= link_to '削除', book_path(book), :method => :pute %></td>
+		  </tr>
+		<% end %>
 	<% end %>
 	</table>
 
 	<br />
-</div>
-
+<% end %>
 <%= javascript_include_tag 'cms_books' %>

@@ -8,15 +8,11 @@ Opac::Application.routes.draw do
   resources :tags
 
   resources :books do
-    resources :reviews
-  #    member do
-  #      get ''
-  #    end
-
-  # collection do
-
-  # end
+    collection do
+      get 'deleted'
+    end
   end
+ post 'books/:id' => 'books#hide_and_restore'
 
   match "tops", :controller => :opac_tops, :action => :index ,:via => :GET
   match "tops/book", :controller => :opac_tops, :action => :index_book ,:via => :GET
