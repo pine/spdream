@@ -1,7 +1,51 @@
-# coding: utf-8
-<h1><%= @lab.name %></h1>
+<!-- header -->
+<div class="row">
+  <div id="header">
+  	<h1 class="header_title">学位論文</h1>
+    <div class="header_intro">このページでは、高知工科大学卒業生の学位論文を学群別・研究室別に探し、閲覧することができます。</div>
+  </div>
+</div>
 
-<%= render 'index' %>
+<!-- sidemenu -->
+<div class="row">
+  <div class="col-md-3">
+
+  	<div class="panel panel-default">
+  		<div class="panel-heading">
+  			<div class="text-center"><%= @faculty.name %></div>
+  		</div>
+  		<div class="panel-body">
+  			<ul>
+  				<% @labs.each do |lab| %>
+  				<li>
+  					<%= link_to lab.name, 
+  						:controller => 'thesis_tops',
+  						:action => 'lab',
+  						:faculty_id => @faculty.id,
+  						:lab_id => lab.id %>
+      		</li>
+      		<% end %>
+    		</ul>
+  		</div>
+	</div>
+</div>
+
+<!-- inner -->
+<div class="col-md-9">
+	<div class="well">
+
+<!-- inner title -->
+      <div class="inner_title">
+        <button type="button" class="btn btn-default">
+          <%= link_to '戻る', thesis_tops_path %>
+        </button>
+        <h3 class="pull-right">Laboratory : <%= @lab.name %></h3>
+      </div>
+      <div class="inner_contents">
+      	<%= render 'index' %>
+      </div>
+    </div>
+</div>
 
 <br>
 <%= link_to_function '戻る', 'history.back()' %>

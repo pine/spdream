@@ -10,11 +10,10 @@
 		<th>学群</th>
 		<th>研究室</th>
 		<th>課程</th>
-		<th>公開ファイル</th>
 	</tr>
 
-	<!-- sample -->
-	<% 10.times.each do %>
+	<!-- sample begin -->
+	<% 5.times.each do %>
 	<tr>
 		<td>EPUBCFIを用いたデジタル教科書ビューアの開発</td>
 		<td>安楽 優樹</td>
@@ -23,9 +22,9 @@
 		<td>情報学群</td>
 		<td>妻鳥研究室</td>
 		<td>学士</td>
-		<td>全文</td>
 	</tr>
 	<% end %>
+	<!-- sample end -->
 
 	<% @theses.each do |thesis| %>
 		<% if thesis.enabled %>
@@ -49,7 +48,6 @@
 				<% end %>
 			</td>
 			<td><%= thesis.course %></td>
-			<th>リンク</th>
 			</tr>
 		<% end %>
 	<% end %>
