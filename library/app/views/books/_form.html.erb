@@ -163,35 +163,35 @@
   
   <div class="field">
     <%= f.label  :タグ1 %><br />
-    <%= f.select :tag0, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
+    <%= f.select :tag0, [], { include_blank: true }, { class: 'tag-list' } %>
   </div>
   <div class="field">
     <%= f.label  :タグ2 %><br />
-    <%= f.select :tag1, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
+    <%= f.select :tag1, [], { include_blank: true }, { class: 'tag-list' } %>
   </div>
   <div class="field">
     <%= f.label  :タグ3 %><br />
-    <%= f.select :tag2, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
+    <%= f.select :tag2, [], { include_blank: true }, { class: 'tag-list' } %>
   </div>
   <div class="field">
     <%= f.label  :タグ4 %><br />
-    <%= f.select :tag3, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
+    <%= f.select :tag3, [], { include_blank: true }, { class: 'tag-list' } %>
   </div>
   <div class="field">
     <%= f.label  :タグ5 %><br />
-    <%= f.select :tag4, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
+    <%= f.select :tag4, [], { include_blank: true }, { class: 'tag-list' } %>
   </div>
   <div class="field">
     <%= f.label  :タグ6 %><br />
-    <%= f.select :tag5, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
+    <%= f.select :tag5, [], { include_blank: true }, { class: 'tag-list' } %>
   </div>
   <div class="field">
     <%= f.label  :タグ7 %><br />
-    <%= f.select :tag6, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
+    <%= f.select :tag6, [], { include_blank: true }, { class: 'tag-list' } %>
   </div>
   <div class="field">
     <%= f.label  :タグ8 %><br />
-    <%= f.select :tag7, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
+    <%= f.select :tag7, [], { include_blank: true }, { class: 'tag-list' } %>
   </div>
 
 
@@ -201,3 +201,74 @@
     </div>
   </div>
 <% end %>
+
+<script>
+
+!function(){
+  var tags = <%= raw Tag.all.to_json %>;
+  var tagFlags = [];
+  var tagElements = $('.tag-list');
+  
+  function initTagFlags() {
+    $.each(tags, function() {
+      tagFlags[this.id] = true;
+    });
+  }
+  
+  function addListener() {
+    tagElements.on('change', function() {
+      updateTagFlags();
+      updateTagHtml();
+    });
+  }
+  
+  function getEnabledTags(currentTagId) {
+    var enabledTags = [];
+    
+    $.each(tags, function() {
+      if (tagFlags[this.id] || this.id == currentTagId) {
+        enabledTags.push(this);
+      }
+    });
+    
+    return enabledTags;
+  }
+  
+  function updateTagFlags() {
+    initTagFlags();
+    
+    tagElements.each(function() {
+      if ($(this).val() != "") {
+        tagFlags[$(this).find(':selected').attr('data-tag-id')] = false;
+      }
+    });
+  }
+  
+  function updateTagHtml() {
+    tagElements.each(function(i, tagElement) {
+      var selected = $(tagElement).find(':selected');
+      var selectedId = selected.attr('data-tag-id');
+      var enabledTags = getEnabledTags(selectedId);
+      
+      $(tagElement).find(':not(:empty)').remove();
+      
+      $.each(enabledTags, function(j, enabledTag) {
+        var ele = $('<option />')
+          .text(enabledTag.name)
+          .attr('data-tag-id', enabledTag.id);
+          
+          if (enabledTag.id == selectedId) {
+            ele.attr('selected', 'selected');
+          }
+          
+          ele.appendTo(tagElement);
+      });
+    });
+  }
+  
+  initTagFlags();
+  addListener();
+  updateTagHtml();
+}();
+
+</script>
