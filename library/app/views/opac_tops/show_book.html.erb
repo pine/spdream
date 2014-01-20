@@ -34,7 +34,6 @@
               <div class="panel-body">
                 <div class="pull-left">
                   <% if (@books.photo.url == "/photos/original/missing.png") then %>
-                  <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
                   <% else %>
                   <%= image_tag @books.photo.url, :width => '50', :alt => "image" %>
                   <% end %>
@@ -42,7 +41,13 @@
                 <div class="media-body">
                   著者 ： <%= @books.auther %><br>
                   説明 ： <%= br(@books.outline) %><br>
-                  評価 ： <% @books.value.times do %>★<% end %><% (5-@books.value).times do %>☆<% end %>
+                  評価 ： <% @books.value.times do %>★<% end %><% (5-@books.value).times do %>☆<% end %><br>
+                  タグ : 
+                  <% 8.times do |i| %>
+                    <% unless (@books.send("tag" + i.to_s) == nil) then %>
+                      <%= @books.send("tag" + i.to_s) %>
+                    <% end %>
+                  <% end %>
                 </div>
               </div>
             </div>
