@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140119112059) do
+ActiveRecord::Schema.define(:version => 20140120105223) do
 
   create_table "books", :force => true do |t|
     t.string   "photo"
@@ -119,12 +119,6 @@ ActiveRecord::Schema.define(:version => 20140119112059) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "teachers", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "theses", :force => true do |t|
     t.string   "title"
     t.string   "author"
@@ -132,18 +126,16 @@ ActiveRecord::Schema.define(:version => 20140119112059) do
     t.string   "course"
     t.integer  "year"
     t.boolean  "enabled"
-    t.integer  "lab_id",                    :null => false
-    t.integer  "teacher_id",                :null => false
-    t.integer  "faculty_id",                :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.integer  "lab_id"
+    t.integer  "faculty_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.string   "data"
-    t.string   "file",       :limit => nil
+    t.string   "file"
   end
 
   add_index "theses", ["faculty_id"], :name => "index_theses_on_faculty_id"
   add_index "theses", ["lab_id"], :name => "index_theses_on_lab_id"
-  add_index "theses", ["teacher_id"], :name => "index_theses_on_teacher_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

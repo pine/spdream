@@ -7,7 +7,7 @@ class CreateTheses < ActiveRecord::Migration
       t.string :course
       t.integer :year
       t.boolean :enabled
-      t.references :lab, null: false
+      t.references :lab
       t.foreign_key :labs, dependent: :delete
       t.references :teacher, null: false
       t.foreign_key :teachers, dependent: :delete
