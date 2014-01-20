@@ -1,5 +1,5 @@
 class ThesisTopsController < ApplicationController
-    layout 'user_thesis'
+    layout 'application'
     
 	def index
         @faculties = Faculty.all

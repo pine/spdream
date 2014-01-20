@@ -1,5 +1,5 @@
 class OpacTopsController < ApplicationController
-    layout 'user_opacplus'
+    layout 'application'
   
 	def index
         @categories = Category.find(:all, :order => "priority")
