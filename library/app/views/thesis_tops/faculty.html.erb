@@ -1,6 +1,13 @@
-<h1><%= @faculty.name %></h1>
+<!-- header -->
+<div class="row">
+  <div id="header">
+  	<h1 class="header_title">Faculty : <%= @faculty.name %></h1>
+    <div class="header_intro">このページでは、高知工科大学卒業生の学位論文を学群別・研究室別に探し、閲覧することができます。</div>
+  </div>
+</div>
 
 <%#= 研究室一覧表示 %>
+<!--
 <table border="1" cellspacing="0" cellpadding="5">
 	<tr>
 		<% @labs.each do |lab| %>
@@ -8,8 +15,42 @@
 		<% end %>
 	</tr>
 </table>
+-->
 
-<%= render 'index' %>
+<!-- sidemenu -->
+<div class="row">
+  <div class="col-md-3">
+
+  	<div class="panel panel-default">
+  		<div class="panel-heading">
+  			<div class="text-center"><%= @faculty.name %></div>
+  		</div>
+  		<div class="panel-body">
+  			<ul>
+  				<li>
+  					研究室名
+      			</li>
+    		</ul>
+  		</div>
+	</div>
+</div>
+
+<!-- inner -->
+<div class="col-md-9">
+	<div class="well">
+
+<!-- inner title -->
+      <div class="inner_title">
+        <button type="button" class="btn btn-default">
+          <%= link_to '戻る', thesis_tops_path %>
+        </button>
+        <h3 class="pull-right">Laboratory : 研究室名</h3>
+      </div>
+      <div class="inner_contents">
+      	<%= render 'index' %>
+      </div>
+    </div>
+</div>
 
 <br>
 <%= link_to_function '戻る', 'history.back()' %>

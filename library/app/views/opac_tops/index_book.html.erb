@@ -36,7 +36,6 @@
               <div class="panel-body">
                 <div class="pull-left">
                   <% if (books.photo.url == "/photos/original/missing.png") then %>
-                  <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
                   <% else %>
                   <%= image_tag books.photo.url, :width => '50', :alt => "image" %>
                   <% end %>

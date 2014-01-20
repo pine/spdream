@@ -15,19 +15,19 @@
       <div class="tab-pane active" id="news">
         <ul class="media-list">
           <% Schedule.where(:type => News).reverse_order.first(3).each do |schedule| %>
+
             <li class="media">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <%= link_to (schedule.title), :controller => 'tops', :action => 'show_news', :id => schedule.id %>
                 </div>
                 <div class="panel-body">
-                  <a class="pull-left" href="#">
+                  <div class="pull-left">
                     <% if (schedule.photo.url == "/photos/original/missing.png") then %>
-                      <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
                     <% else %>
                       <%= image_tag schedule.photo.url, :width => '50', :alt => "image" %>
                     <% end %>
-                  </a>
+                  </div>
                   <div class="media-body">
                     更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
                     内容 ： <%= br(schedule.intro) %>
@@ -54,7 +54,6 @@
                 <div class="panel-body">
                   <div class="pull-left">
                     <% if (schedule.photo.url == "/photos/original/missing.png") then %>
-                      <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
                     <% else %>
                       <%= image_tag schedule.photo.url, :width => '50', :alt => "image" %>
                     <% end %>
@@ -85,7 +84,6 @@
                 <div class="panel-body">
                   <div class="pull-left">
                     <% if (books.photo.url == "/photos/original/missing.png") then %>
-                      <%= image_tag "/photos/original/missing.png", :width => '50', :alt => "image" %>
                     <% else %>
                       <%= image_tag books.photo.url, :width => '50', :alt => "image" %>
                     <% end %>
@@ -132,8 +130,7 @@
     <div class="well">
       <h3>Calendar</h3>
       <div id="calendar_view">
-      
-      
+        <%= image_tag ("cal.png"), :alt => "calendar" %>
       </div> 
     </div>
   </div>
