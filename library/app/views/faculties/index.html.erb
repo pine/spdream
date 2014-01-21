@@ -7,14 +7,18 @@
 <p>登録されている学群の編集ができます。</p>
 <p class="well well-sm fadeout-msg"><%= notice %></p>
 
-<table border="1" cellspacing="0" cellpadding="5">
+<div class="table-container">
+<table class="table table-striped">
+
 	<tr>
+		<th>No.</th>
 		<th>学群名</font></th>
 		<th>編集</th>
 		<th>削除</th>
 	</tr>
-	<% @faculties.each do |faculty| %>
+	<% @faculties.each.with_index(1) do |faculty, index| %>
 		<tr>
+			<td><%= index %></td>
 			<td><%= faculty.name %></td>
 			<td><%= link_to'編集', edit_faculty_path(faculty) %></td>
 			<td><%= link_to'削除', faculty, :confirm => '削除しますか？',
@@ -22,6 +26,7 @@
 		</tr>
 	<% end %>
 </table>
+</div>
 
 <br>
 

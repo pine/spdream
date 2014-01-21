@@ -49,6 +49,9 @@ $navbar-default-link-color: #fff;
 
 $nav-link-padding: 10px 10px;
 
+// ===== Tables ===========================================
+
+$table-bg: white;
 
 // ===== Panels and wells =================================
 // [Common panel styles]
@@ -158,10 +161,40 @@ $list-group-before-after-border-radius: 8px;
 	}
 	
 	.well {
-		margin: 10px 5px 10px 17px;
+		margin: 10px 5px 0 17px;
 		
 		&:empty {
 			display: none;
+		}
+	}
+	
+	.table-container {
+		margin: 32px 8px 10px 8px;
+	}
+	
+	.table.table-striped {
+		background-color: white;
+		
+		border-collapse: separate !important;
+		border-spacing: 2px;
+		border-width: 0px;
+		
+		
+		tr {
+			td {
+				background-color: #eceaf1;
+				border-width: 0px;
+			}
+			
+			&:nth-child(2n) td {
+				background-color: #d7d2e2;
+			}
+		}
+		
+		th {
+			border-bottom: 3px solid white;
+			background-color: #b09ecb !important;
+			color: white;
 		}
 	}
 	
