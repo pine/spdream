@@ -1,31 +1,31 @@
 # coding: utf-8
 
-<h1>Opac+ 親カテゴリ一覧</h1>
+<div class="panel-heading">カテゴリ一覧</div>
 
-<%= link_to '親カテゴリ追加', new_category_path %> | <%= link_to '子カテゴリ追加', new_child_category_path %>
+<div class="panel-body">
+  <p><%= link_to '親カテゴリ追加', new_category_path %> | <%= link_to '子カテゴリ追加', new_child_category_path %></p>
+  
+  <div class="table-container">
+    <table class="table table-striped">
+      <tr>
+        <th>No.</th>
+        <th>名前</th>
+        <th>表示順序</th>
+        <th>編集</th>
+        <th>削除</th>
+      </tr>
+      
+      <% @categories.each.with_index do |category, i| %>
+        <tr>
+          <td><%= i.next %></td>
+          <td><%= link_to category.name, category_path(category) %></td>
+          <td><%= category.priority %></td>
+          <td><%= link_to '編集', edit_category_path(category) %></td>
+          <td><%= link_to '削除', category, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
 
-<p>
-
-<table border='1'>
-  <tr>
-    <th>表示順序</th>
-    <th>名前</th>
-    <th>編集</th>
-    <th>削除</th>
-  </tr>
-
-<% @categories.each do |category| %>
-  <tr>
-    <td><%= category.priority %></td>
-    <td><%= link_to category.name, category_path(category) %></td>
-    <td><%= link_to '編集', edit_category_path(category) %></td>
-    <td><%= link_to '削除', category, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<script>
-$("#books_menu").removeClass("hide");
-</script>
+<%= javascript_include_tag 'cms_books' %>
