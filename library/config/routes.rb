@@ -40,13 +40,18 @@ Library::Application.routes.draw do
       resources :tags
       resources :requests
       resources :child_categories
-      resources :reviews
-      resources :books do
-        post ':id' => 'books#hide_and_restore' # /library/cms-opacplus/books/:id
+      resources :reviews do
         collection do
           get 'deleted'
         end
       end
+      resources :books do
+        collection do
+          get 'deleted'
+        end
+      end
+      post '/books/:id' => 'books#hide_and_restore' # /library/cms-opacplus/books/:id
+      post '/reviews/:id' => 'reviews#hide_and_restore' # /library/cms-opacplus/books/:id
     end
     
     # from Keisuke routes.rb

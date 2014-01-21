@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
@@ -14,6 +16,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show
     @review = Review.find(params[:id])
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @review }
@@ -79,4 +82,33 @@ class ReviewsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+   def hide_and_restore
+    @review = Review.find(params[:id])
+
+    if @review.deleted == true then
+      @review.deleted = false
+    else
+      @review.deleted = true
+    end
+
+    if @review.update_attributes(params[:review])
+      if @review.deleted == false then
+        redirect_to deleted_reviews_path, notice: '復元しました'
+      else
+        redirect_to reviews_path, notice: '削除しました'
+      end
+    else
+      if @review.deleted == false then
+        render action: 'index'
+      else
+        render action: 'deleted'
+      end
+    end
+  end
+
+  def deleted
+    @reviews = Review.all
+  end
+
 end
