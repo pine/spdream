@@ -18,16 +18,14 @@
   		  </tr>
 
   		<% @books.each.with_index do |book, i| %>
-  			<% if book.enabled %>
-  			  <tr>
-            <td><%= i.next %></td>
-  			    <td><%= link_to book.title, book_path(book) %></td>
-  			   	<td><%= book.auther %></td>
-  			    <td><%= book.value %></td>
-  			    <td><%= link_to '編集', edit_book_path(book) %></td>
-  			    <td><%= link_to '削除', book_path(book), :method => :pute %></td>
-  			  </tr>
-  			<% end %>
+			  <tr>
+          <td><%= i.next %></td>
+			    <td><%= link_to book.title, book_path(book) %></td>
+			   	<td><%= book.auther %></td>
+			    <td><%= book.value %></td>
+			    <td><%= link_to '編集', edit_book_path(book) %></td>
+			    <td><%= link_to '削除', book_path(book), :method => :pute %></td>
+			  </tr>
   		<% end %>
   		</table>
   	</div>

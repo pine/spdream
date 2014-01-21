@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.all
+    @books = Book.find(:all, :conditions => { :enabled => true })
 
     respond_to do |format|
       format.html # index.html.erb
@@ -111,7 +111,7 @@ class BooksController < ApplicationController
   end
 
   def deleted
-    @books = Book.all
+    @books = Book.find(:all, :conditions => { :enabled => false })
   end
 
 
