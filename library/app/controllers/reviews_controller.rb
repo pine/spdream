@@ -1,6 +1,4 @@
 class ReviewsController < ApplicationController
-  before_filter :authenticate_user!
-  
   # GET /reviews
   # GET /reviews.json
   def index

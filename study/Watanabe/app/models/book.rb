@@ -4,4 +4,5 @@ class Book < ActiveRecord::Base
   attr_accessible :auther, :enabled, :isbn10, :isbn13, :opac_id, :outline, :photo, :tag0, :tag1, :tag2, :tag3, :tag4, :tag5, :tag6, :tag7, :title, :value, :category_id, :child_category_id
   has_attached_file :photo
   # attr_accessible :title, :body
+  has_many :reviews
 end
