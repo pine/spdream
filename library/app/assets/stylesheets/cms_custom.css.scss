@@ -219,10 +219,11 @@ $list-group-before-after-border-radius: 8px;
 		margin: 0 17px;
 		padding: 20px 30px 15px;
 		
-		.form-group {
-			div {
-				padding-top: 7px;
-				font-size: 13px;
+		&.show-page {
+			.form-group {
+				div {
+					padding: 7px 0 0;
+				}
 			}
 		}
 	}
