@@ -42,11 +42,11 @@ Library::Application.routes.draw do
       resources :child_categories
       resources :reviews
       resources :books do
-        post ':id' => 'books#hide_and_restore' # /library/cms-opacplus/books/:id
         collection do
           get 'deleted'
         end
       end
+      post '/books/:id' => 'books#hide_and_restore' # /library/cms-opacplus/books/:id
     end
     
     # from Keisuke routes.rb
