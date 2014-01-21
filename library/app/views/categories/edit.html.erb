@@ -1,12 +1,12 @@
 # coding: utf-8
 
-<h1>カテゴリ編集</h1>
+<div class="panel-heading">カテゴリ編集</div>
 
-<%= render 'form' %>
+<div class="panel-body">
+  <%= render 'form' %>
+  
+  <p><%= link_to '詳細', @category %> |
+  <%= link_to '一覧', categories_path %></p>
+</div>
 
-<%= link_to '詳細', @category %> |
-<%= link_to '一覧', categories_path %>
-
-<script>
-$("#books_menu").removeClass("hide");
-</script>
+<%= javascript_include_tag 'cms_books' %>
