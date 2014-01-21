@@ -1,6 +1,6 @@
 <% content_for :navbar do %>
-				<li><a href="#">Web Site View</a></li>
-				<li><a href="#">Configure</a></li>
+				<li><a href="<%= root_path %>">Web Site View</a></li>
+				<li><a href="<%= cms_top_config_path %>">Configure</a></li>
 				<li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
 <% end %>
 
