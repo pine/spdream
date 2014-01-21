@@ -1,6 +1,6 @@
 # coding: utf-8
 
-<div class="panel-heading">Opac+ 蔵書一覧</div>
+<div class="panel-heading">蔵書一覧</div>
 
 <div class="panel-body cms-menu">
 	<%= link_to '蔵書追加', new_book_path %> | <%= link_to '削除履歴', deleted_books_path %>
@@ -8,30 +8,29 @@
 	<p>
 
 <% if @books != nil then %>
-
-	<table border='1'>
-	  <tr>
-	    <th>タイトル</th>
-	    <th>著者</th>
-	    <th>評価</th>
-	    <th>編集</th>
-	    <th>削除</th>
-	  </tr>
-
-	<% @books.each do |book| %>
-		<% if book.enabled %>
+	<div class="table-container">
+		<table class="table table-striped">
 		  <tr>
-		    <td><%= link_to book.title, book_path(book) %></td>
-		   	<td><%= book.auther %></td>
-		    <td><%= book.value %></td>
-		    <td><%= link_to '編集', edit_book_path(book) %></td>
-		    <td><%= link_to '削除', book_path(book), :method => :pute %></td>
+		    <th>タイトル</th>
+		    <th>著者</th>
+		    <th>評価</th>
+		    <th>編集</th>
+		    <th>削除</th>
 		  </tr>
-		<% end %>
-	<% end %>
-	</table>
 
-	<br />
+		<% @books.each do |book| %>
+			<% if book.enabled %>
+			  <tr>
+			    <td><%= link_to book.title, book_path(book) %></td>
+			   	<td><%= book.auther %></td>
+			    <td><%= book.value %></td>
+			    <td><%= link_to '編集', edit_book_path(book) %></td>
+			    <td><%= link_to '削除', book_path(book), :method => :pute %></td>
+			  </tr>
+			<% end %>
+		<% end %>
+		</table>
+	</div>
 <% end %>
 </div>
 
