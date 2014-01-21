@@ -218,6 +218,13 @@ $list-group-before-after-border-radius: 8px;
 	form {
 		margin: 0 17px;
 		padding: 20px 30px 15px;
+		
+		.form-group {
+			div {
+				padding-top: 7px;
+				font-size: 13px;
+			}
+		}
 	}
 }
 
@@ -334,10 +341,6 @@ $list-group-before-after-border-radius: 8px;
 	
 	.form-group {
 		margin-bottom: 5px;
-		
-		&:first-child {
-			margin-top: 32px;
-		}
 		
 		&:last-child {
 			margin-top: 28px;
