@@ -157,6 +157,14 @@ $list-group-before-after-border-radius: 8px;
 		font-family: $font-family-japanese-default;
 	}
 	
+	.well {
+		margin: 10px 5px 10px 17px;
+		
+		&:empty {
+			display: none;
+		}
+	}
+	
 	.control-label {
 		padding-right: 0;
 		text-align: right;
