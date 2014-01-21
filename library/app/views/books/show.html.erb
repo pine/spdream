@@ -115,6 +115,24 @@
     </table>
   <% end %>
 
+  <h2>レビュー</h2>
+
+<ul>
+<% if @book.reviews.any? %>
+
+<% @book.reviews.each do |review| %>
+
+<p>
+  <b>タイトル:<%= review.title %></b>
+  <b>コメント:<%= review.comment %></b>
+</p>
+<% end %>
+<% else %>
+<li>レビューなし</li>
+<% end %>
+</ul>
+
+
 <%= link_to '編集', edit_book_path(@book) %> |
 <%= link_to '戻る', books_path %>
 
