@@ -1,27 +1,35 @@
 # coding: utf-8
-<h1>削除履歴</h1>
+<div class="panel-heading">削除履歴</div>
 
-<div id="notice"><%= notice %></div>
-<table border='1'>
-	<tr>
-		<th>タイトル</th>
-		<th>著者</th>
-		<th>評価</th>
-		<th>復元</th>
-		<th>削除</th>
-	</tr>
+<div class="panel-body">
+  <p>説明</p>
+  <p class="well well-sm fadeout-msg"><%= notice %></p>
+  
+  <div class="table-container">
+    <table class="table table-striped">
+    	<tr>
+        <th>No.</th>
+    		<th>タイトル</th>
+    		<th>著者</th>
+    		<th>評価</th>
+    		<th>復元</th>
+    		<th>削除</th>
+    	</tr>
 
-	<% @books.each do |book| %>
-		<% if book.enabled == false%>
-		<tr>
-			<td><%= book.title %></td>
-			<td><%= book.auther %></td>
-			<td><%= book.value %></td>
-			<th><%= link_to '復元', book_path(book), :method => :pute %></th>
-			<th><%= link_to '削除', book, :confirm => 'この本を削除しますか？', :method => :delete %></th>
-		</tr>
-		<% end %>
-	<% end %>
-</table>
-
-<%= link_to '戻る', books_path %>
+    	<% @books.each.with_index do |book, i| %>
+    		<% if book.enabled == false%>
+    		<tr>
+          <td><%= i + 1%></td>
+    			<td><%= book.title %></td>
+    			<td><%= book.auther %></td>
+    			<td><%= book.value %></td>
+    			<th><%= link_to '復元', book_path(book), :method => :pute %></th>
+    			<th><%= link_to '削除', book, :confirm => 'この本を削除しますか？', :method => :delete %></th>
+    		</tr>
+    		<% end %>
+    	<% end %>
+    </table>
+  </div>
+  
+  <%= link_to '戻る', books_path %>
+</div>
