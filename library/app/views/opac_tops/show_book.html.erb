@@ -55,15 +55,19 @@
 <!-- inner contents - book review -->
           <li class="media">
             <div class="panel panel-default">
-              <% 3.times do %>
+              <% @books.reviews.each do |review| %>
               <div class="panel-heading">
                 Review Title
               </div>
               <div class="panel-body">
                 <div class="media-body">
-                  日時 ： Review Timestamp<br>
-                  評価 ： Review Value_good, Value_bad<br>
-                  コメント ： Review Comment
+                  タイトル : <%= review.title %><br>
+                  コメント : <%= review.comment %><br>
+                  いいね : <%= review.value_good %><br>
+                  よくないね : <%= review.value_bad %><br>
+                  日時 : <%= review.date %><br>
+                  蔵書 : <%= review.book.title %><br>
+                  蔵書評価 : <%= review.value_book %>
                 </div>
               </div>
               <% end %>
