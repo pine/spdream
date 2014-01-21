@@ -1,50 +1,51 @@
 # coding: utf-8
 
-<h1>Opac+ レビュー一覧</h1>
+<div class="panel-heading">Opac+ レビュー一覧</div>
 
-<%= link_to 'レビュー追加', new_review_path %> | <%= link_to '削除履歴', deleted_reviews_path %>
-
-<p>
-
-<% if @reviews != nil then %>
-
-  <table border='1'>
-    <tr>
-      <th>タイトル</th>
-      <th>いいね</th>
-      <th>よくないね</th>
-      <th>公開状態</th>
-      <th>蔵書</th>
-      <th>蔵書評価</th>
-      <th>日時</th>
-      <th>編集</th>
-      <th>削除</th>
-    </tr>
-
-  <% @reviews.each do |review| %>
-    <% if review.deleted == false %>
-    <tr>
-      <td><%= link_to review.title, review_path(review) %></td>
-      <td><%= review.value_good %></td>
-      <td><%= review.value_bad %></td>
-      <td>
-        <%if review.enabled %>
-          公開
-        <% else %>
-          非公開
+<div class="panel-body">
+  <p><%= link_to 'レビュー追加', new_review_path %> | <%= link_to '削除履歴', deleted_reviews_path %></p>
+  
+  <% if @reviews != nil then %>
+    <div class="table-container">
+      <table class="table table-striped">
+        <tr>
+          <th>No.</th>
+          <th>タイトル</th>
+          <th>いいね</th>
+          <th>よくないね</th>
+          <th>公開状態</th>
+          <th>蔵書</th>
+          <th>蔵書評価</th>
+          <th>日時</th>
+          <th>編集</th>
+          <th>削除</th>
+        </tr>
+        
+        <% @reviews.each.with_index do |review, i| %>
+          <% if review.deleted == false %>
+          <tr>
+            <td><%= i.next %></td>
+            <td><%= link_to review.title, review_path(review) %></td>
+            <td><%= review.value_good %></td>
+            <td><%= review.value_bad %></td>
+            <td>
+              <%if review.enabled %>
+                公開
+              <% else %>
+                非公開
+              <% end %>
+            </td>
+            <td><%= review.book.title %></td>
+            <td><%= review.value_book %></td>
+            <td><%= review.date %></td>
+            <td><%= link_to '編集', edit_review_path(review) %></td>
+            <td><%= link_to '削除', review_path(review), :method => :pute %></td>
+          </tr>
+          <% end %>
         <% end %>
-      </td>
-      <td><%= review.book.title %></td>
-      <td><%= review.value_book %></td>
-      <td><%= review.date %></td>
-      <td><%= link_to '編集', edit_review_path(review) %></td>
-      <td><%= link_to '削除', review_path(review), :method => :pute %></td>
-    </tr>
-    <% end %>
+      </table>
+    </div>
   <% end %>
-  </table>
-
-  <br />
-<% end %>
+</div>
 
 <%= javascript_include_tag 'cms_books' %>
