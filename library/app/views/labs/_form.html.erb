@@ -1,5 +1,8 @@
-<%= form_for(@lab) do |f| %>
-
+<%= simple_form_for(
+  @lab,
+  html: { class: 'form-horizontal', role: 'form' }
+  ) do |f| %>
+  
 	<% if @lab.errors.any? %>
 		<ul>
  			<% @lab.errors.full_messages.each do |msg| %>
@@ -7,27 +10,43 @@
  			<% end %>
  		</ul>
 	<% end %>
-
-	<table border="1" width="350" cellspacing="0" cellpadding="5">
-		<tr>
-			<div class="field">
-				<th>研究室</th>
-				<th><%= f.text_field :name %></th>
-			</div>
-		</tr>
-		<tr>
-			<div class="field">
-				<th>学群</th>
-				<th>
-					<%= f.select :faculty_id, Faculty.all.map{|faculty| [faculty.name, faculty.id]}%>
-				</th>
-			</div>
-		</tr>
-	</table>
-
-	<br>
-
-	<div class="actions">
-		<%= f.submit %>
-	</div>
+  
+  <div class="form-group">
+    <%= f.label(
+          :name,
+          label: '研究室名&nbsp;:',
+          class: 'control-label col-sm-3'
+    ) %>
+    
+    <div class="col-sm-8">
+      <%= f.text_field(
+          :name,
+          autofocus: true,
+          class: 'form-control'
+      ) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label(
+          :faculty_id,
+          label: '学群名&nbsp;:',
+          class: 'control-label col-sm-3'
+    ) %>
+    
+    <div class="col-sm-8">
+      <%= f.select(
+          :faculty_id,
+          Faculty.all.map{|faculty| [faculty.name, faculty.id]},
+          {}, { class: 'form-control' }
+      ) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-12 text-center">
+      <%= f.button :submit, '送信', class: 'btn btn-default' %>
+    </div>
+  </div>
+</form>
 <% end %>
