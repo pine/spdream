@@ -1,23 +1,37 @@
 <% #coding: utf-8 %>
 
-<p id="notice"><%= notice %></p>
+<div class="panel-heading">イベント詳細「<%= @event.title %>」</div>
 
-<p>
-  <b>日付:</b>
-  <%= @event.date %>
-</p>
-<p>
-  <b>タイトル:</b>
-  <%= @event.title %>
-</p>
-<p>
-  <b>内容:</b>
-  <%= br(@event.intro) %>
-</p>
-<p>
-  <b>写真:</b>
-  <%= image_tag @event.photo.url, :width=>'50' %>
-</p>
-
-<%= link_to '編集', edit_event_path(@event) %> |
-<%= link_to '戻る', events_path %>
+<div class="panel-body">
+  <p class="well_ well-sm fadeout-msg"><%= notice %></p>
+  
+  <form class="form-horizontal show-page" role="form">
+    <div class="form-group">
+      <label class="control-label col-sm-3">日付:&nbsp;</label>
+      <div class="col-sm-8"><%= @event.date %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">タイトル:&nbsp;</label>
+      <div class="col-sm-8"><%= @event.title %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">内容:&nbsp;</label>
+      <div class="col-sm-8"><%= @event.intro %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">写真:&nbsp;</label>
+      <div class="col-sm-8"><%= image_tag @event.photo.url, :width=>'50' %></div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-12 text-center">
+        <input type="button" value="編集" class="btn btn-default" onclick="location.href = '<%= edit_event_path(@event) %>'">
+      </div>
+    </div>
+  </form>
+  
+  <p><%= link_to '戻る', events_path %></p>
+</div>
