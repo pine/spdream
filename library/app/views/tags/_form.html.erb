@@ -74,6 +74,20 @@ html: { class: 'form-horizontal', role: 'form' }) do |f| %>
     </div>
   </div>
   
+    <div class="form-group">
+    <%= f.label(
+        :enabled,
+        label: '承認&nbsp;:',
+        class: 'control-label col-sm-3'
+      ) %>
+    
+    <div class="col-sm-8">
+      <%= f.check_box(
+          :request
+        ) %>
+    </div>
+  </div>
+  
   <div class="form-group">
     <div class="col-sm-12 text-center">
       <%= f.button :submit, '送信', class: 'btn btn-default' %>

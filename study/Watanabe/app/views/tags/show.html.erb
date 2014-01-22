@@ -21,7 +21,20 @@
 
 <p>
   <b>有効状態:</b>
-  <%= @tag.enabled %>
+    <% if @tag.enabled %>
+      有効
+    <% else %>
+      無効
+    <% end %>
+</p>
+
+<p>
+  <b>承認:</b>
+    <% if @tag.request %>
+      承認済み
+    <% else %>
+      未承認
+    <% end %>
 </p>
 
 

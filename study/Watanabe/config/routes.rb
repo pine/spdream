@@ -8,7 +8,11 @@ Opac::Application.routes.draw do
   end
   resources :categories
 
-  resources :tags
+  resources :tags do
+    collection do
+      get 'request'
+    end
+  end
 
   resources :books do
     collection do
@@ -17,6 +21,7 @@ Opac::Application.routes.draw do
   end
  post 'books/:id' => 'books#hide_and_restore'
  post 'reviews/:id' => 'reviews#hide_and_restore'
+ post 'tags/:id' => 'tags#approval'
 
   match "tops", :controller => :opac_tops, :action => :index ,:via => :GET
   match "tops/book", :controller => :opac_tops, :action => :index_book ,:via => :GET

@@ -3,8 +3,9 @@ class CreateTags < ActiveRecord::Migration
     create_table :tags do |t|
       t.string :name
       t.text :intro
-      t.integer :priority
-      t.boolean :enabled
+      t.integer :priority, :default => '1'
+      t.boolean :enabled, :default => false
+      t.boolean :request, :default => false
 
       t.timestamps
     end

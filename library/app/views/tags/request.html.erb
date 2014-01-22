@@ -1,0 +1,27 @@
+# coding: utf-8
+<h1>タグ追加承認</h1>
+
+<div id="notice"><%= notice %></div>
+
+
+
+<table border='1'>
+	<tr>
+		<th>名前</th>
+		<th>承認</th>
+		<th>削除</th>
+	</tr>
+
+	<% Tag.all.each do |tag| %>
+		<% if tag.request == false %>
+		<tr>
+			<td><%= tag.name %></td>
+			<th><%= link_to '承認', tag_path(tag), :method => :pute %></th>
+			<th><%= link_to '削除', tag, :confirm => 'このタグを削除しますか？', :method => :delete %></th>
+		</tr>
+		<% end %>
+	<% end %>
+</table>
+
+
+<%= link_to '戻る', tags_path %>

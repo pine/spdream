@@ -1,7 +1,6 @@
+# coding: utf-8
+
 class TagsController < ApplicationController
-  layout 'cms_main'
-  before_filter :authenticate_user!
-  
   # GET /tags
   # GET /tags.json
   def index
@@ -85,4 +84,19 @@ class TagsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+ def approval
+    @tag = Tag.find(params[:id])
+
+    @tag.request = true
+    @tag.enabled = true
+    if @tag.update_attributes(params[:tag])
+        redirect_to request_tags_path, notice: '承認しました'
+    end
+  end
+
+  def deleted
+    @tags = Tag.all
+  end
+
 end

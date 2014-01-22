@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140121061943) do
+ActiveRecord::Schema.define(:version => 20140122072239) do
 
   create_table "books", :force => true do |t|
     t.string   "photo"
@@ -82,10 +82,11 @@ ActiveRecord::Schema.define(:version => 20140121061943) do
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.text     "intro"
-    t.integer  "priority"
-    t.boolean  "enabled"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "priority",   :default => 1
+    t.boolean  "enabled",    :default => false
+    t.boolean  "request",    :default => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
 end

@@ -37,7 +37,11 @@ Library::Application.routes.draw do
     # from Watanabe routes.rb
     scope 'cms-opacplus' do
       resources :categories
-      resources :tags
+      resources :tags do
+        collection do
+          get 'request'
+        end
+      end
       resources :requests
       resources :child_categories
       resources :reviews do
@@ -51,7 +55,8 @@ Library::Application.routes.draw do
         end
       end
       post '/books/:id' => 'books#hide_and_restore' # /library/cms-opacplus/books/:id
-      post '/reviews/:id' => 'reviews#hide_and_restore' # /library/cms-opacplus/books/:id
+      post '/reviews/:id' => 'reviews#hide_and_restore' # /library/cms-opacplus/reviws/:id
+      post 'tags/:id' => 'tags#approval' # /library/cms-opacplus/tags/:id
     end
     
     # from Keisuke routes.rb

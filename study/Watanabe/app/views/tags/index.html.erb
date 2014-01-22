@@ -4,7 +4,7 @@
 
 <p>
 
-<%= link_to 'タグ追加', new_tag_path %>
+<%= link_to 'タグ追加', new_tag_path %>　| <%= link_to 'タグ追加承認', request_tags_path %>
 
 <p>
 
@@ -19,6 +19,7 @@
 
 
 <% @tags.each do |tag| %>  <tr>
+  <% if tag.request %>
     <td><%= tag.priority %></td>
     <td><%= link_to tag.name, tag_path(tag) %></td>
     <td>
@@ -32,6 +33,7 @@
     <td><%= link_to '編集', edit_tag_path(tag) %></td>
     <td><%= link_to '削除', tag, method: :delete, data: { confirm: '本当に削除しますか?' } %></td>
   </tr>
+  <% end %>
 <% end %>
 </table>
 

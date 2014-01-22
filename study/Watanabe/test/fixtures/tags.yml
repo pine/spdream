@@ -5,9 +5,11 @@ one:
   intro: MyText
   priority: 1
   enabled: false
+  request: false
 
 two:
   name: MyString
   intro: MyText
   priority: 1
   enabled: false
+  request: false
