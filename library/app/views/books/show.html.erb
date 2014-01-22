@@ -1,121 +1,154 @@
 # coding: utf-8
 
-<h1><%= @book.title %>　詳細</h1>
+<div class="panel-heading">蔵書詳細「<%= @book.title %>」</div>
 
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>タイトル:</b>
-  <%= @book.title %>
-</p>
-
-<p>
-  <b>著者:</b>
-  <%= @book.auther %>
-</p>
-
-<p>
-  <b>あらすじ:</b>
-  <%= @book.outline %>
-</p>
-
-<p>
-  <b>Isbn:</b>
-  <% if @book.isbn10 == '0' %>
-    <%= @book.isbn13 %>
-  <% else %>
-    <%= @book.isbn10 %>
-  <% end %>
-</p>
-
-<p>
-  <b>資料id:</b>
-  <%= @book.opac_id %>
-</p>
-
-<p>
-  <b>評価:</b>
-  <%= @book.value %>
-</p>
-
-<p>
-  <b>親カテゴリ:</b>
-  <%= @book.category.name %>
-</p>
-
-<p>
-  <b>子カテゴリ:</b>
-  <%= @book.child_category.name %>
-</p>
-
-<% if @book.photo_file_name == '' %>
-<% else %>
-<p>
-  <b>画像:</b>
-  <%= image_tag @book.photo.url, :width=>'50' %>
-</p>
-<% end %>
-
-  <% if @book.tag0 == '' && @book.tag1 == '' && @book.tag2 == '' && @book.tag3 == '' && @book.tag4 == '' && @book.tag5 == '' && @book.tag6 == '' && @book.tag7 == '' %>
-    <p>
-      <b>タグなし</b>
-  　 </p>
-
-  <%else%>
-
-    <table border='1'>
-      <% if @book.tag0 != '' %>
-        <tr>
-          <th>タグ1</th>
-          <th><%= @book.tag0 %></th>
-        </tr>
-      <% end %>
-      <% if @book.tag1 != '' %>
-        <tr>
-          <th>タグ2</th>
-          <th><%= @book.tag1 %></th>
-        </tr>
-      <% end %>
-      <% if @book.tag2 != '' %>
-        <tr>
-          <th>タグ3</th>
-          <th><%= @book.tag2 %></th>
-        </tr>
-      <% end %>
-      <% if @book.tag3 != '' %>
-        <tr>
-          <th>タグ4</th>
-          <th><%= @book.tag3 %></th>
-        </tr>
-      <% end %>
-      <% if @book.tag4 != '' %>
-        <tr>
-          <th>タグ5</th>
-          <th><%= @book.tag4 %></th>
-        </tr>
-      <% end %>
-      <% if @book.tag5 != '' %>
-        <tr>
-          <th>タグ6</th>
-          <th><%= @book.tag5 %></th>
-        </tr>
-      <% end %>
-      <% if @book.tag6 != '' %>
-        <tr>
-          <th>タグ7</th>
-          <th><%= @book.tag6 %></th>
-        </tr>
-      <% end %>
-      <% if @book.tag7 != '' %>
-        <tr>
-          <th>タグ8</th>
-          <th><%= @book.tag7 %></th>
-        </tr>
-      <% end %>
-    </table>
-  <% end %>
-
-<%= link_to '編集', edit_book_path(@book) %> |
-<%= link_to '戻る', books_path %>
+<div class="panel-body">
+  <p class="well well-sm fadeout-msg"><%= notice %></p>
+  
+  <form class="form-horizontal show-page" role="form">
+    <div class="form-group">
+      <label class="control-label col-sm-3">タイトル:&nbsp;</label>
+      <div class="col-sm-8"><%= @book.title %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">著者:&nbsp;</label>
+      <div class="col-sm-8"><%= @book.auther %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">あらすじ:&nbsp;</label>
+      <div class="col-sm-8"><%= @book.outline %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">ISBN:&nbsp;</label>
+      <div class="col-sm-8">
+        <% if @book.isbn10 == '0' %>
+          <%= @book.isbn13 %>
+        <% else %>
+          <%= @book.isbn10 %>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">資料 ID:&nbsp;</label>
+      <div class="col-sm-8"><%= @book.opac_id %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">評価:&nbsp;</label>
+      <div class="col-sm-8"><%= @book.value %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">親カテゴリ:&nbsp;</label>
+      <div class="col-sm-8"><%= @book.category.name %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">子カテゴリ:&nbsp;</label>
+      <div class="col-sm-8"><%= @book.child_category.name %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">画像:&nbsp;</label>
+      <div class="col-sm-8"><%= image_tag @book.photo.url, :width=>'50' %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">タグ:&nbsp;</label>
+      <div class="col-sm-8">
+        <% if @book.tag0 == '' && @book.tag1 == '' && @book.tag2 == '' && @book.tag3 == '' && @book.tag4 == '' && @book.tag5 == '' && @book.tag6 == '' && @book.tag7 == '' %>
+          タグなし
+        <% else %>
+          <table class="table table-striped">
+            <% if @book.tag0 != '' %>
+              <tr>
+                <th>タグ1</th>
+                <th><%= @book.tag0 %></th>
+              </tr>
+            <% end %>
+            <% if @book.tag1 != '' %>
+              <tr>
+                <th>タグ2</th>
+                <th><%= @book.tag1 %></th>
+              </tr>
+            <% end %>
+            <% if @book.tag2 != '' %>
+              <tr>
+                <th>タグ3</th>
+                <th><%= @book.tag2 %></th>
+              </tr>
+            <% end %>
+            <% if @book.tag3 != '' %>
+              <tr>
+                <th>タグ4</th>
+                <th><%= @book.tag3 %></th>
+              </tr>
+            <% end %>
+            <% if @book.tag4 != '' %>
+              <tr>
+                <th>タグ5</th>
+                <th><%= @book.tag4 %></th>
+              </tr>
+            <% end %>
+            <% if @book.tag5 != '' %>
+              <tr>
+                <th>タグ6</th>
+                <th><%= @book.tag5 %></th>
+              </tr>
+            <% end %>
+            <% if @book.tag6 != '' %>
+              <tr>
+                <th>タグ7</th>
+                <th><%= @book.tag6 %></th>
+              </tr>
+            <% end %>
+            <% if @book.tag7 != '' %>
+              <tr>
+                <th>タグ8</th>
+                <th><%= @book.tag7 %></th>
+              </tr>
+            <% end %>
+          </table>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">レビュー:&nbsp;</label>
+      <div class="col-sm-8">
+        <% if @book.reviews.any? %>
+          <table class="table table-striped">
+            <tr>
+              <th>No.</th>
+              <th>タイトル</th>
+              <th>コメント</th>
+            </tr>
+            
+            <% @book.reviews.each do |review| %>
+              <tr>
+                <td>タイトル:<%= review.title %></td>
+                <td>コメント:<%= review.comment %></td>
+              </tr>
+            <% end %>
+          </table>
+        <% else %>
+          レビューなし
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-12 text-center">
+        <input type="button" value="編集" class="btn btn-default" onclick="location.href = '<%= edit_book_path(@book) %>'">
+      </div>
+    </div>
+  </form>
+  
+  <p><%= link_to '戻る', books_path %></p>
+</div>
 
 <%= javascript_include_tag 'cms_books' %>

@@ -15,18 +15,22 @@
 </p>
 
 <p>
-  <b>評価上:</b>
+  <b>いいね:</b>
   <%= @review.value_good %>
 </p>
 
 <p>
-  <b>評価下:</b>
+  <b>よくないね:</b>
   <%= @review.value_bad %>
 </p>
 
 <p>
   <b>公開状態:</b>
-  <%= @review.enabled %>
+  <% if @review.enabled %>
+    公開
+  <% else %>
+    非公開
+  <% end %>
 </p>
 
 <p>
@@ -35,10 +39,14 @@
 </p>
 
 <p>
-  <b>蔵書id:</b>
-  <%= @review.book %>
+  <b>蔵書:</b>
+  <%= @review.book.title %>
 </p>
 
+<p>
+  <b>蔵書評価:</b>
+  <%= @review.value_book %>
+</p>
 
 
 <%= link_to '編集', edit_review_path(@review) %> |

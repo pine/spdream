@@ -14,3 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require holder
+
+$(function() {
+	$(".fadeout-msg").delay(1000).fadeOut("slow");
+});

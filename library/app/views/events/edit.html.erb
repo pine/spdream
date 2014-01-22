@@ -1,8 +1,10 @@
 <% #coding: utf-8 %>
 
-<h1>編集</h1>
+<div class="panel-heading">イベント編集</div>
 
-<%= render 'form' %>
+<div class="panel-body">
+  <%= render 'form' %>
 
-<%= link_to '詳細', @event %> |
-<%= link_to '戻る', events_path %>
+  <p><%= link_to '詳細', @event %> |
+  <%= link_to '戻る', events_path %></p>
+</div>

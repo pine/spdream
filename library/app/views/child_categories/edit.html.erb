@@ -1,8 +1,12 @@
 # coding: utf-8
 
-<h1>子カテゴリ編集</h1>
+<div class="panel-heading">子カテゴリ編集</div>
 
-<%= render 'form' %>
+<div class="panel-body">
+  <%= render 'form' %>
+  
+  <p><%= link_to '詳細', @child_category %> |
+  <%= link_to '戻る', :controller => "categories", :action => "show", :id => @child_category.category_id %></p>
+</div>
 
-<%= link_to '詳細', @child_category %> |
-<%= link_to '戻る', :controller => "categories", :action => "show", :id => @child_category.category_id %>
+<%= javascript_include_tag 'cms_books' %>

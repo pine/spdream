@@ -1,36 +1,119 @@
 # coding: utf-8
 
-<h1>レビュー追加</h1>
+<div class="panel-heading">レビュー追加</div>
 
-<%= form_for(@review) do |f| %>
-  <% if @review.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+<div class="panel-body">
+  <%= simple_form_for(@review, html: { class: 'form-horizontal', role: 'form' }) do |f| %>
+    <% if @review.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
-      <ul>
-      <% @review.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @review.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= f.label(
+          :title,
+          label: 'タイトル&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+      
+      <div class="col-sm-8">
+        <%= f.text_field(
+            :title,
+            autofocus: true,
+            class: 'form-control'
+          ) %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label(
+          :comment,
+          label: 'コメント&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+      
+      <div class="col-sm-8">
+        <%= f.text_field(
+            :comment,
+            class: 'form-control'
+          ) %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label(
+          :date,
+          label: '日時&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+      
+      <div class="col-sm-8">
+        <%= f.datetime_select(
+            :date,
+            class: 'form-control'
+          ) %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label(
+          :enabled,
+          label: '公開状態&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+      
+      <div class="col-sm-8">
+        <%= f.check_box(
+            :enabled
+          ) %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label(
+          :book_id,
+          label: '蔵書&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+      
+      <div class="col-sm-8">
+        <%= f.select(
+              :book_id,
+              Book.all.map{|book| [book.title, book.id]},
+              {}, { class: 'form-control' }) %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label(
+          :value_book,
+          label: '蔵書評価&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+      
+      <div class="col-sm-8">
+        <%= f.select(
+              :value_book,
+              [['1'], ['2'], ['3'], ['4'], ['5']],
+              {}, { class: 'form-control' }) %>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-12 text-center">
+        <%= f.button :submit, '送信', class: 'btn btn-default' %>
+      </div>
     </div>
   <% end %>
+  
+  <p><%= link_to '戻る', reviews_path %></p>
+</div>
 
-  <div class="field">
-    <%= f.label :タイトル %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :コメント %><br />
-    <%= f.text_area :comment %>
-  </div>
-  <div class="field">
-    <%= f.label :日時 %><br />
-    <%= f.datetime_select :date %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<%= link_to '戻る', reviews_path %>
+<%= javascript_include_tag 'cms_books' %>

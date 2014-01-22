@@ -2,13 +2,11 @@
 <div class="panel-heading">研究室新規登録</div>
 
 <div class="panel-body">
-
-<div id="notice"><%= notice %></div>
-
-<%= render 'form' %>
-
-<%= link_to '戻る', 'history.back()' %>
-
+  <p class="well well-sm fadeout-msg"><%= notice %></p>
+  
+  <%= render 'form' %>
+  
+  <p><%= link_to '戻る', labs_path %></p>
 </div>
 
 <%= javascript_include_tag 'cms_theses' %>

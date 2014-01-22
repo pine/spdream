@@ -27,6 +27,20 @@
     <%= f.label :日時 %><br />
     <%= f.datetime_select :date %>
   </div>
+ <div class="field">
+    <%= f.label :公開状態 %><br />
+    <%= f.check_box :enabled %>
+  </div>
+   <div class="field">
+    <%= f.label :蔵書 %><br />
+    <%= f.select :book_id, Book.all.map{|book| [book.title, book.id]}%>
+  </div>
+ <div class="field">
+    <%= f.label :蔵書評価 %><br />
+    <%= f.select :value_book, [['1'], ['2'], ['3'], ['4'], ['5']]%>
+  </div>
+
+
 
   <div class="actions">
     <%= f.submit %>

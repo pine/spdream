@@ -1,11 +1,10 @@
 # coding: utf-8
 
-<h1>親カテゴリ追加</h1>
+<div class="panel-heading">親カテゴリ追加</div>
 
-<%= render 'form' %>
+<div class="panel-body">
+  <%= render 'form' %>
+  <p><%= link_to '戻る', categories_path %></p>
+</div>
 
-<%= link_to '戻る', categories_path %>
-
-<script>
-$("#books_menu").removeClass("hide");
-</script>
+<%= javascript_include_tag 'cms_books' %>

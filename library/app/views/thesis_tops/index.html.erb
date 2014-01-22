@@ -25,11 +25,28 @@
 <div class="row">
 	<div class="col-md-4">
 		<div class="well">
-			<%= link_to faculty.name, :controller => 'thesis_tops', :action => 'faculty', :id => faculty.id %>
+			<strong>
+				<%= link_to faculty.name,
+					:controller => 'thesis_tops',
+					:action => 'faculty',
+					:id => faculty.id %>
+			</strong>
 		</div>
 	</div>
 	<div class="col-md-8">
-		研究室
+		<div class="list">
+			<ul>
+		  		<% Lab.find(:all, :conditions => {:faculty_id => faculty.id}).each do |lab| %>
+  				<li>
+  					<%= link_to lab.name, 
+  						:controller => 'thesis_tops',
+  						:action => 'lab',
+  						:faculty_id => faculty.id,
+  						:lab_id => lab.id %>
+      			</li>
+      			<% end %>
+      		</ul>
+      	</div>
 	</div>
 </div>
 <% end %>

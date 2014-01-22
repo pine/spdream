@@ -1,31 +1,38 @@
 # coding: utf-8
 
-<h1><%= @tag.name %>　詳細</h1>
+<div class="panel-heading">タグ詳細「<%= @tag.name %>」</div>
 
-<p id="notice"><%= notice %></p>
+<div class="panel-body">
 
-<p>
-  <b>名前:</b>
-  <%= @tag.name %>
-</p>
-
-<p>
-  <b>説明:</b>
-  <%= @tag.intro %>
-</p>
-
-<p>
-  <b>表示順序:</b>
-  <%= @tag.priority %>
-</p>
-
-<p>
-  <b>有効状態:</b>
-  <%= @tag.enabled %>
-</p>
-
-
-<%= link_to '編集', edit_tag_path(@tag) %> |
-<%= link_to '戻る', tags_path %>
+  <form class="form-horizontal show-page" role="form">
+    <div class="form-group">
+      <label class="control-label col-sm-3">名前:&nbsp;</label>
+      <div class="col-sm-8"><%= @tag.name %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">説明:&nbsp;</label>
+      <div class="col-sm-8"><%= @tag.intro %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">表示順序:&nbsp;</label>
+      <div class="col-sm-8"><%= @tag.priority %></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="control-label col-sm-3">有効状態:&nbsp;</label>
+      <div class="col-sm-8"><%= @tag.enabled ? '有効' : '無効' %></div>
+    </div>
+    
+    <div class="form-group">
+      <div class="col-sm-12 text-center">
+        <input type="button" value="編集" class="btn btn-default" onclick="location.href = '<%= edit_tag_path(@tag) %>'">
+      </div>
+    </div>
+  </form>
+  
+  <%= link_to '戻る', tags_path %>
+</div>
 
 <%= javascript_include_tag 'cms_books' %>

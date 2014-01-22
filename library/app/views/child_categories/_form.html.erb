@@ -1,6 +1,8 @@
 # coding: utf-8
 
-<%= form_for(@child_category) do |f| %>
+<%= simple_form_for(
+      @child_category,
+      html: { class: 'form-horizontal', role: 'form' }) do |f| %>
   <% if @child_category.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@child_category.errors.count, "error") %> prohibited this child_category from being saved:</h2>
@@ -12,24 +14,72 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :名前 %><br />
-    <%= f.text_field :name %>
+  
+  <div class="form-group">
+    <%= f.label(
+      :name,
+      label: '名前&nbsp;:',
+      class: 'control-label col-sm-3'
+    ) %>
+    
+    <div class="col-sm-8">
+      <%= f.text_field(
+          :name,
+           autofocus: true,
+           class: 'form-control'
+      ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :説明 %><br />
-    <%= f.text_area :description %>
+  
+  <div class="form-group">
+    <%= f.label(
+      :description,
+      label: '説明&nbsp;:',
+      class: 'control-label col-sm-3'
+    ) %>
+    
+    <div class="col-sm-8">
+      <%= f.text_area(
+          :description,
+           class: 'form-control'
+      ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :表示順序 %><br />
-    <%= f.number_field :priority %>
+  
+  <div class="form-group">
+    <%= f.label(
+      :priority,
+      label: '表示順序&nbsp;:',
+      class: 'control-label col-sm-3'
+    ) %>
+    
+    <div class="col-sm-8">
+      <%= f.text_field(
+          :priority,
+           class: 'form-control'
+      ) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :親カテゴリ %><br />
-    <%= f.select :category_id, Category.all.map{|category| [category.name, category.id]}%>
+  
+  <div class="form-group">
+    <%= f.label(
+      :category_id,
+      label: '親カテゴリ&nbsp;:',
+      class: 'control-label col-sm-3'
+    ) %>
+    
+    <div class="col-sm-8">
+      <%= f.select(
+            :category_id,
+            Category.all.map{|category| [category.name, category.id]},
+            {}, { class: 'form-control' }
+      ) %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  
+  <div class="form-group">
+    <div class="col-sm-12 text-center">
+      <%= f.button :submit, '送信', class: 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

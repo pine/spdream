@@ -113,7 +113,7 @@
       <%= f.select(
             :value,
             [['1'], ['2'], ['3'], ['4'], ['5']],
-            class: 'form-control'
+            {}, { class: 'form-control' }
           ) %>
     </div>
   </div>
@@ -128,7 +128,7 @@
       <%= f.select(
             :category_id,
             Category.all.map{|category| [category.name, category.id]},
-            class: 'form-control'
+            {}, { class: 'form-control' }
           ) %>
     </div>
   </div>
@@ -143,7 +143,7 @@
       <%= f.select(
             :child_category_id,
             ChildCategory.all.map{|child_category| [child_category.name, child_category.id]},
-            class: 'form-control'
+            {}, { class: 'form-control' }
           ) %>
     </div>
   </div>
@@ -156,48 +156,103 @@
         ) %>
     <div class="col-sm-8">
       <%= f.file_field(
-            :photo
+            :photo,
+            class: 'form-control'
           ) %>
     </div>
   </div>
   
-  <div class="field">
-    <%= f.label  :タグ1 %><br />
-    <%= f.select :tag0, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label  :タグ2 %><br />
-    <%= f.select :tag1, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label  :タグ3 %><br />
-    <%= f.select :tag2, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label  :タグ4 %><br />
-    <%= f.select :tag3, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label  :タグ5 %><br />
-    <%= f.select :tag4, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label  :タグ6 %><br />
-    <%= f.select :tag5, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label  :タグ7 %><br />
-    <%= f.select :tag6, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
-  </div>
-  <div class="field">
-    <%= f.label  :タグ8 %><br />
-    <%= f.select :tag7, Tag.all.map{|tag| [tag.name, tag.name]}, :include_blank => true %>
-  </div>
-
-
+  <% 8.times do |i| %>
+    <div class="form-group">
+      <%= f.label(
+            "tag#{i}".to_sym,
+            label: "タグ#{i.next} &nbsp;:",
+            class: 'control-label col-sm-3'
+          ) %>
+      <div class="col-sm-8">
+        <%= f.select(
+              "tag#{i}".to_sym, [],
+              { include_blank: true },
+              { class: 'form-control tag-list' }
+            ) %>
+      </div>
+    </div>
+  <% end %>
+  
   <div class="form-group">
     <div class="col-sm-12 text-center">
       <%= f.button :submit, '送信', class: 'btn btn-default' %>
     </div>
   </div>
 <% end %>
+
+<script>
+
+!function(){
+  var tags = <%= raw Tag.all.to_json %>;
+  var tagFlags = [];
+  var tagElements = $('.tag-list');
+  
+  function initTagFlags() {
+    $.each(tags, function() {
+      tagFlags[this.id] = true;
+    });
+  }
+  
+  function addListener() {
+    tagElements.on('change', function() {
+      updateTagFlags();
+      updateTagHtml();
+    });
+  }
+  
+  function getEnabledTags(currentTagId) {
+    var enabledTags = [];
+    
+    $.each(tags, function() {
+      if (tagFlags[this.id] || this.id == currentTagId) {
+        enabledTags.push(this);
+      }
+    });
+    
+    return enabledTags;
+  }
+  
+  function updateTagFlags() {
+    initTagFlags();
+    
+    tagElements.each(function() {
+      if ($(this).val() != "") {
+        tagFlags[$(this).find(':selected').attr('data-tag-id')] = false;
+      }
+    });
+  }
+  
+  function updateTagHtml() {
+    tagElements.each(function(i, tagElement) {
+      var selected = $(tagElement).find(':selected');
+      var selectedId = selected.attr('data-tag-id');
+      var enabledTags = getEnabledTags(selectedId);
+      
+      $(tagElement).find(':not(:empty)').remove();
+      
+      $.each(enabledTags, function(j, enabledTag) {
+        var ele = $('<option />')
+          .text(enabledTag.name)
+          .attr('data-tag-id', enabledTag.id);
+          
+          if (enabledTag.id == selectedId) {
+            ele.attr('selected', 'selected');
+          }
+          
+          ele.appendTo(tagElement);
+      });
+    });
+  }
+  
+  initTagFlags();
+  addListener();
+  updateTagHtml();
+}();
+
+</script>

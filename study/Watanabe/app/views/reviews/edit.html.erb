@@ -24,11 +24,11 @@
     <%= f.text_area :comment %>
   </div>
   <div class="field">
-    <%= f.label :評価上 %><br />
+    <%= f.label :いいね %><br />
     <%= f.number_field :value_good %>
   </div>
   <div class="field">
-    <%= f.label :評価下 %><br />
+    <%= f.label :よくないね %><br />
     <%= f.number_field :value_bad %>
   </div>
   <div class="field">
@@ -38,6 +38,14 @@
   <div class="field">
     <%= f.label :日時 %><br />
     <%= f.datetime_select :date %>
+  </div>
+  <div class="field">
+    <%= f.label :蔵書 %><br />
+    <%= f.select :book_id, Book.all.map{|book| [book.title, book.id]}%>
+  </div>
+   <div class="field">
+    <%= f.label :蔵書評価 %><br />
+    <%= f.select :value_book, [['1'], ['2'], ['3'], ['4'], ['5']]%>
   </div>
   <div class="field">
     <%= f.label :削除フラグ %><br />

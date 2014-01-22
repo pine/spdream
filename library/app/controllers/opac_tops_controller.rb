@@ -6,7 +6,7 @@ class OpacTopsController < ApplicationController
 	end
 
 	def index_book
-        @books = Book.find(params[:id])
+        @books = Book.find(:all, :conditions => {:category_id => params[:category_id], :child_category_id => params[:child_category_id]})
         @categories = Category.find(:all, :order => "priority")
         @child_categories = ChildCategory.find(params[:id])
 	end
@@ -19,6 +19,7 @@ class OpacTopsController < ApplicationController
 
     def show_book
         @books = Book.find(params[:id])
+        @reviews = Review.find(:all, :conditions => {:book_id => params[:id]})
         @categories = Category.find(:all, :order => "priority")
         @child_categories = ChildCategory.find(params[:id])
     end

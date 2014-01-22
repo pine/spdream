@@ -85,7 +85,7 @@ textarea {
   border-bottom: dotted $maincolor;
 }
 
-.inner_title > h3{
+.inner_title > h3 {
   margin: 5px;
 }
 
@@ -98,6 +98,21 @@ textarea {
 .inner_contents {
   margin: 15px 15px 40px;
   padding: 5px;
+}
+
+.book_review .btn {
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+}
+
+.list ul {
+  margin-bottom: 15px;
+}
+
+.list li {
+  display: inline-block;
+  width: 100px;
 }
 
 /* Typography */
