@@ -2,23 +2,24 @@
 <% if @theses != nil then %>
 <div class="table-container">
   <table class="table table-striped">
-  	<tr>
-  		<th>タイトル</font></th>
-  		<th>著者</font></th>
-  		<th>学籍番号</th>
-  		<th>年度</th>
-  		<th>学群</th>
-  		<th>研究室</th>
-  		<th>課程</th>
-  		<th>編集</th>
-  		<th>削除</th>
-  	</tr>
-
-  	<% @theses.each do |thesis| %>
-  		<% if thesis.enabled %>
-  			<tr>
-  			<td><%= link_to thesis.title, :action => 'download', :id => thesis.id %></td>
-  			<td><%= thesis.author %></td>
+    <tr>
+      <th>No.</th>
+      <th>タイトル</th>
+      <th>著者</th>
+      <th>学籍番号</th>
+      <th>年度</th>
+      <th>学群</th>
+      <th>研究室</th>
+      <th>課程</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+    
+    <% @theses.each.with_index do |thesis, i| %>
+      <tr>
+        <td><%= i.next %>
+        <td><%= link_to thesis.title, :action => 'download', :id => thesis.id %></td>
+        <td><%= thesis.author %></td>
   			<td><%= thesis.student_id %></td>
   			<td><%= thesis.year %></td>
   			<td>
@@ -36,11 +37,10 @@
   				<% end %>
   			</td>
   			<td><%= thesis.course %></td>
-  			<th><%= link_to '編集', edit_thesis_path(thesis) %></th>
-  			<th><%= link_to '削除', thesis_path(thesis), :method => :pute %></th>
-  			</tr>
-  		<% end %>
-  	<% end %>
+  			<td><%= link_to '編集', edit_thesis_path(thesis) %></td>
+  			<td><%= link_to '削除', thesis_path(thesis), :method => :pute %></td>
+  		</tr>
+    <% end %>
   </table>
 </div>
 <% end %>

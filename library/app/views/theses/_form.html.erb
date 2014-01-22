@@ -85,7 +85,7 @@
 							[faculty.name, faculty.id]
 						},
 						{ },
-						{ :id => 'facultys' }
+						{ id: 'facultys', class: 'form-control' }
 						%>
     </div>
   </div>
@@ -100,7 +100,7 @@
     <div class="col-sm-8">
 	    <%= f.select :lab_id, [],
 						{ :include_blank => '無所属' },
-						{ :id => 'labs' }
+						{ id: 'labs', class: 'form-control' }
 					 %>
     </div>
   </div>
@@ -113,7 +113,10 @@
     	) %>
     
     <div class="col-sm-8">
-	    <%= f.select :course, [['学士'], ['修士'], ['博士']]%>
+	    <%= f.select(
+            :course,
+            [['学士'], ['修士'], ['博士']],
+            {}, { class: 'form-control' } ) %>
     </div>
   </div>
   
