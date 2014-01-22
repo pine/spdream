@@ -22,6 +22,12 @@ class OpacTopsController < ApplicationController
         @reviews = Review.find(:all, :conditions => {:book_id => params[:id]})
         @categories = Category.find(:all, :order => "priority")
         @child_categories = ChildCategory.find(params[:id])
+        @review_new = Review.new
+
+        respond_to do |format|
+            format.html
+            format.json { render json: @review_new }
+        end
     end
 
 end
