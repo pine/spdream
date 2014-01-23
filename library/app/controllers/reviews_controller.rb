@@ -111,7 +111,7 @@ class ReviewsController < ApplicationController
   end
 
   def deleted
-    @reviews = Review.all
+    @reviews = Review.find(:all, :conditions => { :deleted => true })
   end
 
 end
