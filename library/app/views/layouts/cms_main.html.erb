@@ -10,24 +10,24 @@
 </div>
 <div class="col-sm-9 col-md-8 col-lg-7">
 	<div class="panel panel-default" id="cms_main">
-		<script>
-			// サイドバーとコンテンツと高さを揃える
-			$(function(){
-				var cms_main = $("#cms_main");
-				var cms_sidemenu = $("#cms_sidemenu");
-				
-				var cms_main_height = parseInt(cms_main.css("height"), 10);
-				var cms_sidemenu_height = parseInt(cms_sidemenu.css("height"), 10);
-				
-				if (cms_main_height < cms_sidemenu_height) {
-					cms_main.css({ height: cms_sidemenu_height + "px" });
-				}
-			});
-		</script>
-		
 		<%= yield %>
 	</div>
 </div>
+
+<script>
+// サイドバーとコンテンツと高さを揃える
+$(function(){
+	var cms_main = $("#cms_main");
+	var cms_sidemenu = $("#cms_sidemenu");
+	
+	var cms_main_height = parseInt(cms_main.css("height"), 10);
+	var cms_sidemenu_height = parseInt(cms_sidemenu.css("height"), 10);
+	
+	if (cms_main_height < cms_sidemenu_height) {
+		cms_main.css({ minHeight: cms_sidemenu_height + "px" });
+	}
+});
+</script>
 <% end %>
 
 <%= render file: 'layouts/cms_application' %>

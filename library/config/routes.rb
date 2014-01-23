@@ -131,6 +131,8 @@ Library::Application.routes.draw do
         :action => :show_book,
         :via => :GET,
         :as => 'opacplus_bookinfo'
+      
+      post 'reviews' => 'review_tops#create', :as => 'opacplus_reviews'
     end
     
     resources :theses do

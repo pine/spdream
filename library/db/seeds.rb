@@ -36,6 +36,13 @@ Lab.create :name => '星野研究室', :faculty_id => 1
 Lab.create :name => '山本研究室', :faculty_id => 1
 Lab.create :name => '真田研究室', :faculty_id => 1
 
+Lab.create :name => '吉沢研究室', :faculty_id => 2
+Lab.create :name => '堀澤研究室', :faculty_id => 2
+Lab.create :name => '角研究室', :faculty_id => 2
+Lab.create :name => '前田下研究室', :faculty_id => 2
+Lab.create :name => '村上研究室', :faculty_id => 2
+Lab.create :name => '榎本研究室', :faculty_id => 2
+
 Lab.create :name => '植田研究室', :faculty_id => 3
 Lab.create :name => '松崎研究室', :faculty_id => 3
 Lab.create :name => '島村研究室', :faculty_id => 3
@@ -52,6 +59,7 @@ Lab.create :name => '任研究室', :faculty_id => 3
 Lab.create :name => '横山研究室', :faculty_id => 3
 Lab.create :name => '繁桝研究室', :faculty_id => 3
 
+<<<<<<< HEAD
 #親カテゴリ
 Category.create :name => '情報学群', :description => '情報学群のカテゴリです。', :priority => 1
 Category.create :name => '環境理工学群', :description => '環境理工学群のカテゴリです。', :priority => 2
@@ -142,3 +150,11 @@ Review.create :title => 'わかりやすくていいです', :comment => '読み
 
 
 
+=======
+Lab.create :name => '岡本研究室', :faculty_id => 4
+Lab.create :name => '桂研究室', :faculty_id => 4
+Lab.create :name => '坂本研究室', :faculty_id => 4
+Lab.create :name => '園下研究室', :faculty_id => 4
+Lab.create :name => '中村研究室', :faculty_id => 4
+Lab.create :name => '馬渕研究室', :faculty_id => 4
+>>>>>>> 291d64f0c5319fdb90546380e15b67d7054d7956
