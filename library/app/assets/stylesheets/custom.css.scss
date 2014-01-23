@@ -171,6 +171,25 @@ li {
   }
 }
 
+.btn-primary {
+  font-size: 14px;
+  background-color: $maincolor;
+  border: 1px solid #fff;
+  &:hover, &:active {
+    background-color: $maincolor_bright;
+    border: 1px solid #fff;
+  }
+}
+
+a.btn-primary {
+  &:link {
+    color: #fff;
+  }
+  &:hover, &:active {
+    color: $maincolor_dark;
+  }
+}
+
 .navbar {
   min-height: 50px;
   margin-bottom: 0px;

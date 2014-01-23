@@ -90,24 +90,25 @@
       </ul>
 
       <div class="text-center">
-        <a data-toggle="modal" href="#modal" class="btn btn-default">
-          この本のレビューを書く
+        <a data-toggle="modal" href="#modal" class="btn btn-primary">
+          本のレビューを書く
         </a>
       </div>
 
-        <div class="modal fade" id="modal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button class="close" data-dismiss="modal">&times;</button>
-                <%= @books.title %>のレビューを書く
-              </div>
-              <div class="modal-body">
-                <%= render 'review_form' %>
-              </div>
+      <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              本のレビューを書く
+            </div>
+            <div class="modal-body">
+              <%= render 'review_form' %>
             </div>
           </div>
         </div>
+      </div>
+
     </div>
   </div>
 </div>

@@ -3,6 +3,12 @@ class OpacTopsController < ApplicationController
   
 	def index
         @categories = Category.find(:all, :order => "priority")
+        @review_new = Review.new
+
+        respond_to do |format|
+            format.html
+            format.json { render json: @review_new }
+        end
 	end
 
 	def index_book
