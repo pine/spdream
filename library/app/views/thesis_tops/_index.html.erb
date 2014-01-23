@@ -20,8 +20,6 @@
         <th>学群</th>
         <th>研究室</th>
         <th>課程</th>
-        <th>編集</th>
-        <th>削除</th>
       </tr>
       <% @theses.each do |thesis| %>
         <% if n == 0 && thesis.course == '学士' ||
@@ -47,8 +45,6 @@
   				  <% end %>
   			  </td>
   			  <td><%= thesis.course %></td>
-  			  <td><%= link_to '編集', edit_thesis_path(thesis) %></td>
-  			  <td><%= link_to '削除', thesis_path(thesis), :method => :pute %></td>
     		  </tr>
         <% end %>
       <% end %>

@@ -114,25 +114,25 @@ ChildCategory.create :name => '2013年12月',  :description => '2013年12月の�
 ChildCategory.create :name => '2014年1月',  :description => '2014年1月のカテゴリです。', :priority => 30 , :category_id => 6
 
 #タグ
-Tag.create :name => 'レポート', :intro => 'レポートに使える本につけるタグ', :priority => '1', :enebled => true, :request => true
-Tag.create :name => '感動', :intro => '感動できる本につけるタグ', :priority => '2', :enebled => true, :request => true
-Tag.create :name => '資格', :intro => '資格に使える本につけるタグ', :priority => '3', :enebled => true, :request => true
-Tag.create :name => '基本情報技術者資格', :intro => '基本情報技術者資格に使える本につけるタグ', :priority => '4', :enebled => true, :request => true
-Tag.create :name => '応用情報技術者資格', :intro => '応用情報技術者資格に使える本につけるタグ', :priority => '5', :enebled => true, :request => true
-Tag.create :name => 'ITパスポート', :intro => 'ITパスポートに使える本につけるタグ', :priority => '6', :enebled => true, :request => true
-Tag.create :name => 'SPI', :intro => 'SPIに使える本につけるタグ', :priority => '7', :enebled => true, :request => true
-Tag.create :name => '面接', :intro => '面接に使える本につけるタグ', :priority => '8', :enebled => true, :request => true
-Tag.create :name => '自己啓発', :intro => '自己啓発に使える本につけるタグ', :priority => '9', :enebled => true, :request => true
-Tag.create :name => 'エントリーシート', :intro => 'エントリーシートに使える本につけるタグ', :priority => '10', :enebled => true, :request => true
-Tag.create :name => 'プレゼン', :intro => 'プレゼンに使える本につけるタグ', :priority => '11', :enebled => true, :request => true
-Tag.create :name => 'プログラミング', :intro => 'プログラミングに使える本につけるタグ', :priority => '12', :enebled => true, :request => true
-Tag.create :name => '英検', :intro => '英検に使える本につけるタグ', :priority => '13', :enebled => true, :request => true
-Tag.create :name => 'TOEIC', :intro => 'TOEICに使える本につけるタグ', :priority => '14', :enebled => true, :request => true
-Tag.create :name => '公認会計士', :intro => '公認会計士に使える本につけるタグ', :priority => '15', :enebled => true, :request => true
-Tag.create :name => 'PHP', :intro => 'PHPに使える本につけるタグ', :priority => '16', :enebled => true, :request => true
-Tag.create :name => 'JavaScript', :intro => 'JavaScriptに使える本につけるタグ', :priority => '17', :enebled => true, :request => true
-Tag.create :name => 'TCP/IP', :intro => 'TCP/IPに使える本につけるタグ', :priority => '18', :enebled => true, :request => true
-Tag.create :name => 'Ruby on Rails', :intro => 'Ruby on Railsに使える本につけるタグ', :priority => '19', :enebled => true, :request => true
+Tag.create :name => 'レポート', :intro => 'レポートに使える本につけるタグ', :priority => '1', :enabled => true, :request => true
+Tag.create :name => '感動', :intro => '感動できる本につけるタグ', :priority => '2', :enabled => true, :request => true
+Tag.create :name => '資格', :intro => '資格に使える本につけるタグ', :priority => '3', :enabled => true, :request => true
+Tag.create :name => '基本情報技術者資格', :intro => '基本情報技術者資格に使える本につけるタグ', :priority => '4', :enabled => true, :request => true
+Tag.create :name => '応用情報技術者資格', :intro => '応用情報技術者資格に使える本につけるタグ', :priority => '5', :enabled => true, :request => true
+Tag.create :name => 'ITパスポート', :intro => 'ITパスポートに使える本につけるタグ', :priority => '6', :enabled => true, :request => true
+Tag.create :name => 'SPI', :intro => 'SPIに使える本につけるタグ', :priority => '7', :enabled => true, :request => true
+Tag.create :name => '面接', :intro => '面接に使える本につけるタグ', :priority => '8', :enabled => true, :request => true
+Tag.create :name => '自己啓発', :intro => '自己啓発に使える本につけるタグ', :priority => '9', :enabled => true, :request => true
+Tag.create :name => 'エントリーシート', :intro => 'エントリーシートに使える本につけるタグ', :priority => '10', :enabled => true, :request => true
+Tag.create :name => 'プレゼン', :intro => 'プレゼンに使える本につけるタグ', :priority => '11', :enabled => true, :request => true
+Tag.create :name => 'プログラミング', :intro => 'プログラミングに使える本につけるタグ', :priority => '12', :enabled => true, :request => true
+Tag.create :name => '英検', :intro => '英検に使える本につけるタグ', :priority => '13', :enabled => true, :request => true
+Tag.create :name => 'TOEIC', :intro => 'TOEICに使える本につけるタグ', :priority => '14', :enabled => true, :request => true
+Tag.create :name => '公認会計士', :intro => '公認会計士に使える本につけるタグ', :priority => '15', :enabled => true, :request => true
+Tag.create :name => 'PHP', :intro => 'PHPに使える本につけるタグ', :priority => '16', :enabled => true, :request => true
+Tag.create :name => 'JavaScript', :intro => 'JavaScriptに使える本につけるタグ', :priority => '17', :enabled => true, :request => true
+Tag.create :name => 'TCP/IP', :intro => 'TCP/IPに使える本につけるタグ', :priority => '18', :enabled => true, :request => true
+Tag.create :name => 'Ruby on Rails', :intro => 'Ruby on Railsに使える本につけるタグ', :priority => '19', :enabled => true, :request => true
 
 
 #蔵書
