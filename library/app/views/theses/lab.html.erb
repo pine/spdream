@@ -1,11 +1,12 @@
 # coding: utf-8
-<h1><%= @lab.name %></h1>
+<div class="panel-heading"><%= @lab.name %></div>
 
-<div id="notice"><%= notice %></div>
+<div class="panel-body">
+  <p class="well well-sm fadeout-msg"><%= notice %></p>
+  
+  <%= render 'index' %>
 
-<%= render 'index' %>
-
-<br>
-<%= link_to_function '戻る', 'history.back()' %>
+  <%= link_to_function '戻る', 'history.back()' %>
+</div>
 
 <%= javascript_include_tag 'cms_theses' %>

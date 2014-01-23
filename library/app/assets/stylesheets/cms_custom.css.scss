@@ -366,3 +366,8 @@ body {
 	background-image: url(cms_bg.png);
 	background-position: 0 $navbar-height;
 }
+
+// 自動でフェードアウトするメッセージ
+.fadeout-msg:empty {
+	display: none;
+}
