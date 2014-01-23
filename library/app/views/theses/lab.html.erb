@@ -6,7 +6,7 @@
   
   <%= render 'index' %>
 
-  <%= link_to_function '戻る', 'history.back()' %>
+  <%= link_to '戻る', :action => 'faculty', :id => @lab.faculty_id %>
 </div>
 
 <%= javascript_include_tag 'cms_theses' %>

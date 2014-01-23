@@ -5,6 +5,8 @@
 <div class="panel-body">
   <p class="well well-sm fadeout-msg"><%= notice %></p>
   
+  <% @faculties.each do |faculty| %>
+  <%= faculty.name %>
   <div class="table-container">
     <table class="table table-striped">
       <tr>
@@ -15,6 +17,7 @@
       </tr>
       
       <% @labs.each.with_index do |lab, i| %>
+      <% if lab.faculty_id == faculty.id %>
         <tr>
           <td><%= i.next %></td>
           <td><%= lab.name %></td>
@@ -23,10 +26,12 @@
           	'削除しますか？(所属する論文は「無所属」となります)',
           							:method => :delete %></td>
           </tr>
+      <% end %>
     	<% end %>
     </table>
   </div>
   
+  <% end %>
   <p><%= link_to_function '戻る', 'history.back()' %>&nbsp;|
     <%= link_to '新規登録', new_lab_path %></p>
 </div>

@@ -39,7 +39,7 @@ Lab.create :name => '真田研究室', :faculty_id => 1
 Lab.create :name => '吉沢研究室', :faculty_id => 2
 Lab.create :name => '堀澤研究室', :faculty_id => 2
 Lab.create :name => '角研究室', :faculty_id => 2
-Lab.create :name => '前田下研究室', :faculty_id => 2
+Lab.create :name => '前田研究室', :faculty_id => 2
 Lab.create :name => '村上研究室', :faculty_id => 2
 Lab.create :name => '榎本研究室', :faculty_id => 2
 
