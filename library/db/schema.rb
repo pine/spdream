@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(:version => 20140122072239) do
     t.string   "course"
     t.integer  "year"
     t.boolean  "enabled"
-    t.integer  "lab_id",     :null => false
+    t.integer  "lab_id"
     t.integer  "faculty_id", :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
