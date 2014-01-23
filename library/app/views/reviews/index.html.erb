@@ -11,12 +11,12 @@
         <tr>
           <th>No.</th>
           <th>タイトル</th>
-          <th>いいね</th>
-          <th>よくないね</th>
+          <th>Good</th>
+          <th>Bad</th>
           <th>公開状態</th>
           <th>蔵書</th>
           <th>蔵書評価</th>
-          <th>日時</th>
+          <th>日付</th>
           <th>編集</th>
           <th>削除</th>
         </tr>
@@ -37,7 +37,7 @@
             </td>
             <td><%= review.book.title %></td>
             <td><%= review.value_book %></td>
-            <td><%= review.date %></td>
+            <td><%= review.created_at.to_time.strftime('%Y/%m/%d') %></td>
             <td><%= link_to '編集', edit_review_path(review) %></td>
             <td><%= link_to '削除', review_path(review), :method => :pute %></td>
           </tr>
