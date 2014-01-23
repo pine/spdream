@@ -1,4 +1,13 @@
-  <%= simple_form_for(@review_new, html: { class: 'form-horizontal', role: 'form' }) do |f| %>
+  <%= simple_form_for(
+        @review_new,
+        html: { class: 'form-horizontal', role: 'form' },
+        
+        # 以下2行で、ReviewTops コントローラの create メソッドに送信するように指定
+        # opacplus_reviews_path は routes.rb 参照
+        url: opacplus_reviews_path,
+        action: :post
+      ) do |f|
+  %>
     <% if @review_new.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(@review_new.errors.count, "error") %> prohibited this review from being saved:</h2>
