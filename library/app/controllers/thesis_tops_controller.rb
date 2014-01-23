@@ -25,7 +25,7 @@ class ThesisTopsController < ApplicationController
 	end
 
 	def download
-   		@filepath = Rails.root + 'public/nuko.jpg'
+   		@filepath = Rails.root + params[:file]
     	send_file(@filepath)
 	end  
 

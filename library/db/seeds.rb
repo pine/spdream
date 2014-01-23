@@ -65,3 +65,10 @@ Lab.create :name => '坂本研究室', :faculty_id => 4
 Lab.create :name => '園下研究室', :faculty_id => 4
 Lab.create :name => '中村研究室', :faculty_id => 4
 Lab.create :name => '馬渕研究室', :faculty_id => 4
+
+#論文作成
+Thesis.create :title => '～について', :author => 'TEST', :student_id => '1150001', :course => '学士', :year => 2014, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test1.pdf'
+Thesis.create :title => '・・・について', :author => 'TEST', :student_id => '1150001', :course => '修士', :year => 2014, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test2.pdf'
+Thesis.create :title => '？？？について', :author => 'TEST', :student_id => '1150001', :course => '博士', :year => 2014, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test2.pdf'
+Thesis.create :title => '○○について', :author => 'TEST', :student_id => '1150002', :course => '学士', :year => 2014, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test3.pdf'
+Thesis.create :title => 'ーーについて', :author => 'TEST', :student_id => '1150003', :course => '学士', :year => 2015, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test4.pdf'
