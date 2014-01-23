@@ -128,8 +128,9 @@
               <th>コメント</th>
             </tr>
             
-            <% @book.reviews.each do |review| %>
+            <% @book.reviews.each.with_index do |review, i| %>
               <tr>
+                <td><%= i.next %></td>
                 <td>タイトル:<%= review.title %></td>
                 <td>コメント:<%= review.comment %></td>
               </tr>
