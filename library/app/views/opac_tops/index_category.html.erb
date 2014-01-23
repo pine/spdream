@@ -1,0 +1,55 @@
+<!-- header -->
+<div class="row">
+  <div id="header">
+      <h1 class="header_title">目的別検索 OPAC+</h1>
+      <div class="header_intro">このページでは、図書館所蔵の本を目的別に探し、レビューを閲覧・投稿することができます。</div>
+  </div>
+</div>
+
+<!-- sidemenu -->
+<div class="row">
+  <div class="col-md-3">
+      <%= render 'category_menu' %>
+  </div>
+
+<!-- inner -->
+  <div class="col-md-9">
+    <div class="well">
+
+<!-- inner title -->
+      <div class="inner_title">
+        <button type="button" class="btn btn-default">
+          <%= link_to '戻る', opacplus_index_path %>
+        </button>
+        <h3 class="pull-right">Category : <%= @category.name %></h3>
+      </div>
+
+<!-- inner contents - book index -->
+        <ul class="media-list">
+          <% @category.books.each do |book| %>
+
+          <li class="media">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <%= link_to book.title, opacplus_bookinfo_path(book), :id => book.id %>
+              </div>
+              <div class="panel-body">
+                <div class="pull-left">
+                  <% if (book.photo.url == "/photos/original/missing.png") then %>
+                  <% else %>
+                  <%= image_tag book.photo.url, :width => '50', :alt => "image" %>
+                  <% end %>
+                </div>
+                <div class="media-body">
+                  著者 ：<%= book.auther %><br>
+                  評価 ：<% book.value.times do %>★<% end %><% (5-book.value).times do %>☆<% end %>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <% end %>
+        </ul>
+    </div>
+  </div>
+</div>

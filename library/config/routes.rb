@@ -111,21 +111,26 @@ Library::Application.routes.draw do
         :action => :index,
         :via => :GET,
         :as => 'opacplus_index'
-      match "book/:id" => 'opac_tops#index_book',
+      match "category/:id" => 'opac_tops#index_category',
         :controller => :opac_tops,
-        :action => :index_book,
+        :action => :index_category,
         :via => :GET,
-        :as => 'opacplus_book'
-      match "bookinfo:id" => 'opac_tops#show_book',
+        :as => 'opacplus_category'
+      match "child_category/:id" => 'opac_tops#index_child_category',
         :controller => :opac_tops,
-        :action => :show_book,
+        :action => :index_child_category,
         :via => :GET,
-        :as => 'opacplus_bookinfo'
+        :as => 'opacplus_child_category'
       match "tag",
         :controller => :opac_tops,
         :action => :index_tag,
         :via => :GET,
         :as => 'opacplus_tag'
+      match "bookinfo:id" => 'opac_tops#show_book',
+        :controller => :opac_tops,
+        :action => :show_book,
+        :via => :GET,
+        :as => 'opacplus_bookinfo'
     end
     
     resources :theses do

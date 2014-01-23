@@ -3,6 +3,7 @@ class OpacTopsController < ApplicationController
   
 	def index
         @categories = Category.find(:all, :order => "priority")
+        @tags = Tag.find(:all, :order => "priority")
         @review_new = Review.new
 
         respond_to do |format|
@@ -10,8 +11,15 @@ class OpacTopsController < ApplicationController
             format.json { render json: @review_new }
         end
 	end
+    
+    def index_category
+        @books = Book.find(:all, :conditions => {:category_id => params[:category_id]})
+        @category = Category.find(params[:id])
+        @categories = Category.find(:all, :order => "priority")
+        @child_categories = ChildCategory.find(params[:id])
+    end
 
-	def index_book
+	def index_child_category
         @books = Book.find(:all, :conditions => {:category_id => params[:category_id], :child_category_id => params[:child_category_id]})
         @categories = Category.find(:all, :order => "priority")
         @child_categories = ChildCategory.find(params[:id])

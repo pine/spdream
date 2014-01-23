@@ -7,12 +7,12 @@
 
       <% @categories.each do |category| %>
       <li>
-        <%= link_to category.name, opacplus_book_path(category),
+        <%= link_to category.name, opacplus_category_path(category),
           :category_id => category.id %>
         <ul>
           <% category.child_categories.each do |child_category| %>
           <li>
-            <%= link_to child_category.name, opacplus_book_path(child_category),
+            <%= link_to child_category.name, opacplus_child_category_path(child_category),
               :category_id => category.id,
               :child_category_id => child_category.id %>
           </li>

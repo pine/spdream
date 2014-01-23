@@ -85,27 +85,11 @@
 
 <!-- inner contents - tag -->
       <div class="inner_contents">
-        <span class="label label-default">ラベル</span>
-        <span class="label label-default">ラベル1</span>
-        <span class="label label-default">ラベル2</span>
-        <span class="label label-default">ラベル3</span>
-        <span class="label label-default">ラベル4</span>
-        <span class="label label-default">ラベル5</span>
-        <span class="label label-default">ラベル6</span>
-        <span class="label label-default">ラベル7</span>
-        <span class="label label-default">ラベル8</span>
-        <span class="label label-default">ラベル9</span>
-        <span class="label label-default">ラベル10</span>
-        <span class="label label-default">ラベル111</span>
-        <span class="label label-default">ラベル1110</span>
-        <span class="label label-default">ラベル1111</span>
-        <span class="label label-default">ラベル11110</span>
-        <span class="label label-default">ラベル11111</span>
-        <span class="label label-default">ラベル1</span>
-        <span class="label label-default">ラベル2</span>
-        <span class="label label-default">ラベル3</span>
-        <span class="label label-default">ラベル4</span>
-        <span class="label label-default">ラベル5</span>
+        <% @tags.each do |tag| %>
+          <span class="label label-default">
+            <%= link_to tag.name, tag_path(tag) %>
+          </span>
+        <% end %>
       </div>
 
     </div>
