@@ -11,10 +11,16 @@
   <div class="table-container">
     <table class="table table-striped">
       <tr>
-        <% @faculties.each do |faculty| %>
-          <td><%= link_to faculty.name, :controller => 'theses', :action => 'faculty', :id => faculty.id %></td>
-        <% end %>
+        <th>No.</th>
+        <th>学群名</th>
       </tr>
+      
+      <% @faculties.each.with_index do |faculty, i| %>
+        <tr>
+          <td><%= i.next %></td>
+          <td><%= link_to faculty.name, :controller => 'theses', :action => 'faculty', :id => faculty.id %></td>
+        </tr>
+      <% end %>
     </table>
   </div>
 </div>
