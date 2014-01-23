@@ -29,7 +29,7 @@
               n == 2 && thesis.course == '博士' %>
           <tr>
           <td><%= i.next %>
-          <td><%= link_to thesis.title, :action => 'download', :id => thesis.id %></td>
+          <td><%= link_to thesis.title, :action => 'download', :file => thesis.file %></td>
           <td><%= thesis.author %></td>
   			  <td><%= thesis.student_id %></td>
   			  <td><%= thesis.year %></td>

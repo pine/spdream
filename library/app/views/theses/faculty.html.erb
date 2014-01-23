@@ -5,7 +5,21 @@
 
   <p class="well well-sm fadeout-msg"><%= notice %></p>
   
-  <%#= 研究室一覧表示 %>
+  <%# 研究室一覧表示 %>
+  <%# プルダウンメニューで表示 %>
+  <p>
+    <select id="theses_list">
+      <% @labs.each do |lab| %>
+        <option value="<%= lab_theses_path(:faculty_id => @faculty.id, :lab_id => lab.id) %>">
+          <%= lab.name %>
+        </option>
+      <% end %>
+    </select>
+    
+    <input type="button" value="移動" onclick="location.href = $('#theses_list').val()">
+  </p>
+  
+  <!--
   <table class="table table-striped">
   	<tr>
   		<% @labs.each do |lab| %>
@@ -13,6 +27,7 @@
   		<% end %>
   	</tr>
   </table>
+  -->
   
   <p><%= link_to "研究室の編集", :controller => 'labs', :action => 'index', :id => @faculty.id %></p>
   
