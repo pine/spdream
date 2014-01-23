@@ -22,7 +22,7 @@
     			<td><%= book.title %></td>
     			<td><%= book.auther %></td>
     			<td><%= book.value %></td>
-    			<td><%= link_to '復元', book_path(book), :method => :put %></td>
+    			<td><%= link_to '復元', book_path(book), :method => :pute %></td>
     			<td><%= link_to '削除', book, :confirm => 'この本を削除しますか？', :method => :delete %></td>
     		</tr>
     	<% end %>
