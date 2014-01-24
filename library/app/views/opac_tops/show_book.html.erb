@@ -70,6 +70,29 @@
             </div>
           </li>
         </div>
+        
+      <div class="row">
+        <a data-toggle="modal" href="#modal" class="btn btn-primary col-md-6">
+         本にタグをつける
+        </a>
+        <a data-toggle="modal" href="#modal" class="btn btn-primary col-md-6">
+         本にタグをつける
+        </a>
+      </div>
+
+      <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              本にタグをつける
+            </div>
+            <div class="modal-body">
+              <%= render 'tag_form' %>
+            </div>
+          </div>
+        </div>
+      </div>
 
 <!-- inner contents - book review -->
         <div class="book_review">
