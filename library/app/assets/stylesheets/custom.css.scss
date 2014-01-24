@@ -6,7 +6,10 @@ $maincolor_bright: #DBEAE4; // f0f8ff;
 $subcolor: #7F7F7F;
 $subcolor_bright: #A6A6A6;
 $subcolor_soft: #dddddd;
+
 $textcolor: #554A5B;
+$linkcolor_main: #7AC7A7;
+$linkcolor_sub: #518F75;
 
 /* Universal */
 
@@ -143,10 +146,10 @@ p {
 
 a {
   &:link, &:hover, &:active {
-    color: $maincolor;
+    color: $linkcolor_main;
   }
   &:visited {
-    color: $maincolor_dark;
+    color: $linkcolor_sub;
   }
 }
 
