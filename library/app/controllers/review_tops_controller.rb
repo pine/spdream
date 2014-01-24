@@ -14,8 +14,31 @@ class ReviewTopsController < ApplicationController
       if @review.save
         format.html { redirect_to opacplus_index_path, notice: 'Review was successfully created.' }
       else
-        format.html { redirect_to opacplus_index_path }}
+        format.html { redirect_to opacplus_index_path }
       end
     end
+  end
+  
+  # レビューが参考になったか、参考にならなかったか
+  # POST /value.json?review_id=&value=0_or_1
+  def value
+    review = Review.find(params[:review_id])
+    value  = Integer(params[:value])
+    
+    if 0 <= value and value < 2
+      review.value_good += 1 if value == 0
+      review.value_bad  += 1 if value == 1
+      
+      if review.save
+        respond_to do |format|
+          format.json do
+            render :json => { succeed: true }
+            return
+          end
+        end
+      end
+    end
+    
+    render :json => { succeed: false }
   end
 end

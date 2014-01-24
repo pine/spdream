@@ -133,6 +133,7 @@ Library::Application.routes.draw do
         :as => 'opacplus_bookinfo'
       
       post 'reviews' => 'review_tops#create', :as => 'opacplus_reviews'
+      get 'review/value' => 'review_tops#value', :as => 'opacplus_review_value'
     end
     
     resources :theses do

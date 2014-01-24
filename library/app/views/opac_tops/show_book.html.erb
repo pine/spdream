@@ -70,6 +70,29 @@
             </div>
           </li>
         </div>
+        
+      <div class="row">
+        <a data-toggle="modal" href="#modal" class="btn btn-primary col-md-6">
+         本にタグをつける
+        </a>
+        <a data-toggle="modal" href="#modal" class="btn btn-primary col-md-6">
+         本にタグをつける
+        </a>
+      </div>
+
+      <div class="modal fade" id="modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              本にタグをつける
+            </div>
+            <div class="modal-body">
+              <%= render 'tag_form' %>
+            </div>
+          </div>
+        </div>
+      </div>
 
 <!-- inner contents - book review -->
         <div class="book_review">
@@ -84,17 +107,17 @@
                   この本に対する評価 : <% review.value_book.times do %>★<% end %><% (5-review.value_book).times do %>☆<% end %><br>
                   <%= br(review.comment) %><br>
                   <div class="review_value">
-                    <%= review.value_good + review.value_bad %>人中
-                    <%= review.value_good %>人が「このレビューは参考になった」と言っています<br>
-                    <%= review.value_bad %>人が「このレビューは参考にならない」と言っています<br>
+                    <span id="review_<%= review.id %>_all"><%= review.value_good + review.value_bad %></span>人中
+                    <span id="review_<%= review.id %>_0"><%= review.value_good %></span>人が「このレビューは参考になった」と言っています<br>
+                    <span id="review_<%= review.id %>_1"><%= review.value_bad %></span>人が「このレビューは参考にならない」と言っています<br>
                     <br>
                     <div class="text-center">
                       このレビューは参考になりましたか？
-                      <button type="button" class="btn btn-default">
+                      <button type="button" class="btn btn-default review-value" data-review-id="<%= review.id %>" data-value="0" data-url="<%= opacplus_review_value_path(:review_id => review.id, :value => 0, :format => :json) %>">
                         はい
                       </button>
-                      <button type="button" class="btn btn-default">
-                        いいえ
+                      <button type="button" class="btn btn-default review-value" data-review-id="<%= review.id %>" data-value="1" data-url="<%= opacplus_review_value_path(:review_id => review.id, :value => 1, :format => :json) %>">
+                       いいえ
                       </button>
                     </div>
                   </div>
@@ -129,3 +152,44 @@
     </div>
   </div>
 </div>
+
+<script>
+// レビューの参考になる、ならないの処理
+
+!function(){
+  var reviewValueElements = $('.review-value');
+  var valueStrings = ['参考になった', '参考にならなかった'];
+  
+  function sendReviewValue(event) {
+    var element = $(event.target);
+    var parentElement = element.parent();
+    var url = $(element).attr('data-url');
+    var value = parseInt($(element).attr('data-value'), 10);
+    var reviewId = $(element).attr('data-review-id');
+    var valueString = valueStrings[value];
+    
+    parentElement.text('送信しています...');
+    
+    $.ajax(url)
+      .done(function() {
+        parentElement.text('レビューを評価しました! (' + valueString + ')');
+        incrementElement('review_' + reviewId + '_all');
+        incrementElement('review_' + reviewId + '_' + value);
+      })
+      .fail(function() { parentElement.text('レビューの評価に失敗しました。'); })
+      .always(function() { parentElement.css({ color: "#666" }); });
+  }
+  
+  function incrementElement(id) {
+    var element = $("#" + id);
+    element.text(parseInt(element.text(), 10) + 1);
+  }
+  
+  function addReviewListener() {
+    reviewValueElements.on('click', sendReviewValue);
+  }
+  
+  addReviewListener();
+}();
+
+</script>
