@@ -1,14 +1,16 @@
 # coding: utf-8
 
 <div class="panel-heading">研究室編集ページ</div>
-
+   
 <div class="panel-body">
+　　<p>登録されている研究室の編集ができます。</p>
   <p class="well well-sm fadeout-msg"><%= notice %></p>
   
   <% @faculties.each do |faculty| %>
   <%= faculty.name %>
   <div class="table-container">
     <table class="table table-striped">
+
       <tr>
         <th>No.</th>
         <th>研究室名</font></th>
