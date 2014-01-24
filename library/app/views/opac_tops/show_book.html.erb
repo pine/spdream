@@ -84,16 +84,16 @@
                   この本に対する評価 : <% review.value_book.times do %>★<% end %><% (5-review.value_book).times do %>☆<% end %><br>
                   <%= br(review.comment) %><br>
                   <div class="review_value">
-                    <%= review.value_good + review.value_bad %>人中
-                    <%= review.value_good %>人が「このレビューは参考になった」と言っています<br>
-                    <%= review.value_bad %>人が「このレビューは参考にならない」と言っています<br>
+                    <span id="review_<%= review.id %>_all"><%= review.value_good + review.value_bad %></span>人中
+                    <span id="review_<%= review.id %>_0"><%= review.value_good %></span>人が「このレビューは参考になった」と言っています<br>
+                    <span id="review_<%= review.id %>_1"><%= review.value_bad %></span>人が「このレビューは参考にならない」と言っています<br>
                     <br>
                     <div class="text-center">
                       このレビューは参考になりましたか？
-                      <button type="button" class="btn btn-default review-value" data-value="0" data-url="<%= opacplus_review_value_path(:review_id => review.id, :value => 0, :format => :json) %>">
+                      <button type="button" class="btn btn-default review-value" data-review-id="<%= review.id %>" data-value="0" data-url="<%= opacplus_review_value_path(:review_id => review.id, :value => 0, :format => :json) %>">
                         はい
                       </button>
-                      <button type="button" class="btn btn-default review-value" data-value="1" data-url="<%= opacplus_review_value_path(:review_id => review.id, :value => 1, :format => :json) %>">
+                      <button type="button" class="btn btn-default review-value" data-review-id="<%= review.id %>" data-value="1" data-url="<%= opacplus_review_value_path(:review_id => review.id, :value => 1, :format => :json) %>">
                        いいえ
                       </button>
                     </div>
@@ -141,15 +141,25 @@
     var element = $(event.target);
     var parentElement = element.parent();
     var url = $(element).attr('data-url');
-    var value = $(element).attr('data-value');
+    var value = parseInt($(element).attr('data-value'), 10);
+    var reviewId = $(element).attr('data-review-id');
     var valueString = valueStrings[value];
     
     parentElement.text('送信しています...');
     
     $.ajax(url)
-      .done(function() { parentElement.text('レビューを評価しました! (' + valueString + ')'); })
+      .done(function() {
+        parentElement.text('レビューを評価しました! (' + valueString + ')');
+        incrementElement('review_' + reviewId + '_all');
+        incrementElement('review_' + reviewId + '_' + value);
+      })
       .fail(function() { parentElement.text('レビューの評価に失敗しました。'); })
       .always(function() { parentElement.css({ color: "#666" }); });
+  }
+  
+  function incrementElement(id) {
+    var element = $("#" + id);
+    element.text(parseInt(element.text(), 10) + 1);
   }
   
   function addReviewListener() {
