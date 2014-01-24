@@ -9,11 +9,11 @@
     <table class="table table-striped">
       <tr>
         <th>No.</th>
+        <th>蔵書</th>
+        <th>蔵書評価</th>
         <th>タイトル</th>
         <th>Good</th>
         <th>Bad</th>
-        <th>蔵書</th>
-        <th>蔵書評価</th>
         <th>日時</th>
         <th>復元</th>
         <th>削除</th>
@@ -22,12 +22,12 @@
       <% @reviews.each.with_index do |review, i| %>
         <tr>
           <td><%= i.next %>
+          <td><%= review.book.title %></td>
+          <td><%= review.value_book %></td>
           <td><%= link_to review.title, review_path(review) %></td>
           <td><%= review.value_good %></td>
           <td><%= review.value_bad %></td>
-          <td><%= review.book.title %></td>
-          <td><%= review.value_book %></td>
-          <td><%= review.date %></td>
+          <td><%= review.created_at.to_time.strftime('%Y/%m/%d') %></td>
           <td><%= link_to '復元', review_path(review), :method => :pute %></td>
           <td><%= link_to '削除', review, :confirm => 'このレビューを削除しますか？', :method => :delete %></td>
         </tr>

@@ -3,28 +3,30 @@
 <div class="panel-heading">Opac+ レビュー一覧</div>
 
 <div class="panel-body">
-  <p><%= link_to 'レビュー追加', new_review_path %> | <%= link_to '削除履歴', deleted_reviews_path %></p>
+  <p><%= link_to 'レビュー追加', new_review_path %> | <%= link_to '削除履歴', deleted_reviews_path %> | <%= link_to 'レビュー追加承認', request_reviews_path %></p>
   
   <% if @reviews != nil then %>
     <div class="table-container">
       <table class="table table-striped">
         <tr>
           <th>No.</th>
+          <th>蔵書</th>
+          <th>蔵書評価</th>
           <th>タイトル</th>
           <th>Good</th>
           <th>Bad</th>
           <th>公開状態</th>
-          <th>蔵書</th>
-          <th>蔵書評価</th>
           <th>日付</th>
           <th>編集</th>
           <th>削除</th>
         </tr>
         
         <% @reviews.each.with_index do |review, i| %>
-          <% if review.deleted == false %>
+          <% if review.deleted == false && review.request == true %>
           <tr>
             <td><%= i.next %></td>
+            <td><%= review.book.title %></td>
+            <td><%= review.value_book %></td>
             <td><%= link_to review.title, review_path(review) %></td>
             <td><%= review.value_good %></td>
             <td><%= review.value_bad %></td>
@@ -35,8 +37,6 @@
                 非公開
               <% end %>
             </td>
-            <td><%= review.book.title %></td>
-            <td><%= review.value_book %></td>
             <td><%= review.created_at.to_time.strftime('%Y/%m/%d') %></td>
             <td><%= link_to '編集', edit_review_path(review) %></td>
             <td><%= link_to '削除', review_path(review), :method => :pute %></td>

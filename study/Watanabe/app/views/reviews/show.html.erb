@@ -5,6 +5,16 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>蔵書:</b>
+  <%= @review.book.title %>
+</p>
+
+<p>
+  <b>蔵書評価:</b>
+  <%= @review.value_book %>
+</p>
+
+<p>
   <b>タイトル:</b>
   <%= @review.title %>
 </p>
@@ -35,17 +45,17 @@
 
 <p>
   <b>日時:</b>
-  <%= @review.date %>
+  <%= @review.created_at.to_time.strftime('%Y/%m/%d') %>
+<p>
 </p>
 
 <p>
-  <b>蔵書:</b>
-  <%= @review.book.title %>
-</p>
-
-<p>
-  <b>蔵書評価:</b>
-  <%= @review.value_book %>
+  <b>承認:</b>
+    <% if @review.request %>
+      承認済み
+    <% else %>
+      未承認
+    <% end %>
 </p>
 
 

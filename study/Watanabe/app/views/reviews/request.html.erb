@@ -1,0 +1,33 @@
+# coding: utf-8
+<h1>レビュー追加承認</h1>
+
+<div id="notice"><%= notice %></div>
+
+
+
+<table border='1'>
+    <tr>
+      <th>蔵書</th>
+      <th>蔵書評価</th>
+      <th>タイトル</th>
+      <th>日付</th>
+      <th>編集</th>
+      <th>削除</th>
+    </tr>
+
+	<% Review.all.each do |review| %>
+		<% if review.request == false %>
+		   <tr>
+		     <td><%= review.book.title %></td>
+             <td><%= review.value_book %></td>
+		     <td><%= review.title %></td>
+		     <td><%= review.created_at.to_time.strftime('%Y/%m/%d') %></td>
+			<th><%= link_to '編集', edit_review_path(review)%></th>
+			<th><%= link_to '削除', review, :confirm => 'このレビューを削除しますか？', :method => :delete %></th>
+		    </tr>
+		<% end %>
+	<% end %>
+</table>
+
+
+<%= link_to '戻る', reviews_path %>

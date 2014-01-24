@@ -47,6 +47,7 @@ Library::Application.routes.draw do
       resources :reviews do
         collection do
           get 'deleted'
+          get 'request'
         end
       end
       resources :books do

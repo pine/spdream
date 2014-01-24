@@ -7,6 +7,16 @@
   
   <form class="form-horizontal show-page" role="form">
     <div class="form-group">
+        <label class="control-label col-sm-3">蔵書&nbsp;:</label>
+        <div class="col-sm-8"><%= @review.book.title %></div>
+    </div>
+    
+    <div class="form-group">
+        <label class="control-label col-sm-3">蔵書評価&nbsp;:</label>
+        <div class="col-sm-8"><%= @review.value_book %></div>
+    </div>
+    
+    <div class="form-group">
         <label class="control-label col-sm-3">タイトル&nbsp;:</label>
         <div class="col-sm-8"><%= @review.title %></div>
     </div>
@@ -33,17 +43,12 @@
     
     <div class="form-group">
         <label class="control-label col-sm-3">日付&nbsp;:</label>
-        <div class="col-sm-8"><%= @review.date %></div>
+        <div class="col-sm-8"><%= @review.created_at.to_time.strftime('%Y/%m/%d') %></div>
     </div>
     
     <div class="form-group">
-        <label class="control-label col-sm-3">蔵書&nbsp;:</label>
-        <div class="col-sm-8"><%= @review.book.title %></div>
-    </div>
-    
-    <div class="form-group">
-        <label class="control-label col-sm-3">蔵書評価&nbsp;:</label>
-        <div class="col-sm-8"><%= @review.value_book %></div>
+        <label class="control-label col-sm-3">承認&nbsp;:</label>
+        <div class="col-sm-8"><%= @review.request ? '承認' : '非承認' %></div>
     </div>
     
     <div class="form-group">

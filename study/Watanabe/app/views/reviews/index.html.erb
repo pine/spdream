@@ -2,7 +2,7 @@
 
 <h1>Opac+ レビュー一覧</h1>
 
-<%= link_to 'レビュー追加', new_review_path %> | <%= link_to '削除履歴', deleted_reviews_path %>
+<%= link_to 'レビュー追加', new_review_path %> | <%= link_to '削除履歴', deleted_reviews_path %> | <%= link_to 'レビュー追加承認', request_reviews_path %>
 
 <p>
 
@@ -22,7 +22,7 @@
     </tr>
 
   <% @reviews.each do |review| %>
-    <% if review.deleted == false %>
+    <% if review.deleted == false && review.request == true %>
     <tr>
       <td><%= link_to review.title, review_path(review) %></td>
       <td><%= review.value_good %></td>
@@ -36,7 +36,7 @@
       </td>
       <td><%= review.book.title %></td>
       <td><%= review.value_book %></td>
-      <td><%= review.date %></td>
+       <td><%= review.created_at.to_time.strftime('%Y/%m/%d') %></td>
       <td><%= link_to '編集', edit_review_path(review) %></td>
       <td><%= link_to '削除', review_path(review), :method => :pute %></td>
     </tr>

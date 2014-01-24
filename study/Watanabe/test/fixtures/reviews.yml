@@ -7,8 +7,8 @@ one:
   value_bad: 1
   value_book: 1
   enabled: false
-  date: 2014-01-21 15:19:43
   book: 
+  request: false
   deleted: false
 
 two:
@@ -18,6 +18,6 @@ two:
   value_bad: 1
   value_book: 1
   enabled: false
-  date: 2014-01-21 15:19:43
   book: 
+  request: false
   deleted: false

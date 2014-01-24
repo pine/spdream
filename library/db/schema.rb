@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140122072239) do
+ActiveRecord::Schema.define(:version => 20140124100315) do
 
   create_table "books", :force => true do |t|
     t.string   "photo"
@@ -85,8 +85,8 @@ ActiveRecord::Schema.define(:version => 20140122072239) do
     t.integer  "value_bad",  :default => 0
     t.integer  "value_book", :default => 0
     t.boolean  "enabled",    :default => false
-    t.datetime "date"
     t.integer  "book_id"
+    t.boolean  "request",    :default => false
     t.boolean  "deleted",    :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
