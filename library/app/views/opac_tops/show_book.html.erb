@@ -59,7 +59,7 @@
                   <% 8.times do |i| %>
                     <% unless (@books.send("tag" + i.to_s) == nil) then %>
                       <span class="label label-default">
-                        <%= @books.send("tag" + i.to_s) %>
+                        <a href="<%= opacplus_tag_path(:name => @books.send('tag' + i.to_s)) %>"><%= @books.send("tag" + i.to_s) %></a>
                       </span>
                     <% end %>
                   <% end %>

@@ -125,7 +125,7 @@
       <div class="inner_contents">
         <% @tags.each do |tag| %>
           <span class="label label-default">
-            <%= link_to tag.name, tag_path(tag) %>
+            <%= link_to tag.name, opacplus_tag_path(:name => tag.name) %>
           </span>
         <% end %>
       </div>
