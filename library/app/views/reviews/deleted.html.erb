@@ -3,14 +3,15 @@
 
 <div class="panel-body">
   <p class="well well-sm fadeout-msg"><%= notice %></p>
+  <p><%= link_to 'レビュー追加', new_review_path %> | <%= link_to 'レビュー一覧', reviews_path %></p>
   
   <div class="table-container">
     <table class="table table-striped">
       <tr>
         <th>No.</th>
         <th>タイトル</th>
-        <th>いんね</th>
-        <th>よくないね</th>
+        <th>Good</th>
+        <th>Bad</th>
         <th>蔵書</th>
         <th>蔵書評価</th>
         <th>日時</th>
@@ -34,7 +35,7 @@
     </table>
   </div>
   
-  <%= link_to '戻る', reviews_path %>
+  <p><%= link_to '戻る', reviews_path %></p>
 </div>
 
 <%= javascript_include_tag 'cms_books' %>
