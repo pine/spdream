@@ -98,7 +98,6 @@ textarea {
   padding: 4px 12px;
 }
 
-
 .inner_contents {
   margin: 15px 15px 40px;
   padding: 5px;
@@ -132,10 +131,16 @@ textarea {
     font-size: 0.9em;
     margin: 5px 2px;
     display: inline-block;
+    a {
+      color: #fff;
+    }
   }
+}
 
-  .label > a {
-    color: #fff;
+.tag_and_review {
+  margin: 0 20px 20px;
+  .btn {
+    
   }
 }
 

@@ -25,6 +25,7 @@
       </div>
 
       <ul class="media-list">
+
 <!-- inner contents - book information -->
         <div class="book_info">
           <li class="media">
@@ -70,17 +71,19 @@
             </div>
           </li>
         </div>
-        
+
+<!-- inner contents - tag and review modal -->
+    <div class="tag_and_review">
       <div class="row">
-        <a data-toggle="modal" href="#modal" class="btn btn-primary col-md-6">
-         本にタグをつける
+        <a data-toggle="modal" href="#tag_modal" class="btn btn-primary col-md-6">
+          本にタグをつける
         </a>
-        <a data-toggle="modal" href="#modal" class="btn btn-primary col-md-6">
-         本にタグをつける
+        <a data-toggle="modal" href="#review_modal" class="btn btn-primary col-md-6">
+          本のレビューを書く
         </a>
       </div>
 
-      <div class="modal fade" id="modal">
+      <div class="modal fade" id="tag_modal">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
@@ -93,6 +96,21 @@
           </div>
         </div>
       </div>
+
+      <div class="modal fade" id="review_modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              本のレビューを書く
+            </div>
+            <div class="modal-body">
+              <%= render 'review_form' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <!-- inner contents - book review -->
         <div class="book_review">
@@ -128,26 +146,6 @@
           </li>
         </div>
       </ul>
-
-      <div class="text-center">
-        <a data-toggle="modal" href="#modal" class="btn btn-primary">
-          本のレビューを書く
-        </a>
-      </div>
-
-      <div class="modal fade" id="modal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button class="close" data-dismiss="modal">&times;</button>
-              本のレビューを書く
-            </div>
-            <div class="modal-body">
-              <%= render 'review_form' %>
-            </div>
-          </div>
-        </div>
-      </div>
 
     </div>
   </div>
