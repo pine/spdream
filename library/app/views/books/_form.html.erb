@@ -128,7 +128,7 @@
       <%= f.select(
             :category_id,
             Category.all.map{|category| [category.name, category.id]},
-            {}, { class: 'form-control' }
+            {}, { class: 'form-control', id: 'categories' }
           ) %>
     </div>
   </div>
@@ -142,8 +142,8 @@
     <div class="col-sm-8">
       <%= f.select(
             :child_category_id,
-            ChildCategory.all.map{|child_category| [child_category.name, child_category.id]},
-            {}, { class: 'form-control' }
+            [], {},
+            { class: 'form-control', id: 'child_categories' }
           ) %>
     </div>
   </div>
@@ -189,6 +189,30 @@
 <script>
 
 !function(){
+  //  ===== Category ================================================
+  var childCategories = <%= raw ChildCategory.all.to_json %>;
+  var categoriesElement = $("#categories");
+  var childCategoriesElement = $("#child_categories");
+  
+  function updateCategoriesElement() {
+    var categoryId = categoriesElement.val();
+    
+    childCategoriesElement.find('option').remove();
+    
+    $.each(childCategories, function() {
+      if (this.category_id == categoryId) {
+        $('<option />')
+          .attr('value', this.id)
+          .text(this.name)
+          .appendTo(childCategoriesElement);
+      }
+    });
+  }
+  
+  updateCategoriesElement();
+  categoriesElement.on('change', updateCategoriesElement);
+  
+  //  ===== Tag =====================================================
   var tags = <%= raw Tag.all.to_json %>;
   var tagFlags = [];
   var tagElements = $('.tag-list');
@@ -199,7 +223,7 @@
     });
   }
   
-  function addListener() {
+  function addTagListener() {
     tagElements.on('change', function() {
       updateTagFlags();
       updateTagHtml();
@@ -251,7 +275,7 @@
   }
   
   initTagFlags();
-  addListener();
+  addTagListener();
   updateTagHtml();
 }();
 
