@@ -10,7 +10,7 @@ class CreateReviews < ActiveRecord::Migration
       t.timestamp :date
       t.references :book
       t.boolean :deleted, :default => false
-      t.foreign_key :book
+      t.foreign_key :book, dependent: :delete
 
       t.timestamps
     end
