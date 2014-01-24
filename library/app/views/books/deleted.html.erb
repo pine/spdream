@@ -16,6 +16,7 @@
     	</tr>
 
     	<% @books.each.with_index do |book, i| %>
+        <% if book.deleted == true %>
     		<tr>
           <td><%= i + 1%></td>
     			<td><%= book.title %></td>
@@ -25,6 +26,7 @@
     			<td><%= link_to '削除', book, :confirm => 'この本を削除しますか？', :method => :delete %></td>
     		</tr>
     	<% end %>
+      <% end %>
     </table>
   </div>
   

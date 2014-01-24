@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140124100315) do
+ActiveRecord::Schema.define(:version => 20140124182932) do
 
   create_table "books", :force => true do |t|
     t.string   "photo"
@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(:version => 20140124100315) do
     t.integer  "value"
     t.integer  "category_id"
     t.integer  "child_category_id"
-    t.boolean  "enabled"
+    t.boolean  "request",            :default => false
+    t.boolean  "deleted",            :default => false
     t.string   "tag0"
     t.string   "tag1"
     t.string   "tag2"
@@ -37,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20140124100315) do
     t.integer  "photo_file_size"
     t.string   "photo_content_type"
     t.datetime "photo_updated_at"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   add_index "books", ["category_id"], :name => "index_books_on_category_id"

@@ -148,6 +148,18 @@
     </div>
   </div>
   
+
+    <div class="form-group">
+      <%= f.label(
+          :request,
+          label: '承認&nbsp;:',
+          class: 'control-label col-sm-3'
+        ) %>
+      <div class="col-sm-8">
+        <%= f.check_box(:request) %>
+      </div>
+    </div>
+    
   <div class="form-group">
     <%= f.label(
           :phtoto,

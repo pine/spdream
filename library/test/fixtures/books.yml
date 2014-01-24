@@ -11,7 +11,8 @@ one:
   value: 1
   category: 
   child_category: 
-  enabled: false
+  request: false
+  deleted: false
   tag0: MyString
   tag1: MyString
   tag2: MyString
@@ -32,7 +33,8 @@ two:
   value: 1
   category: 
   child_category: 
-  enabled: false
+  request: false
+  deleted: false
   tag0: MyString
   tag1: MyString
   tag2: MyString

@@ -53,6 +53,11 @@
     </div>
     
     <div class="form-group">
+        <label class="control-label col-sm-3">承認&nbsp;:</label>
+        <div class="col-sm-8"><%= @book.request ? '承認' : '非承認' %></div>
+    </div>
+
+    <div class="form-group">
       <label class="control-label col-sm-3">画像:&nbsp;</label>
       <div class="col-sm-8">
         <% if (@book.photo.url == "/photos/original/missing.png") then %>

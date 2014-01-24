@@ -53,6 +53,7 @@ Library::Application.routes.draw do
       resources :books do
         collection do
           get 'deleted'
+          get 'request'
         end
       end
       post '/books/:id' => 'books#hide_and_restore' # /library/cms-opacplus/books/:id

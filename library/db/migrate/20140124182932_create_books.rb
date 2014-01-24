@@ -11,7 +11,8 @@ class CreateBooks < ActiveRecord::Migration
       t.integer :value
       t.references :category
       t.references :child_category
-      t.boolean :enabled
+      t.boolean :request, :default => false
+      t.boolean :deleted, :default => false
       t.string :tag0
       t.string :tag1
       t.string :tag2
@@ -32,7 +33,6 @@ class CreateBooks < ActiveRecord::Migration
     add_index :books, :category_id
     add_index :books, :child_category_id
   end
-
   def self.down
     drop
     table :books
