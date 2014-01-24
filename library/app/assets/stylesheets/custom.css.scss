@@ -98,15 +98,57 @@ textarea {
   padding: 4px 12px;
 }
 
+
 .inner_contents {
   margin: 15px 15px 40px;
   padding: 5px;
+  .label {
+    font-size: 0.9em;
+    margin: 5px 2px;
+    display: inline-block;
+  }
+
+  .label > a {
+    color: #fff;
+  }
 }
 
-.book_review .btn {
-  font-size: 0.8em;
-  letter-spacing: 1px;
-  padding: 3px 10px;
+.book_info {
+  .panel-heading {
+    font-size: 1.3em;
+  }
+  .panel-body {
+    font-size: 1.1em;
+  }
+  .list ul {
+    margin: 5px 0;
+  }
+  .list li {
+    margin: 0;
+    display: inline-block;
+    width: 250px;
+  }
+  .label {
+    font-size: 0.9em;
+    margin: 5px 2px;
+    display: inline-block;
+  }
+
+  .label > a {
+    color: #fff;
+  }
+}
+
+.book_review {
+  .btn {
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+  }
+  .review_value {
+    margin: 10px;
+    font-size: 0.9em;
+  }
 }
 
 .list ul {
@@ -262,10 +304,6 @@ a.list-group-item {
 
 .media-list {
   margin: 0;
-}
-
-.label {
-  line-height: 2;
 }
 
 /* Notice and Error Message*/

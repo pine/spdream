@@ -40,15 +40,31 @@
                   <% end %>
                 </div>
                 <div class="media-body">
-                  著者 ： <%= @books.auther %><br>
-                  説明 ： <%= br(@books.outline) %><br>
-                  評価 ： <% @books.value.times do %>★<% end %><% (5-@books.value).times do %>☆<% end %><br>
-                  この本に付いているタグ : 
+                  <div class="list">
+                    <ul>
+                      <li>
+                        著者 ： <%= @books.auther %>
+                      </li>
+                      <li>
+                        評価 ： <% @books.value.times do %>★<% end %><% (5-@books.value).times do %>☆<% end %>
+                      </li>
+                    </ul>
+                    <ul>
+                      <%= br(@books.outline) %>
+                    </ul>
+                  <ul>
+                  この本に付いているタグ : <br>
+                  <div class="text-center">
                   <% 8.times do |i| %>
                     <% unless (@books.send("tag" + i.to_s) == nil) then %>
-                      <%= @books.send("tag" + i.to_s) %>
+                      <span class="label label-default">
+                        <%= @books.send("tag" + i.to_s) %>
+                      </span>
                     <% end %>
                   <% end %>
+                </div>
+                  </ul>
+                  </div>
                 </div>
               </div>
             </div>
@@ -61,25 +77,26 @@
             <div class="panel panel-default">
               <% @books.reviews.each do |review| %>
               <div class="panel-heading">
-                <%= review.title %>
+                <%= review.title %> ( <%= review.created_at.strftime("%Y/%m/%d %H:%M") %> )
               </div>
               <div class="panel-body">
                 <div class="media-body">
-                  投稿日時 : <%= review.date %><br>
                   この本に対する評価 : <% review.value_book.times do %>★<% end %><% (5-review.value_book).times do %>☆<% end %><br>
-                  コメント : <%= br(review.comment) %><br>
-                  <br>
-                  <%= review.value_good + review.value_bad %>人中
-                  <%= review.value_good %>人が「このレビューは参考になった」と言っています<br>
-                  <%= review.value_bad %>人が「このレビューは参考にならない」と言っています
-                  <div class="text-center">
-                    このレビューは参考になりましたか？
-                    <button type="button" class="btn btn-default">
-                      はい
-                    </button>
-                    <button type="button" class="btn btn-default">
-                      いいえ
-                    </button>
+                  <%= br(review.comment) %><br>
+                  <div class="review_value">
+                    <%= review.value_good + review.value_bad %>人中
+                    <%= review.value_good %>人が「このレビューは参考になった」と言っています<br>
+                    <%= review.value_bad %>人が「このレビューは参考にならない」と言っています<br>
+                    <br>
+                    <div class="text-center">
+                      このレビューは参考になりましたか？
+                      <button type="button" class="btn btn-default">
+                        はい
+                      </button>
+                      <button type="button" class="btn btn-default">
+                        いいえ
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
