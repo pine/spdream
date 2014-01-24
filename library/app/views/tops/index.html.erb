@@ -29,8 +29,11 @@
                     <% end %>
                   </div>
                   <div class="media-body">
-                    更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
-                    内容 ： <%= br(schedule.intro) %>
+                    更新日 ： <%= schedule.date.strftime("%Y/%m/%d %H:%M") %><br>
+                    内容 ： 
+                    <div class="ellipsis">
+                      <%= br(schedule.intro) %>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -59,8 +62,11 @@
                     <% end %>
                   </div>
                   <div class="media-body">
-                    更新日 ： <%= schedule.date.strftime("%Y年 %m月 %d日") %><br>
-                    内容 ： <%= br(schedule.intro) %>
+                    更新日 ： <%= schedule.date.strftime("%Y/%m/%d %H:%M") %><br>
+                    内容 ： 
+                    <div class="ellipsis">
+                      <%= br(schedule.intro) %>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -89,38 +95,17 @@
                     <% end %>
                   </div>
                   <div class="media-body">
+                    更新日 : <%= books.created_at.strftime("%Y/%m/%d %H:%M") %><br>
                     著者 ： <%= books.auther %><br>
-                    説明 ： <%= br(books.outline) %>
+                    説明 ： 
+                    <div class="ellipsis">
+                      <%= br(books.outline) %>
+                    </div>
                   </div>
                 </div>
               </div>
             </li>
         <% end %>
-
-<!-- tab contents - modal window -->
-<!--
-        <a data-toggle="modal" href="#modal" class="btn btn-primary">
-          show me!
-        </a>
-
-        <div class="modal fade" id="modal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button class="close" data-dismiss="modal">&times;</button>
-                My modal
-              </div>
-              <div class="modal-body">
-                Hello World!
-              </div>
-              <div class="modal-footer">
-                <button class="btn btn-primary">OK</button>
-              </div>
-            </div>
-          </div>
-        </div>
--->
-
       </div>
     </div>
   </div>
