@@ -25,12 +25,26 @@ class OpacTopsController < ApplicationController
         @child_categories = ChildCategory.find(params[:id])
 	end
 
-    def index_tag
-        @books = Book.find(params[:id])
-        @categories = Category.find(:all, :order => "priority")
-        @child_categories = ChildCategory.find(:all, :order => "priority")    
+  def index_tag
+    @tag_name = params[:name]
+    conditions_query = ''
+    conditions_params = []
+    
+    8.times do |i|
+      conditions_query += ' or ' unless i.zero?
+      conditions_query += "tag#{i} = ?"
+      conditions_params << @tag_name
     end
-
+    
+    @categories = Category.find(:all, :order => "priority")
+    @books = Book.find(:all, :conditions => [conditions_query].concat(conditions_params))
+  end
+  
+  def index_tags
+    @categories = Category.find(:all, :order => "priority")
+    @tags = Tag.all
+  end
+  
     def show_book
         @books = Book.find(params[:id])
         @reviews = Review.find(:all, :conditions => {:book_id => params[:id]})
@@ -43,6 +57,5 @@ class OpacTopsController < ApplicationController
             format.json { render json: @review_new }
         end
     end
-
 end
 
