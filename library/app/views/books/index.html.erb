@@ -3,6 +3,7 @@
 <div class="panel-heading">蔵書一覧</div>
 
 <div class="panel-body">
+  <p>登録されている蔵書の編集ができます。</p>
 	<p><%= link_to '蔵書追加', new_book_path %> | <%= link_to '削除履歴', deleted_books_path %> | <%= link_to '蔵書追加承認', request_books_path %></p>
   
   <% if @books != nil then %>
