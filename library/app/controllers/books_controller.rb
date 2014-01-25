@@ -86,26 +86,35 @@ class BooksController < ApplicationController
       format.json { head :no_content }
     end
   end
- def hide_and_restore
+ def hide_and_restore_and_approval
     @book = Book.find(params[:id])
 
     if @book.deleted == true then
-      @book.deleted = false
-    else
-      @book.deleted = true
-    end
 
-    if @book.update_attributes(params[:book])
-      if @book.deleted == false then
-        redirect_to deleted_books_path, notice: '復元しました'
+      if @book.deleted == true then
+        @book.deleted = false
       else
-        redirect_to books_path, notice: '削除しました'
+        @book.deleted = true
+      end
+
+      if @book.update_attributes(params[:book])
+        if @book.deleted == false then
+          redirect_to deleted_books_path, notice: '復元しました'
+        else
+          redirect_to books_path, notice: '削除しました'
+        end
+      else
+        if @book.deleted == false then
+          render action: 'index'
+        else
+          render action: 'deleted'
+        end
       end
     else
-      if @book.deleted == false then
-        render action: 'index'
-      else
-        render action: 'deleted'
+      @book.request = true
+      @book.enabled = true
+      if @book.update_attributes(params[:review])
+          redirect_to request_books_path, notice: '承認しました'
       end
     end
   end
