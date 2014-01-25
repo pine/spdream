@@ -112,7 +112,7 @@ class BooksController < ApplicationController
       end
     else
       @book.request = true
-      @book.enabled = true
+
       if @book.update_attributes(params[:review])
           redirect_to request_books_path, notice: '承認しました'
       end
