@@ -203,8 +203,13 @@
 !function(){
   //  ===== Category ================================================
   var childCategories = <%= raw ChildCategory.all.to_json %>;
+  var childCategoryId = <%= @book.child_category_id %>;
   var categoriesElement = $("#categories");
   var childCategoriesElement = $("#child_categories");
+  
+  function seedChildCategory() {
+    childCategoriesElement.val(childCategoryId);
+  }
   
   function updateCategoriesElement() {
     var categoryId = categoriesElement.val();
@@ -222,6 +227,7 @@
   }
   
   updateCategoriesElement();
+  seedChildCategory();
   categoriesElement.on('change', updateCategoriesElement);
   
   //  ===== Tag =====================================================
