@@ -27,7 +27,7 @@ class ThesisTopsController < ApplicationController
 	def download
 		file = params[:student_id] + '.pdf'
    		@filepath = Rails.root + 'public/docs' + file
-    	send_file(@filepath)
+    	send_file @filepath, :disposition => 'inline'
 	end  
 
 end
