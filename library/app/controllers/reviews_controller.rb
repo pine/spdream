@@ -122,5 +122,8 @@ class ReviewsController < ApplicationController
   def deleted
     @reviews = Review.find(:all, :conditions => { :deleted => true })
   end
-
+  
+  def order
+    @reviews = Review.find(:all, :conditions => { :request => false })
+  end
 end
