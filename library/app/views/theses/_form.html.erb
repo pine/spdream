@@ -132,11 +132,17 @@
 <script>
 
 !function() {
-	var labsInitialCount = 1;
-	var labsData = <%= raw Lab.all.to_json %>;
-	var labsElement = $('#labs');
-	var facultysElement = $('#facultys');
-	
+  var labsData = <%= raw Lab.all.to_json %>;
+  var labId = <%= raw @thesis.lab_id %>;
+  var labsInitialCount = 1;
+  var labsElement = $('#labs');
+  var facultysElement = $('#facultys');
+  
+  // 初期値の処理
+  function initElements() {
+    labsElement.val(labId);
+  }
+  
 	function updateLabs() {
 		// 以前のデータを削除
 		var options = labsElement.find('option');
@@ -160,7 +166,8 @@
 	}
 	
 	updateLabs();
-	facultysElement.on('change', updateLabs)
+  initElements();
+	facultysElement.on('change', updateLabs);
 }();
 
 </script>

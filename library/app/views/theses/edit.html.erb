@@ -1,10 +1,12 @@
 # coding: utf-8
-<h1>編集画面</h1>
+<div class="panel-heading">編集画面</div>
 
-<div id="notice"><%= notice %></div>
-
-<%= render 'form' %>
-
-<%= link_to '戻る', :action => 'faculty', :id => @thesis.faculty_id %>
+<div class="panel-body">
+  <p class="well well-sm fadeout-msg"><%= notice %></p>
+  
+  <%= render 'form' %>
+  
+  <p><%= link_to '戻る', :action => 'faculty', :id => @thesis.faculty_id %></p>
+</div>
 
 <%= javascript_include_tag 'cms_theses' %>
