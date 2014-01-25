@@ -21,7 +21,7 @@ Opac::Application.routes.draw do
     end
   end
  post 'books/:id' => 'books#hide_and_restore'
- post 'reviews/:id' => 'reviews#hide_and_restore'
+ post 'reviews/:id' => 'reviews#hide_and_restore_approval'
  post 'tags/:id' => 'tags#approval'
 
   match "tops", :controller => :opac_tops, :action => :index ,:via => :GET

@@ -86,26 +86,35 @@ class ReviewsController < ApplicationController
     end
   end
 
-   def hide_and_restore
+   def hide_and_restore_and_approval
     @review = Review.find(params[:id])
 
-    if @review.deleted == true then
-      @review.deleted = false
-    else
-      @review.deleted = true
-    end
+    if @review.request == true then
 
-    if @review.update_attributes(params[:review])
-      if @review.deleted == false then
-        redirect_to deleted_reviews_path, notice: '復元しました'
+      if @review.deleted == true then
+        @review.deleted = false
       else
-        redirect_to reviews_path, notice: '削除しました'
+        @review.deleted = true
+      end
+
+      if @review.update_attributes(params[:review])
+        if @review.deleted == false then
+          redirect_to deleted_reviews_path, notice: '復元しました'
+        else
+          redirect_to reviews_path, notice: '削除しました'
+        end
+      else
+        if @review.deleted == false then
+          render action: 'index'
+        else
+          render action: 'deleted'
+        end
       end
     else
-      if @review.deleted == false then
-        render action: 'index'
-      else
-        render action: 'deleted'
+      @review.request = true
+      @review.enabled = true
+      if @review.update_attributes(params[:review])
+          redirect_to request_reviews_path, notice: '承認しました'
       end
     end
   end
