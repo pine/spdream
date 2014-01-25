@@ -67,11 +67,21 @@ Lab.create :name => '中村研究室', :faculty_id => 4
 Lab.create :name => '馬渕研究室', :faculty_id => 4
 
 #論文作成
-Thesis.create :title => '～について', :author => 'TEST', :student_id => '1150001', :course => '学士', :year => 2014, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test1.pdf'
-Thesis.create :title => '・・・について', :author => 'TEST', :student_id => '1150001', :course => '修士', :year => 2014, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test2.pdf'
-Thesis.create :title => '？？？について', :author => 'TEST', :student_id => '1150001', :course => '博士', :year => 2014, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test2.pdf'
-Thesis.create :title => '○○について', :author => 'TEST', :student_id => '1150002', :course => '学士', :year => 2014, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test3.pdf'
-Thesis.create :title => 'ーーについて', :author => 'TEST', :student_id => '1150003', :course => '学士', :year => 2015, :lab_id => 38, :faculty_id => 3, :enabled => true, :file => 'public/docs/test4.pdf'
+Thesis.create :title => 'LEDマトリクスを用いたアート作品のためのビジュアルプログラミング環境', :author => '今井 達郎', :student_id => '1130302', :course => '学士', :year => 2012, :lab_id => 34, :faculty_id => 3, :enabled => true, :full_text => true
+Thesis.create :title => 'Webアプリケーションを対象とするモデル検査法の効率化に関する研究', :author => '浦部 未来', :student_id => '1130309', :course => '学士', :year => 2012, :lab_id => 34, :faculty_id => 3, :enabled => true, :full_text => true
+Thesis.create :title => 'Cプログラムを対象としたシェープ解析アルゴリズムの実装', :author => '水野 雄介', :student_id => '1130391', :course => '学士', :year => 2012, :lab_id => 34, :faculty_id => 3, :enabled => true, :full_text => true
+
+Thesis.create :title => '木構造データの縮約アルゴリズムのHadoop上での実現とその評価', :author => '尾形 勇磨', :student_id => '1130320', :course => '学士', :year => 2012, :lab_id => 26, :faculty_id => 3, :enabled => true, :full_text => true
+Thesis.create :title => 'EPUBCFIを用いたデジタル教科書ビューアの開発', :author => '安楽 優樹', :student_id => '', :course => '学士', :year => 2012, :lab_id => 30, :faculty_id => 3, :enabled => true, :full_text = true
+#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
+#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
+#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
+#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
+#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
+#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
+#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
+#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
+
 
 #親カテゴリ
 Category.create :name => '情報学群', :description => '情報学群のカテゴリです。', :priority => 1
@@ -133,7 +143,6 @@ Tag.create :name => 'PHP', :intro => 'PHPに使える本につけるタグ', :pr
 Tag.create :name => 'JavaScript', :intro => 'JavaScriptに使える本につけるタグ', :priority => '17', :enabled => true, :request => true
 Tag.create :name => 'TCP/IP', :intro => 'TCP/IPに使える本につけるタグ', :priority => '18', :enabled => true, :request => true
 Tag.create :name => 'Ruby on Rails', :intro => 'Ruby on Railsに使える本につけるタグ', :priority => '19', :enabled => true, :request => true
-
 
 #蔵書
 Book.create :title => 'はじめてのPHP言語 プログラミング入門', :auther => '大垣靖男', :outline => 'PHPはWebアプリケーション開発言語として広く使われていますが、その実力はWebだけに限られているわけではありません。本書はプログラミング言語としてのPHPを解説することに重点をおいた入門書です。', :isbn10 => 4774122866, :isbn13 => 0, :opac_id => 1, :value => 4, :category_id => 1, :child_category_id => 1, :request => true, :tag0 => 'PHP', :tag1 => 'プログラミング'
