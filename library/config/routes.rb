@@ -47,11 +47,13 @@ Library::Application.routes.draw do
       resources :reviews do
         collection do
           get 'deleted'
+          get 'request'
         end
       end
       resources :books do
         collection do
           get 'deleted'
+          get 'request'
         end
       end
       post '/books/:id' => 'books#hide_and_restore' # /library/cms-opacplus/books/:id
@@ -132,7 +134,12 @@ Library::Application.routes.draw do
         :via => :GET,
         :as => 'opacplus_bookinfo'
       
+      # Review
       post 'reviews' => 'review_tops#create', :as => 'opacplus_reviews'
+      get 'review/value' => 'review_tops#value', :as => 'opacplus_review_value'
+      
+      # Tag
+      get 'tags' => 'opac_tops#index_tags', :as => 'opacplus_tags'
     end
     
     resources :theses do

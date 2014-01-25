@@ -7,7 +7,7 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
-    @books = Book.find(:all, :conditions => { :enabled => true })
+    @books = Book.find(:all, :conditions => { :deleted => false })
 
     respond_to do |format|
       format.html # index.html.erb
@@ -46,7 +46,7 @@ class BooksController < ApplicationController
   # POST /books.json
   def create
     @book = Book.new(params[:book])
-    @book.enabled = true
+    
 
     respond_to do |format|
       if @book.save
@@ -89,20 +89,20 @@ class BooksController < ApplicationController
  def hide_and_restore
     @book = Book.find(params[:id])
 
-    if @book.enabled == true then
-      @book.enabled = false
+    if @book.deleted == true then
+      @book.deleted = false
     else
-      @book.enabled = true
+      @book.deleted = true
     end
 
     if @book.update_attributes(params[:book])
-      if @book.enabled == false then
-        redirect_to books_path, notice: '削除しました'
-      else
+      if @book.deleted == false then
         redirect_to deleted_books_path, notice: '復元しました'
+      else
+        redirect_to books_path, notice: '削除しました'
       end
     else
-      if @book.enabled == false then
+      if @book.deleted == false then
         render action: 'index'
       else
         render action: 'deleted'
@@ -111,7 +111,7 @@ class BooksController < ApplicationController
   end
 
   def deleted
-    @books = Book.find(:all, :conditions => { :enabled => false })
+    @books = Book.find(:all, :conditions => { :deleted => true })
   end
 
 

@@ -1,0 +1,39 @@
+<!-- header -->
+<div class="row">
+  <div id="header">
+      <h1 class="header_title">目的別検索 OPAC+</h1>
+      <div class="header_intro">このページでは、図書館所蔵の本を目的別に探し、レビューを閲覧・投稿することができます。</div>
+  </div>
+</div>
+
+<!-- sidemenu -->
+<div class="row">
+  <div class="col-md-3">
+      <%= render 'category_menu' %>
+  </div>
+
+<!-- inner -->
+  <div class="col-md-9">
+    <div class="well">
+
+<!-- inner title -->
+      <div class="inner_title">
+        <button type="button" class="btn btn-default">
+          <%= link_to '戻る', opacplus_index_path %>
+        </button>
+        <h3 class="pull-right">タグ一覧</h3>
+      </div>
+
+<!-- inner contents - book index -->
+        <ul class="media-list">
+          <% @tags.each do |tag| %>
+
+          <li class="media">
+            <a href="<%= opacplus_tag_path(:name => tag.name) %>"><%= tag.name %></a>
+          </li>
+
+          <% end %>
+        </ul>
+    </div>
+  </div>
+</div>

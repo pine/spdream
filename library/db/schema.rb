@@ -24,7 +24,8 @@ ActiveRecord::Schema.define(:version => 20140125041411) do
     t.integer  "value"
     t.integer  "category_id"
     t.integer  "child_category_id"
-    t.boolean  "enabled"
+    t.boolean  "request",            :default => false
+    t.boolean  "deleted",            :default => false
     t.string   "tag0"
     t.string   "tag1"
     t.string   "tag2"
@@ -37,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20140125041411) do
     t.integer  "photo_file_size"
     t.string   "photo_content_type"
     t.datetime "photo_updated_at"
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
   end
 
   add_index "books", ["category_id"], :name => "index_books_on_category_id"
@@ -85,8 +86,8 @@ ActiveRecord::Schema.define(:version => 20140125041411) do
     t.integer  "value_bad",  :default => 0
     t.integer  "value_book", :default => 0
     t.boolean  "enabled",    :default => false
-    t.datetime "date"
     t.integer  "book_id"
+    t.boolean  "request",    :default => false
     t.boolean  "deleted",    :default => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false

@@ -24,7 +24,7 @@
     <div class="form-group">
       <label class="control-label col-sm-3">ISBN:&nbsp;</label>
       <div class="col-sm-8">
-        <% if @book.isbn10 == '0' %>
+        <% if @book.isbn13 != '0' %>
           <%= @book.isbn13 %>
         <% else %>
           <%= @book.isbn10 %>
@@ -53,8 +53,18 @@
     </div>
     
     <div class="form-group">
+        <label class="control-label col-sm-3">承認&nbsp;:</label>
+        <div class="col-sm-8"><%= @book.request ? '承認' : '非承認' %></div>
+    </div>
+
+    <div class="form-group">
       <label class="control-label col-sm-3">画像:&nbsp;</label>
-      <div class="col-sm-8"><%= image_tag @book.photo.url, :width=>'50' %></div>
+      <div class="col-sm-8">
+        <% if (@book.photo.url == "/photos/original/missing.png") then %>
+          画像なし
+        <% else %>
+          <%= image_tag @book.photo.url, :width=>'50' %></div>
+        <% end %>
     </div>
     
     <div class="form-group">
@@ -64,52 +74,57 @@
           タグなし
         <% else %>
           <table class="table table-striped">
+            <tr>
+              <th>No.</th>
+              <th>タグ</th>
+            </tr>
+            
             <% if @book.tag0 != '' %>
               <tr>
-                <th>タグ1</th>
-                <th><%= @book.tag0 %></th>
+                <td>1</td>
+                <td><%= @book.tag0 %></td>
               </tr>
             <% end %>
             <% if @book.tag1 != '' %>
               <tr>
-                <th>タグ2</th>
-                <th><%= @book.tag1 %></th>
+                <td>2</td>
+                <td><%= @book.tag1 %></td>
               </tr>
             <% end %>
             <% if @book.tag2 != '' %>
               <tr>
-                <th>タグ3</th>
-                <th><%= @book.tag2 %></th>
+                <td>3</td>
+                <td><%= @book.tag2 %></td>
               </tr>
             <% end %>
             <% if @book.tag3 != '' %>
               <tr>
-                <th>タグ4</th>
-                <th><%= @book.tag3 %></th>
+                <td>4</td>
+                <td><%= @book.tag3 %></td>
               </tr>
             <% end %>
             <% if @book.tag4 != '' %>
               <tr>
-                <th>タグ5</th>
-                <th><%= @book.tag4 %></th>
+                <td>5</td>
+                <td><%= @book.tag4 %></td>
               </tr>
             <% end %>
             <% if @book.tag5 != '' %>
               <tr>
-                <th>タグ6</th>
-                <th><%= @book.tag5 %></th>
+                <td>6</td>
+                <td><%= @book.tag5 %></td>
               </tr>
             <% end %>
             <% if @book.tag6 != '' %>
               <tr>
-                <th>タグ7</th>
-                <th><%= @book.tag6 %></th>
+                <td>7</td>
+                <td><%= @book.tag6 %></td>
               </tr>
             <% end %>
             <% if @book.tag7 != '' %>
               <tr>
-                <th>タグ8</th>
-                <th><%= @book.tag7 %></th>
+                <td>8</td>
+                <td><%= @book.tag7 %></td>
               </tr>
             <% end %>
           </table>
@@ -131,8 +146,8 @@
             <% @book.reviews.each.with_index do |review, i| %>
               <tr>
                 <td><%= i.next %></td>
-                <td>タイトル:<%= review.title %></td>
-                <td>コメント:<%= review.comment %></td>
+                <td><%= review.title %></td>
+                <td><%= review.comment %></td>
               </tr>
             <% end %>
           </table>

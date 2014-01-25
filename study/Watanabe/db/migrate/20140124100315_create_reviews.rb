@@ -7,10 +7,10 @@ class CreateReviews < ActiveRecord::Migration
       t.integer :value_bad, :default => '0'
       t.integer :value_book, :default => '0'
       t.boolean :enabled, :default => false
-      t.timestamp :date
       t.references :book
+      t.boolean :request, :default => false
       t.boolean :deleted, :default => false
-      t.foreign_key :book
+      t.foreign_key :book, dependent: :delete
 
       t.timestamps
     end

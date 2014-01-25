@@ -6,7 +6,10 @@ $maincolor_bright: #DBEAE4; // f0f8ff;
 $subcolor: #7F7F7F;
 $subcolor_bright: #A6A6A6;
 $subcolor_soft: #dddddd;
+
 $textcolor: #554A5B;
+$linkcolor_main: #7AC7A7;
+$linkcolor_sub: #518F75;
 
 /* Universal */
 
@@ -98,12 +101,59 @@ textarea {
 .inner_contents {
   margin: 15px 15px 40px;
   padding: 5px;
+  .label {
+    font-size: 0.9em;
+    margin: 5px 2px;
+    display: inline-block;
+  }
+
+  .label > a {
+    color: #fff;
+  }
 }
 
-.book_review .btn {
-  font-size: 0.8em;
-  letter-spacing: 1px;
-  padding: 3px 10px;
+.book_info {
+  .panel-heading {
+    font-size: 1.3em;
+  }
+  .panel-body {
+    font-size: 1.1em;
+  }
+  .list ul {
+    margin: 5px 0;
+  }
+  .list li {
+    margin: 0;
+    display: inline-block;
+    width: 250px;
+  }
+  .label {
+    font-size: 0.9em;
+    margin: 5px 2px;
+    display: inline-block;
+    a {
+      color: #fff;
+    }
+  }
+}
+
+.tag_and_review {
+  margin: 0 20px 20px;
+  .btn {
+    
+  }
+}
+
+.book_review {
+  .btn {
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+  }
+  .review_value {
+    margin: 10px;
+    font-size: 0.9em;
+  }
 }
 
 .list ul {
@@ -113,6 +163,15 @@ textarea {
 .list li {
   display: inline-block;
   width: 100px;
+}
+
+.ellipsis {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
 }
 
 /* Typography */
@@ -143,10 +202,10 @@ p {
 
 a {
   &:link, &:hover, &:active {
-    color: $maincolor;
+    color: $linkcolor_main;
   }
   &:visited {
-    color: $maincolor_dark;
+    color: $linkcolor_sub;
   }
 }
 
@@ -259,10 +318,6 @@ a.list-group-item {
 
 .media-list {
   margin: 0;
-}
-
-.label {
-  line-height: 2;
 }
 
 /* Notice and Error Message*/

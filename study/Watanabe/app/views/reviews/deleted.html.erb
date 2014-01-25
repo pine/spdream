@@ -22,8 +22,8 @@
 	      <td><%= review.value_bad %></td>
  	      <td><%= review.book.title %></td>
     	  <td><%= review.value_book %></td>
-   		  <td><%= review.date %></td>
-			<th><%= link_to '復元', review_path(review), :method => :pute %></th>
+    	  <td><%= review.created_at.to_time.strftime('%Y/%m/%d') %></td>
+   		  	<th><%= link_to '復元', review_path(review), :method => :post %></th>
 			<th><%= link_to '削除', review, :confirm => 'このレビューを削除しますか？', :method => :delete %></th>
 		</tr>
 		<% end %>
