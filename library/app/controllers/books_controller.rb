@@ -122,6 +122,8 @@ class BooksController < ApplicationController
   def deleted
     @books = Book.find(:all, :conditions => { :deleted => true })
   end
-
-
+  
+  def order
+    @books = Book.find(:all, :conditions => { :request => false })
+  end
 end
