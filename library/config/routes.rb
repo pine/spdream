@@ -56,7 +56,7 @@ Library::Application.routes.draw do
           get 'request'
         end
       end
-      post '/books/:id' => 'books#hide_and_restore' # /library/cms-opacplus/books/:id
+      post '/books/:id' => 'books#hide_and_restore_and_approval' # /library/cms-opacplus/books/:id
       post '/reviews/:id' => 'reviews#hide_and_restore_and_approval' # /library/cms-opacplus/reviws/:id
       post 'tags/:id' => 'tags#approval' # /library/cms-opacplus/tags/:id
     end
