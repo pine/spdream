@@ -19,14 +19,15 @@
         <th>年度</th>
         <th>学群</th>
         <th>研究室</th>
-        <th>課程</th>
+        <th>要旨</th>
+        <th>全文</th>
       </tr>
       <% @theses.each do |thesis| %>
         <% if n == 0 && thesis.course == '学士' ||
               n == 1 && thesis.course == '修士' ||
               n == 2 && thesis.course == '博士' %>
           <tr>
-          <td><%= link_to thesis.title, :action => 'download', :file => thesis.file %></td>
+          <td><%= thesis.title %></td>
           <td><%= thesis.author %></td>
   			  <td><%= thesis.student_id %></td>
   			  <td><%= thesis.year %></td>
@@ -44,7 +45,16 @@
   					  無所属
   				  <% end %>
   			  </td>
-  			  <td><%= thesis.course %></td>
+  			  <td>
+  			  	<% if thesis.full_text == false %>
+ 	 			  	<%= link_to '要旨', :action => 'download', :student_id => thesis.student_id %></td>
+ 	 				<td>
+  			  	<% else %>
+  			  		</td>
+  					<td>
+  				  	<%= link_to '全文', :action => 'download', :student_id => thesis.student_id %>
+  			  	<% end %>
+  			  </td>
     		  </tr>
         <% end %>
       <% end %>

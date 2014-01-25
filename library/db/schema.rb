@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140122072239) do
+ActiveRecord::Schema.define(:version => 20140125041411) do
 
   create_table "books", :force => true do |t|
     t.string   "photo"
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20140122072239) do
     t.datetime "updated_at", :null => false
     t.string   "data"
     t.string   "file"
+    t.boolean  "full_text"
   end
 
   add_index "theses", ["faculty_id"], :name => "index_theses_on_faculty_id"
