@@ -23,7 +23,6 @@
         </tr>
         
         <% @reviews.each.with_index do |review, i| %>
-          <% if review.deleted == false && review.request == true %>
           <tr>
             <td><%= i.next %></td>
             <td><%= review.book.title %></td>
@@ -40,9 +39,8 @@
             </td>
             <td><%= review.created_at.to_time.strftime('%Y/%m/%d') %></td>
             <td><%= link_to '編集', edit_review_path(review) %></td>
-            <td><%= link_to '削除', review_path(review), :method => :pute %></td>
+            <td><%= link_to '削除', review_path(review), :method => :delete %></td>
           </tr>
-          <% end %>
         <% end %>
       </table>
     </div>

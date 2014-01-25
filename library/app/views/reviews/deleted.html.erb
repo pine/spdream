@@ -21,14 +21,14 @@
       
       <% @reviews.each.with_index do |review, i| %>
         <tr>
-          <td><%= i.next %>
+          <td><%= i.next %></td>
           <td><%= review.book.title %></td>
           <td><%= review.value_book %></td>
           <td><%= link_to review.title, review_path(review) %></td>
           <td><%= review.value_good %></td>
           <td><%= review.value_bad %></td>
           <td><%= review.created_at.to_time.strftime('%Y/%m/%d') %></td>
-          <td><%= link_to '復元', review_path(review), :method => :pute %></td>
+          <td><%= link_to '復元', review_path(review), :method => :post %></td>
           <td><%= link_to '削除', review, :confirm => 'このレビューを削除しますか？', :method => :delete %></td>
         </tr>
       <% end %>

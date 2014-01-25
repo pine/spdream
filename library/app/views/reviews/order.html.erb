@@ -18,9 +18,9 @@
         <th>削除</th>
       </tr>
       
-      <% @reviews.each do |review| %>
+      <% @reviews.each.with_index do |review, i| %>
         <tr>
-          <td><%= i += 1 %></td>
+          <td><%= i.next %></td>
           <td><%= review.book.title %></td>
           <td><%= review.value_book %></td>
           <td><%= review.title %></td>
