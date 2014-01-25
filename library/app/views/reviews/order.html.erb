@@ -1,0 +1,37 @@
+# coding: utf-8
+
+<div class="panel-heading">レビュー追加承認</div>
+
+<div class="panel-body">
+  <p class="well well-sm fadeout-msg"><%= notice %></p>
+  
+  <div class="table-container">
+    <table class="table table-striped">
+      <tr>
+        <th>No.</th>
+        <th>蔵書</th>
+        <th>蔵書評価</th>
+        <th>タイトル</th>
+        <th>コメント</th>
+        <th>日付</th>
+        <th>承認</th>
+        <th>削除</th>
+      </tr>
+      
+      <% @reviews.each do |review| %>
+        <tr>
+          <td><%= i += 1 %></td>
+          <td><%= review.book.title %></td>
+          <td><%= review.value_book %></td>
+          <td><%= review.title %></td>
+          <td><%= review.comment %></td>
+          <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= link_to '承認', review_path(review), :method => :post %></td>
+          <td><%= link_to '削除', review, :confirm => 'このレビューを削除しますか？', :method => :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  
+  <p><%= link_to '戻る', reviews_path %></p>
+</div>

@@ -101,5 +101,8 @@ class TagsController < ApplicationController
   def deleted
     @tags = Tag.all
   end
-
+  
+  def order
+    @tags = Tag.find(:all, :conditions => { :request => false })
+  end
 end
