@@ -42,44 +42,6 @@
         <button type="button" class="btn btn-default">
           <%= link_to '戻る', opacplus_index_path %>
         </button>
-        <h3 class="pull-right">本のレビューを投稿する</h3>
-      </div>
-
-<!-- inner contents - review -->
-      <div class="inner_contents">
-        <p>
-          以下のボタンから、図書館利用者におすすめしたい本の評価やレビューを送信することができます。
-        </p>
-        <p>
-          レビューは図書館のシステムに送信され、職員による確認の後に投稿されます。
-          反映までには時間がかかりますので、ご了承ください。
-        </p>
-        <div class="text-center">
-          <a data-toggle="modal" href="#modal" class="btn btn-primary">
-            本のレビューを書く
-          </a>
-        </div>
-
-        <div class="modal fade" id="modal">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button class="close" data-dismiss="modal">&times;</button>
-                本のレビューを書く
-              </div>
-              <div class="modal-body">
-                <%= render 'review_form' %>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-<!-- inner title -->
-      <div class="inner_title">
-        <button type="button" class="btn btn-default">
-          <%= link_to '戻る', opacplus_index_path %>
-        </button>
         <h3 class="pull-right">新しく本を追加する</h3>
       </div>
 
@@ -93,12 +55,12 @@
           反映までには時間がかかりますので、ご了承ください。
         </p>
         <div class="text-center">
-          <a data-toggle="modal" href="#modal" class="btn btn-primary">
+          <a data-toggle="modal" href="#book_new" class="btn btn-primary">
             新しく本を追加する
           </a>
         </div>
 
-        <div class="modal fade" id="modal">
+        <div class="modal fade" id="book_new">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -106,7 +68,7 @@
                 新しく本を追加する
               </div>
               <div class="modal-body">
-                <%= render 'review_form' %>
+                <%= render 'book_form' %>
               </div>
             </div>
           </div>

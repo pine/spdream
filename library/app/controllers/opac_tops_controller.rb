@@ -5,6 +5,7 @@ class OpacTopsController < ApplicationController
         @categories = Category.find(:all, :order => "priority")
         @tags = Tag.find(:all, :order => "priority")
         @review_new = Review.new
+        @book_new = Book.new
 
         respond_to do |format|
             format.html
@@ -45,17 +46,18 @@ class OpacTopsController < ApplicationController
     @tags = Tag.all
   end
   
-    def show_book
-        @books = Book.find(params[:id])
-        @reviews = Review.find(:all, :conditions => {:book_id => params[:id]})
-        @categories = Category.find(:all, :order => "priority")
-        @child_categories = ChildCategory.find(params[:id])
-        @review_new = Review.new
+  def show_book
+    @books = Book.find(params[:id])
+    @reviews = Review.find(:all, :conditions => {:book_id => params[:id]})
+    @categories = Category.find(:all, :order => "priority")
+    @child_categories = ChildCategory.find(params[:id])
+    @review_new = Review.new
+    @tags = Tag.all
 
-        respond_to do |format|
-            format.html
-            format.json { render json: @review_new }
-        end
+    respond_to do |format|
+        format.html
+        format.json { render json: @review_new }
     end
+  end
 end
 
