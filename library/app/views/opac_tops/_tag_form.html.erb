@@ -1,5 +1,5 @@
   <%= simple_form_for(
-        @review_new,
+        @tag_new,
         html: { class: 'form-horizontal', role: 'form' },
         
         # 以下2行で、ReviewTops コントローラの create メソッドに送信するように指定
@@ -8,12 +8,12 @@
         action: :post
       ) do |f|
   %>
-    <% if @review_new.errors.any? %>
+    <% if @tag_new.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(@review_new.errors.count, "error") %> prohibited this review from being saved:</h2>
+        <h2><%= pluralize(@tag_new.errors.count, "error") %> prohibited this review from being saved:</h2>
 
         <ul>
-        <% @review_new.errors.full_messages.each do |msg| %>
+        <% @tag_new.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
         <% end %>
         </ul>

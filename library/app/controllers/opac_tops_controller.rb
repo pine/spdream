@@ -6,6 +6,7 @@ class OpacTopsController < ApplicationController
         @tags = Tag.find(:all, :order => "priority")
         @review_new = Review.new
         @book_new = Book.new
+        @tag_new = Tag.new
 
         respond_to do |format|
             format.html
@@ -53,6 +54,7 @@ class OpacTopsController < ApplicationController
     @child_categories = ChildCategory.find(params[:id])
     @review_new = Review.new
     @tags = Tag.all
+    @tag_new = Tag.new
 
     respond_to do |format|
         format.html
