@@ -72,7 +72,7 @@ Thesis.create :title => 'Webアプリケーションを対象とするモデル�
 Thesis.create :title => 'Cプログラムを対象としたシェープ解析アルゴリズムの実装', :author => '水野 雄介', :student_id => '1130391', :course => '学士', :year => 2012, :lab_id => 34, :faculty_id => 3, :enabled => true, :full_text => true
 
 Thesis.create :title => '木構造データの縮約アルゴリズムのHadoop上での実現とその評価', :author => '尾形 勇磨', :student_id => '1130320', :course => '学士', :year => 2012, :lab_id => 26, :faculty_id => 3, :enabled => true, :full_text => true
-Thesis.create :title => 'EPUBCFIを用いたデジタル教科書ビューアの開発', :author => '安楽 優樹', :student_id => '', :course => '学士', :year => 2012, :lab_id => 30, :faculty_id => 3, :enabled => true, :full_text = true
+Thesis.create :title => 'EPUBCFIを用いたデジタル教科書ビューアの開発', :author => '安楽 優樹', :student_id => '', :course => '学士', :year => 2012, :lab_id => 30, :faculty_id => 3, :enabled => true, :full_text => true
 #Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
 #Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
 #Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
