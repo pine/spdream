@@ -1,0 +1,29 @@
+# coding: utf-8
+<div class="panel-heading">タグ追加承認</div>
+
+<div class="panel-body">
+  <p class="well well-sm fadeout-msg"><%= notice %></p>
+  
+  <div class="table-container">
+    <table class="table table-striped">
+      <tr>
+        <th>No.</th>
+        <th>名前</th>
+        <th>承認</th>
+        <th>削除</th>
+      </tr>
+      
+      <% @tags.each.with_index do |tag, i| %>
+        <tr>
+          <td><%= i.next %></td>
+          <td><%= tag.name %></td>
+          <td><%= link_to '承認', tag_path(tag), :method => :post %></td>
+          <td><%= link_to '削除', tag, :confirm => 'このタグを削除しますか？', :method => :delete %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  
+  <p><%= link_to '戻る', tags_path %></p>
+</div>
+

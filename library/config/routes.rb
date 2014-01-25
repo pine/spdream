@@ -39,7 +39,7 @@ Library::Application.routes.draw do
       resources :categories
       resources :tags do
         collection do
-          get 'request'
+          get 'request', :action => 'order'
         end
       end
       resources :requests
