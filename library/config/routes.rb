@@ -69,6 +69,7 @@ Library::Application.routes.draw do
         # get 'faculty'
         get 'faculty/:id' =>'theses#faculty' # /library/cms-thesis/faculty/:id
         get 'all'
+        get 'download' => 'theses#download'
       end
     end
     
@@ -84,8 +85,6 @@ Library::Application.routes.draw do
         get 'faculty'
         get 'all'
         get 'download' => 'thesis_tops#download'
-      end
-      member do
       end
     end 
 
