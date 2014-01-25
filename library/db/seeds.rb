@@ -144,7 +144,6 @@ Tag.create :name => 'JavaScript', :intro => 'JavaScriptに使える本につけ�
 Tag.create :name => 'TCP/IP', :intro => 'TCP/IPに使える本につけるタグ', :priority => '18', :enabled => true, :request => true
 Tag.create :name => 'Ruby on Rails', :intro => 'Ruby on Railsに使える本につけるタグ', :priority => '19', :enabled => true, :request => true
 
-
 #蔵書
 Book.create :title => 'はじめてのPHP言語 プログラミング入門', :auther => '大垣靖男', :outline => 'PHPはWebアプリケーション開発言語として広く使われていますが、その実力はWebだけに限られているわけではありません。本書はプログラミング言語としてのPHPを解説することに重点をおいた入門書です。', :isbn10 => 4774122866, :isbn13 => 0, :opac_id => 1, :value => 4, :category_id => 1, :child_category_id => 1, :request => true, :tag0 => 'PHP', :tag1 => 'プログラミング'
 Book.create :title => 'PHP携帯サイト　デベロッパーズバイブル', :auther => '荒木稔', :outline => '本書は複雑になりがちな携帯サイトの仕様や技術を、ノウハウを知りえた情報を元に紐解いていきます。', :isbn10 => 0, :isbn13 => 978479734846, :opac_id => 5, :value => 3, :category_id => 1, :child_category_id => 1, :request => true, :tag0 => 'PHP', :tag1 => 'プログラミング'
@@ -171,3 +170,25 @@ Review.create :title => 'PHP', :comment => '', :value_good => 1, :value_bad => 1
 Review.create :title => 'よくわからない', :comment => '初心者なので読んでみたけどよくわからなかった', :value_good => 0, :value_bad => 5, :value_book => 1, :enabled => true, :request => true, :book_id => 1, :deleted => false
 Review.create :title => 'もう少しわかりやすくかいてほしい', :comment => 'ある程度は参考になったとは思いますがもう少し初心者に優しく書いて欲しいです。', :value_good => 1, :value_bad => 2, :value_book => 2, :enabled => true, :request => true, :book_id => 1, :deleted => false
 Review.create :title => 'わかりやすくていいです', :comment => '読みやすかったです。', :value_good => 3, :value_bad => 0, :value_book => 4, :enabled => true, :request => true, :book_id => 1, :deleted => false
+
+#スケジュール
+Schedule.create :date => '2013/12/19',:time => '12:00:00', :type => 'News', :title => '休館のおしらせ', :intro => 'センター試験のため、 1月18日（土）は休館です。'
+Schedule.create :date => '2013/12/19',:time => '15:00:00', :type => 'News', :title => '年末年始休業中の完全閉館のお知らせ', :intro => '年末年始の休業に伴い、2013年12月27日（金）19時 ～ 2014年1月6日（月）8時30分まで完全閉館となります。'
+Schedule.create :date => '2013/11/01',:time => '15:00:00', :type => 'News', :title => 'SWEN.L VOL23を発行しました', :intro => '高知工科大学情報図書館の広報誌を公開しました。'
+Schedule.create :date => '2013/11/18',:time => '15:00:00', :type => 'Event', :title => '［展示会］マネジメント学部作品展「紙漉き体験 in ゆすはら」', :intro => 'メンバーのほとんどが和紙づくりは初めてでしたが、ロギールさんの丁寧な指導のおかげで、それぞれの個性が出た、とても趣のある素敵な和紙に仕上がりました。この機会に学生たちの芸術作品に触れ、ぜひ梼原の自然・空気を感じてみてください。
+
+開催日時:2013年11月18日（月）～11月29日（金） 8:30-19:00
+開催場所:高知工科大学附属情報図書館１階ホール
+主催:マネジメント学部　講師　生島 淳 
+　 '
+Schedule.create :date => '2013/11/18',:time => '12:00:00', :type => 'Event', :title => '［展示会］書道部「想書展」', :intro => '大学祭作品を再度図書館に展示します。より多くの学生に作品を見てもらいたいと思い企画いたしました。作品にはそれぞれの想いが詰まっています。どうぞご覧ください。
+
+開催日時2013年11月18日（月）～11月29日（金） 8:30-19:00
+開催場所:高知工科大学附属情報図書館 1階ホール
+主催:書道部 '
+Schedule.create :date => '2013/05/23',:time => '13:00:00', :type => 'Event', :title => '[企画展]美術に触れる', :intro => '葛飾北斎や安藤広重など日本浮世絵師の作品集や日本美術の歴史、またルーブル美術館やオルセー美術館の作品の数々を集めた写真集や西洋の美術に関する図書・DVDを、図書館１階エントランスホールに展示しています。
+その他にも、株式会社トミナガ 代表取締役 冨永守彦様からご寄贈いただいた、ルーヴル美術館の最高傑作で造られた本格的美術全集『ルーヴルとパリの美術集』も展示。
+ 是非、お手にとりご覧ください。
+
+開催日時:2013年10月1日（火）～11月15日（金） 8:30-19:00
+開催場所:高知工科大学附属情報図書館 １階エントランスホール'
