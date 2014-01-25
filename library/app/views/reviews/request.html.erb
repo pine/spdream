@@ -12,8 +12,9 @@
         <th>蔵書</th>
         <th>蔵書評価</th>
         <th>タイトル</th>
+        <th>コメント</th>
         <th>日付</th>
-        <th>編集</th>
+        <th>承認</th>
         <th>削除</th>
       </tr>
       
@@ -25,8 +26,9 @@
             <td><%= review.book.title %></td>
             <td><%= review.value_book %></td>
             <td><%= review.title %></td>
+            <td><%= review.comment %></td>
             <td><%= review.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= link_to '編集', edit_review_path(review)%></td>
+            <td><%= link_to '承認', review_path(review), :method => :post %></td>
             <td><%= link_to '削除', review, :confirm => 'このレビューを削除しますか？', :method => :delete %></td>
           </tr>
         <% end %>
