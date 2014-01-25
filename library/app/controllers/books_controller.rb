@@ -82,14 +82,14 @@ class BooksController < ApplicationController
     @book.destroy
 
     respond_to do |format|
-      format.html { redirect_to deleted_books_path }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
  def hide_and_restore_and_approval
     @book = Book.find(params[:id])
 
-    if @book.deleted == true then
+    if @book.request == true then
 
       if @book.deleted == true then
         @book.deleted = false
@@ -122,6 +122,8 @@ class BooksController < ApplicationController
   def deleted
     @books = Book.find(:all, :conditions => { :deleted => true })
   end
-
-
+  
+  def order
+    @books = Book.find(:all, :conditions => { :request => false })
+  end
 end

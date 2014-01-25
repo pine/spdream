@@ -39,7 +39,7 @@ Library::Application.routes.draw do
       resources :categories
       resources :tags do
         collection do
-          get 'request'
+          get 'request', :action => 'order'
         end
       end
       resources :requests
@@ -47,13 +47,13 @@ Library::Application.routes.draw do
       resources :reviews do
         collection do
           get 'deleted'
-          get 'request'
+          get 'request', :action => 'order'
         end
       end
       resources :books do
         collection do
           get 'deleted'
-          get 'request'
+          get 'request', :action => 'order'
         end
       end
       post '/books/:id' => 'books#hide_and_restore_and_approval' # /library/cms-opacplus/books/:id
@@ -69,6 +69,7 @@ Library::Application.routes.draw do
         # get 'faculty'
         get 'faculty/:id' =>'theses#faculty' # /library/cms-thesis/faculty/:id
         get 'all'
+        get 'download' => 'theses#download'
       end
     end
     
@@ -84,8 +85,6 @@ Library::Application.routes.draw do
         get 'faculty'
         get 'all'
         get 'download' => 'thesis_tops#download'
-      end
-      member do
       end
     end 
 

@@ -81,7 +81,7 @@ class ReviewsController < ApplicationController
     @review.destroy
 
     respond_to do |format|
-      format.html { redirect_to reviews_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
@@ -122,5 +122,8 @@ class ReviewsController < ApplicationController
   def deleted
     @reviews = Review.find(:all, :conditions => { :deleted => true })
   end
-
+  
+  def order
+    @reviews = Review.find(:all, :conditions => { :request => false })
+  end
 end

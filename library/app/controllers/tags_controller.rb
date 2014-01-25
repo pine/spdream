@@ -83,7 +83,7 @@ class TagsController < ApplicationController
     @tag.destroy
 
     respond_to do |format|
-      format.html { redirect_to tags_url }
+      format.html { redirect_to :back }
       format.json { head :no_content }
     end
   end
@@ -101,5 +101,8 @@ class TagsController < ApplicationController
   def deleted
     @tags = Tag.all
   end
-
+  
+  def order
+    @tags = Tag.find(:all, :conditions => { :request => false })
+  end
 end
