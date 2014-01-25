@@ -226,10 +226,17 @@
   
   //  ===== Tag =====================================================
   var tags = <%= raw Tag.all.to_json %>;
+  var bookTags = <%= raw (0..7).map {|i| @book.send("tag#{i}") }.to_json %>;
   var tagFlags = [];
   var tagElements = $('.tag-list');
   
-  function initTagFlags() {
+  function seedTagElements() {
+    tagElements.each(function(i) {
+      $(this).val(bookTags[i]);
+    });
+  }
+  
+  function clearTagFlags() {
     $.each(tags, function() {
       tagFlags[this.id] = true;
     });
@@ -255,7 +262,7 @@
   }
   
   function updateTagFlags() {
-    initTagFlags();
+    clearTagFlags();
     
     tagElements.each(function() {
       if ($(this).val() != "") {
@@ -286,9 +293,10 @@
     });
   }
   
-  initTagFlags();
+  clearTagFlags();
   addTagListener();
   updateTagHtml();
+  seedTagElements();
 }();
 
 </script>
