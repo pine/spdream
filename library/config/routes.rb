@@ -139,6 +139,7 @@ Library::Application.routes.draw do
       
       # Tag
       get 'tags' => 'opac_tops#index_tags', :as => 'opacplus_tags'
+      post 'tags' => 'opac_tops#create_tag', :as => 'opacplus_create_tag'
     end
     
     resources :theses do

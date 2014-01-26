@@ -3,7 +3,7 @@ class OpacTopsController < ApplicationController
   
 	def index
         @categories = Category.find(:all, :order => "priority")
-        @tags = Tag.find(:all, :order => "priority")
+        @tags = Tag.find(:all, :order => "priority", :conditions => { :enabled => true, :request => true })
         @review_new = Review.new
         @book_new = Book.new
         @tag_new = Tag.new
@@ -59,6 +59,19 @@ class OpacTopsController < ApplicationController
     respond_to do |format|
         format.html
         format.json { render json: @review_new }
+    end
+  end
+  
+  # V‹Kƒ^ƒO’Ç‰Á
+  def create_tag
+    @tag = Tag.new(params[:tag])
+    
+    respond_to do |format|
+      if @tag.save
+        format.json { render json: @tag, status: :created, location: @tag }
+      else
+        format.json { render json: @tag.errors, status: :unprocessable_entity }
+      end
     end
   end
 end

@@ -1,10 +1,11 @@
 <%= simple_form_for(
       @tag_new,
-      html: { class: 'form-horizontal', role: 'form' },
+      remote: true,
+      html: { class: 'form-horizontal', role: 'form', id: 'tag_new_form' },
       
       # 以下2行で、ReviewTops コントローラの create メソッドに送信するように指定
       # opacplus_reviews_path は routes.rb 参照
-      url: opacplus_reviews_path,
+      url: opacplus_create_tag_path,
       action: :post
     ) do |f|
 %>
@@ -33,7 +34,8 @@
       <%= f.text_field(
           :name,
           autofocus: true,
-          class: 'form-control'
+          class: 'form-control',
+          id: 'tag_new_name'
         ) %>
     </div>
   </div>
@@ -44,3 +46,13 @@
     </div>
   </div>
 <% end %>
+
+<script>
+
+$('#tag_new_form').on('ajax:success', function(e, data, status, xhr) {
+  $('#tag_new').modal('hide');            // 現在のダイアログを非表示に
+  $('#tag_new_name').val('');             // フォームの値を削除
+  $('#tag_created_name').text(data.name); // ダイアログに値を設定
+  $('#tag_created').modal('show');        // ダイアログを表示
+});
+</script>

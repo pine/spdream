@@ -92,6 +92,7 @@
         <p>
           以下のタグから、気になるものをクリックしてください。
         </p>
+        
         <% @tags.each do |tag| %>
           <span class="label label-default">
             <%= link_to tag.name, opacplus_tag_path(:name => tag.name) %>
@@ -130,13 +131,30 @@
                 新しくタグを追加する
               </div>
               <div class="modal-body">
-                <%= render 'tag_form' %>
+                <%= render 'tag_new_form' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="modal fade" id="tag_created">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button class="close" data-dismiss="modal">&times;</button>
+                新しいタグの追加依頼に成功
+              </div>
+              <div class="modal-body">
+                新しいタグ「<span id="tag_created_name"></span>」の追加依頼を行いました。実際に追加されるまで、しばらくお待ちください。
+              </div>
+              
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
