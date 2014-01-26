@@ -7,14 +7,15 @@ class ReviewTopsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(params[:review])
-
+    @review.request = false
+    
     # レビュー送信後のリダイレクト先をここで指定
     # 現状は OPACP+ のユーザ側にリダイレクト
     respond_to do |format|
       if @review.save
-        format.html { redirect_to opacplus_index_path, notice: 'Review was successfully created.' }
+        format.json { render json: @review, status: :created }
       else
-        format.html { redirect_to opacplus_index_path }
+        format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
   end

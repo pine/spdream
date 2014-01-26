@@ -101,7 +101,7 @@
           <div class="modal-content">
             <div class="modal-header">
               <button class="close" data-dismiss="modal">&times;</button>
-              本のレビューを書く
+              「<%= @books.title %>」のレビューを書く
             </div>
             <div class="modal-body">
               <%= render 'review_form' %>
@@ -127,13 +127,30 @@
         </div>
       </div>
       
+      <div class="modal fade" id="review_added_modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              レビューに成功
+            </div>
+            <div class="modal-body">
+              レビューを投稿しました。
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
       
 <!-- inner contents - book review -->
         <div class="book_review">
           <li class="media">
             <div class="panel panel-default">
-              <% @books.reviews.each do |review| %>
+              <% @reviews.each do |review| %>
               <div class="panel-heading">
                 <%= review.title %> ( <%= review.created_at.strftime("%Y/%m/%d %H:%M") %> )
               </div>
@@ -277,6 +294,23 @@
   addListener();
   updateBookTags();
   updateModalTags();
+}();
+
+// レビューの処理
+!function(){
+  var reviewForm = $('#review_form');
+  var reviewModal = $('#review_modal');
+  var reviewAddedModal = $('#review_added_modal');
+  
+  function addListener() {
+    reviewForm.on('ajax:success', function(e, data, status, xhr) {
+      reviewModal.modal('hide');
+      reviewForm[0].reset();
+      reviewAddedModal.modal('show');
+    });
+  }
+  
+  addListener();
 }();
 
 </script>

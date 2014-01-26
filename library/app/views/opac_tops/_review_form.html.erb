@@ -1,11 +1,12 @@
   <%= simple_form_for(
         @review_new,
-        html: { class: 'form-horizontal', role: 'form' },
+        html: { class: 'form-horizontal', role: 'form', id: 'review_form' },
         
         # 以下2行で、ReviewTops コントローラの create メソッドに送信するように指定
         # opacplus_reviews_path は routes.rb 参照
         url: opacplus_reviews_path,
-        action: :post
+        action: :post,
+        remote: true
       ) do |f|
   %>
     <% if @review_new.errors.any? %>
@@ -51,20 +52,7 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <%= f.label(
-          :book_id,
-          label: '蔵書&nbsp;:',
-          class: 'control-label col-sm-3'
-        ) %>
-      
-      <div class="col-sm-8">
-        <%= f.select(
-              :book_id,
-              Book.all.map{|book| [book.title, book.id]},
-              {}, { class: 'form-control' }) %>
-      </div>
-    </div>
+    <%= f.hidden_field(:book_id, value: @books.id) %>
     
     <div class="form-group">
       <%= f.label(

@@ -21,7 +21,7 @@
       <% @reviews.each.with_index do |review, i| %>
         <tr>
           <td><%= i.next %></td>
-          <td><%= review.book.title %></td>
+          <td><%= review.book ? review.book.title : '' %></td>
           <td><%= review.value_book %></td>
           <td><%= review.title %></td>
           <td><%= review.comment %></td>
