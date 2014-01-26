@@ -72,16 +72,14 @@ Thesis.create :title => 'Webアプリケーションを対象とするモデル�
 Thesis.create :title => 'Cプログラムを対象としたシェープ解析アルゴリズムの実装', :author => '水野 雄介', :student_id => '1130391', :course => '学士', :year => 2012, :lab_id => 34, :faculty_id => 3, :enabled => true, :full_text => true
 
 Thesis.create :title => '木構造データの縮約アルゴリズムのHadoop上での実現とその評価', :author => '尾形 勇磨', :student_id => '1130320', :course => '学士', :year => 2012, :lab_id => 26, :faculty_id => 3, :enabled => true, :full_text => true
-Thesis.create :title => 'EPUBCFIを用いたデジタル教科書ビューアの開発', :author => '安楽 優樹', :student_id => '', :course => '学士', :year => 2012, :lab_id => 30, :faculty_id => 3, :enabled => true, :full_text => true
-#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
-#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
-#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
-#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
-#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
-#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
-#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
-#Thesis.create :title => '', :author => '', :student_id => '', :course => '学士', :year => 2012, :lab_id => , :faculty_id => 3, :enabled => true, :full_text = true
+Thesis.create :title => 'MapReduceフレームワークを用いた木構造処理の実現に関する研究', :author => '川村 高之', :student_id => '1120232', :course => '学士', :year => 2011, :lab_id => 26, :faculty_id => 3, :enabled => true, :full_text => true
+Thesis.create :title => 'モンテカルロ法を適用した大貧民プレイヤのプレイアウトの性質に関する研究', :author => '地曳 隆将', :student_id => '1120249', :course => '学士', :year => 2011, :lab_id => 26, :faculty_id => 3, :enabled => true, :full_text => true
+Thesis.create :title => '数独の少数ヒント問題の生成に関する研究', :author => '那須 律政', :student_id => '1120254', :course => '学士', :year => 2011, :lab_id => 26, :faculty_id => 3, :enabled => true, :full_text => true
 
+Thesis.create :title => 'EPUBCFIを用いたデジタル教科書ビューアの開発', :author => '安楽 優樹', :student_id => '1130296', :course => '学士', :year => 2012, :lab_id => 30, :faculty_id => 3, :enabled => true, :full_text => true
+
+Thesis.create :title => '難読言語Malbolgeの逆コンパイル困難性に関する研究', :author => '菅　優也', :student_id => '1110243', :course => '学士', :year => 2010, :lab_id => 34, :faculty_id => 3, :enabled => true, :full_text => true
+Thesis.create :title => 'モデル検査器JavaPathfinderにおける実行とレース出力の改善', :author => '菅 優也', :student_id => '1110243', :course => '修士', :year => 2012, :lab_id =>34, :faculty_id => 3, :enabled => true, :full_text => true
 
 #親カテゴリ
 Category.create :name => '情報学群', :description => '情報学群のカテゴリです。', :priority => 1

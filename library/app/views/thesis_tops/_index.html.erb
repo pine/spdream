@@ -45,14 +45,15 @@
   					  無所属
   				  <% end %>
   			  </td>
-  			  <td>
-  			  	<% if thesis.full_text == false %>
- 	 			  	<%= link_to '要旨', :action => 'download', :student_id => thesis.student_id %></td>
  	 				<td>
-  			  	<% else %>
-  			  		</td>
-  					<td>
+            <% if thesis.full_text == false %>
+ 	 	  		  	<%= link_to '要旨', :action => 'download', :student_id => thesis.student_id %>
+  			  	<% end %>
+  			  </td>
+  			  <td>
+            <% if thesis.full_text %>
   				  	<%= link_to '全文', :action => 'download', :student_id => thesis.student_id %>
+              (<%= (@thesis_sizes[thesis.id].to_f / 1024 / 1024).round(1) %> MB)
   			  	<% end %>
   			  </td>
     		  </tr>

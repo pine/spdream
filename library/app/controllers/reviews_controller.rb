@@ -7,7 +7,7 @@ class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = Review.find(:all, :conditions => { :deleted => false, :request => true })
 
     respond_to do |format|
       format.html # index.html.erb
