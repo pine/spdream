@@ -3,7 +3,7 @@
     <div class="text-center">カテゴリ一覧</div>
   </div>
   <div class="panel-body">
-    <ul>
+    <ul class="treeview" id="category_tree">
 
       <% @categories.each do |category| %>
       <li>
@@ -27,3 +27,19 @@
     </ul>
   </div>
 </div>
+
+<script>
+
+!function(){
+  var COOKIE_ID = 'category_tree';
+  var elem = $('#category_tree');
+  var cookie = $.cookie(COOKIE_ID);
+  
+  if (cookie == null) {
+    elem.find('li').addClass('closed');
+  }
+  
+  elem.treeview({ persist: "cookie", cookieId: COOKIE_ID });
+}();
+
+</script>
