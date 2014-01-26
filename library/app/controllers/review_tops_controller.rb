@@ -7,6 +7,7 @@ class ReviewTopsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(params[:review])
+    @review.request = false
     
     # レビュー送信後のリダイレクト先をここで指定
     # 現状は OPACP+ のユーザ側にリダイレクト

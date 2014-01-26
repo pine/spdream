@@ -150,7 +150,7 @@
         <div class="book_review">
           <li class="media">
             <div class="panel panel-default">
-              <% @books.reviews.each do |review| %>
+              <% @reviews.each do |review| %>
               <div class="panel-heading">
                 <%= review.title %> ( <%= review.created_at.strftime("%Y/%m/%d %H:%M") %> )
               </div>

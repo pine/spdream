@@ -49,7 +49,7 @@ class OpacTopsController < ApplicationController
   
   def show_book
     @books = Book.find(params[:id])
-    @reviews = Review.find(:all, :conditions => {:book_id => params[:id]})
+    @reviews = Review.find(:all, :conditions => { :book_id => params[:id], :request => true })
     @categories = Category.find(:all, :order => "priority")
     @child_categories = ChildCategory.find(params[:id])
     @review_new = Review.new
