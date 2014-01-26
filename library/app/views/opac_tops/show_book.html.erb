@@ -57,7 +57,7 @@
                   この本に付いているタグ : <br>
                   <div class="text-center">
                   <% 8.times do |i| %>
-                    <% unless (@books.send("tag" + i.to_s) == nil) then %>
+                    <% if (@books.send("tag" + i.to_s)) then %>
                       <span class="label label-default">
                         <a href="<%= opacplus_tag_path(:name => @books.send('tag' + i.to_s)) %>"><%= @books.send("tag" + i.to_s) %></a>
                       </span>
