@@ -203,12 +203,14 @@
 !function(){
   //  ===== Category ================================================
   var childCategories = <%= raw ChildCategory.all.to_json %>;
-  var childCategoryId = <%= @book.child_category_id %>;
+  var childCategoryId = <%= @book.child_category_id || 'null' %>;
   var categoriesElement = $("#categories");
   var childCategoriesElement = $("#child_categories");
   
   function seedChildCategory() {
-    childCategoriesElement.val(childCategoryId);
+    if (childCategoryId != null){
+      childCategoriesElement.val(childCategoryId);
+    }
   }
   
   function updateCategoriesElement() {
