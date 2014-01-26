@@ -133,14 +133,16 @@
 
 !function() {
   var labsData = <%= raw Lab.all.to_json %>;
-  var labId = <%= raw @thesis.lab_id %>;
+  var labId = <%= raw @thesis.lab_id || 'null' %>;
   var labsInitialCount = 1;
   var labsElement = $('#labs');
   var facultysElement = $('#facultys');
   
   // 初期値の処理
   function initElements() {
-    labsElement.val(labId);
+    if (labId != null) {
+      labsElement.val(labId);
+    }
   }
   
 	function updateLabs() {
