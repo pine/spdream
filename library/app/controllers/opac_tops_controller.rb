@@ -150,7 +150,7 @@ private
       value += review.value_book
     end
     
-    value / (book.reviews.size + 1)
+    (value / (book.reviews.size + 1).to_f).round
   end
 end
 
