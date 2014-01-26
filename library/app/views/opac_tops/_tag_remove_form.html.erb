@@ -1,0 +1,33 @@
+<%= form_tag(
+      opacplus_remove_tag_path,
+      method: :post,
+      remote: true,
+      class: 'form-horizontal',
+      id: 'tag_remove_form',
+      role: 'form'
+    ) do
+%>
+  <%= hidden_field_tag(:book_id, @books.id) %>
+  
+  <div class="form-group">
+    <%= label_tag(
+        :name,
+        "名前\u00a0:",
+        class: 'control-label col-sm-3'
+      ) %>
+    
+    <div class="col-sm-8">
+      <%= select_tag(
+          :name,
+          [],
+          class: 'form-control', id: 'modal_remove_tags'
+        ) %>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <div class="col-sm-12 text-center">
+      <%= button_tag '選択したタグを削除する', class: 'btn btn-default' %>
+    </div>
+  </div>
+<% end %>

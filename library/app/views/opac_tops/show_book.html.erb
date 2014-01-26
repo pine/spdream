@@ -74,11 +74,14 @@
 <!-- inner contents - tag and review modal -->
     <div class="tag_and_review">
       <div class="row">
-        <a data-toggle="modal" href="#tag_modal" class="btn btn-primary col-md-6">
+        <a data-toggle="modal" href="#review_modal" class="btn btn-primary col-md-4">
+          本のレビューを書く
+        </a>
+        <a data-toggle="modal" href="#tag_modal" class="btn btn-primary col-md-4">
           本にタグをつける
         </a>
-        <a data-toggle="modal" href="#review_modal" class="btn btn-primary col-md-6">
-          本のレビューを書く
+        <a data-toggle="modal" href="#tag_remove_modal" class="btn btn-primary col-md-4">
+          本からタグを削除する
         </a>
       </div>
 
@@ -91,6 +94,20 @@
             </div>
             <div class="modal-body">
               <%= render 'tag_form' %>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal fade" id="tag_remove_modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              本からタグを削除する
+            </div>
+            <div class="modal-body">
+              <%= render 'tag_remove_form' %>
             </div>
           </div>
         </div>
@@ -121,7 +138,7 @@
               本にタグ「<span id="tag_added_modal_name"></span>」をつけました。
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
             </div>
           </div>
         </div>
@@ -138,12 +155,28 @@
               レビューを投稿しました。
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
             </div>
           </div>
         </div>
       </div>
       
+      <div class="modal fade" id="tag_removed_modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              タグの削除に成功
+            </div>
+            <div class="modal-body">
+              本からタグ「<span id="tag_removed_modal_name"></span>」を削除しました。
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
       
 <!-- inner contents - book review -->
@@ -230,6 +263,7 @@
   var bookTagsElement = $('#book_tags');
   var bookTagTemplate = $("#book_tags .template");
   var modalTagsElement = $('#modal_tags');
+  var modalRemoveTagsElement = $('#modal_remove_tags');
   
   // イベントの追加
   function addListener() {
@@ -243,18 +277,37 @@
       updateBookTags();
       updateModalTags();
     });
+    
+    $('#tag_remove_form').on('ajax:success', function(e, data, status, xhr) {
+      $('#tag_remove_modal').modal('hide');        // 現在のダイアログを非表示に
+      $('#tag_removed_modal_name').text(data.name); // ダイログに値を設定
+      $('#tag_removed_modal').modal('show');       // ダイアログを表示
+      
+      // タグの変更を画面に反映
+      bookTags[data.index] = null;
+      updateBookTags();
+      updateModalTags();
+    });
   }
   
   function updateModalTags() {
     var list = enabledTags();
     
     modalTagsElement.find('option').remove();
+    modalRemoveTagsElement.find('option').remove();
     
     $.each(list, function () {
       $('<option />')
         .text(this.name)
         .val(this.id)
         .appendTo(modalTagsElement);
+    });
+    $.each(bookTags, function(i, val){
+      if (val){
+        $('<option />')
+          .text(this)
+          .appendTo(modalRemoveTagsElement);
+      }
     });
   }
   

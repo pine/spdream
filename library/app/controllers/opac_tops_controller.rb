@@ -95,12 +95,36 @@ class OpacTopsController < ApplicationController
         end
       end
       
-      if tag_index > 0
+      if tag_index >= 0
         if @book.save
           format.json { render json: { book: @book, tag: @tag, index: tag_index }, status: :created }
         else
           error.call
         end
+      end
+    end
+  end
+  
+  # ƒ^ƒOíœ
+  def remove_tag
+    tag_name = params[:name]
+    @book = Book.find(params[:book_id])
+    
+    respond_to do |format|
+      index = -1
+      
+      8.times do |i|
+        if @book.send("tag#{i}") == tag_name
+          @book.send("tag#{i}=", '')
+          index = i
+          break
+        end
+      end
+      
+      if index >= 0 and @book.save
+        format.json { render json: { name: tag_name, index: index }, status: :created }
+      else
+        format.json { render json: tag_name, status: :unprocessable_entity }
       end
     end
   end
