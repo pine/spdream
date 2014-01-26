@@ -4,11 +4,88 @@
   <% 3.times do |n| %>
     <% case n %>
     <% when 0 %>
+    <p style="padding: 5px; border-left: 10px solid #ddd;">
       学士論文一覧
+    </p>
     <% when 1 %>
+    <p style="padding: 5px; border-left: 10px solid #ddd;">
       修士論文一覧
+    </p>
     <% when 2 %>
+    <p style="padding: 5px; border-left: 10px solid #ddd;">
       博士論文一覧
+    </p>
+    <% end %>
+    <table class="table table-striped" style="font-size: 0.9em;">
+    <tbody>
+      <tr>
+        <th style="text-align: center;">タイトル</th>
+        <th style="width: 6em; text-align: center;">著者</th>
+        <th style="width: 4em; text-align: center;">年度</th>
+        <th style="width: 6em; text-align: center;">学群</th>
+        <th style="width: 7em; text-align: center;">研究室</th>
+        <th style="width: 7em; text-align: center;">要旨/全文</th>
+      </tr>
+      <% @theses.each do |thesis| %>
+        <% if n == 0 && thesis.course == '学士' ||
+              n == 1 && thesis.course == '修士' ||
+              n == 2 && thesis.course == '博士' %>
+          <tr>
+          <td><%= thesis.title %></td>
+          <td><%= thesis.student_id %><br><%= thesis.author %></td>
+          <td><%= thesis.year %></td>
+          <td>
+            <% if thesis.faculty %>
+              <%= thesis.faculty.name %>
+            <% else %>
+              無所属
+            <% end %>
+          </td>
+          <td>
+            <% if thesis.lab %>
+              <%= thesis.lab.name %>
+            <% else %>
+              無所属
+            <% end %>
+          </td>
+          <td>
+            <% if thesis.full_text == false %>
+              <%= link_to '要旨', :action => 'download', :student_id => thesis.student_id %>
+            <% else %>
+              <%= link_to '全文', :action => 'download', :student_id => thesis.student_id %><br>
+              <small>
+                (<%= (@thesis_sizes[thesis.id].to_f / 1024 / 1024).round(1) %> MB)
+              </small>
+            <% end %>
+          </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+    </table>
+  <% end %>
+</div>
+<% end %>
+
+
+<%#= 論文一覧表示 %>
+<!--
+<% if @theses != nil then %>
+<div class="table-container">
+  <% 3.times do |n| %>
+    <% case n %>
+    <% when 0 %>
+    <p style="padding: 5px; border-left: 10px solid #ddd;">
+      学士論文一覧
+    </p>
+    <% when 1 %>
+    <p style="padding: 5px; border-left: 10px solid #ddd;">
+      修士論文一覧
+    </p>
+    <% when 2 %>
+    <p style="padding: 5px; border-left: 10px solid #ddd;">
+      博士論文一覧
+    </p>
     <% end %>
     <table class="table table-striped" style="font-size: 0.9em;">
     <tbody>
@@ -63,66 +140,5 @@
     </table>
   <% end %>
 </div>
-<% end %>
-
-	<!-- sample begin -->
-	<!--
-	<% 5.times.each do %>
-	<tr>
-		<td>EPUBCFIを用いたデジタル教科書ビューアの開発</td>
-		<td>安楽 優樹</td>
-		<td>1130296</td>
-		<td>2012</td>
-		<td>情報学群</td>
-		<td>妻鳥研究室</td>
-		<td>学士</td>
-	</tr>
-	<% end %>
-	-->
-	<!-- sample end -->
-
-<!--
-<% if @theses != nil then %>
-<table border="1" cellspacing="0" cellpadding="5">
-	<tr>
-		<th>タイトル</font></th>
-		<th>著者</font></th>
-		<th>学籍番号</th>
-		<th>年度</th>
-		<th>学群</th>
-		<th>研究室</th>
-		<th>課程</th>
-		<th>編集</th>
-		<th>削除</th>
-	</tr>
-
-	<% @theses.each do |thesis| %>
-		<% if thesis.enabled %>
-			<tr>
-			<td><%= link_to thesis.title, :action => 'download' %></td>
-			<td><%= thesis.author %></td>
-			<td><%= thesis.student_id %></td>
-			<td><%= thesis.year %></td>
-			<td>
-				<% if thesis.faculty %>
-					<%= thesis.faculty.name %>
-				<% else %>
-					無所属
-				<% end %>
-			</td>
-			<td>
-				<% if thesis.lab %>
-					<%= thesis.lab.name %>
-				<% else %>
-					無所属
-				<% end %>
-			</td>
-			<td><%= thesis.course %></td>
-			<th><%= link_to '編集', edit_thesis_path(thesis) %></th>
-			<th><%= link_to '削除', thesis_path(thesis), :method => :pute %></th>
-			</tr>
-		<% end %>
-	<% end %>
-</table>
 <% end %>
 -->
