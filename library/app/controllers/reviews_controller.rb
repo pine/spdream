@@ -8,6 +8,7 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     @reviews = Review.find(:all, :conditions => { :deleted => false, :request => true })
+    @review_request = Review.count(:request, :conditions => { :request => false})
 
     respond_to do |format|
       format.html # index.html.erb

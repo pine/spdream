@@ -6,6 +6,12 @@ class TagsController < ApplicationController
   def index
     @tags = Tag.find(:all, :order => "priority")
 
+    @tag_request = Tag.count(:request, :conditions => { :request => false})
+
+
+
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tags }

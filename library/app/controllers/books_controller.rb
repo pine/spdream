@@ -8,6 +8,7 @@ class BooksController < ApplicationController
   # GET /books.json
   def index
     @books = Book.find(:all, :conditions => { :deleted => false })
+    @book_request = Book.count(:request, :conditions => { :request => false})
 
     respond_to do |format|
       format.html # index.html.erb
