@@ -26,7 +26,7 @@
 
 <!-- inner contents - book index -->
         <ul class="media-list">
-          <% @category.books.each do |book| %>
+          <% @books.each do |book| %>
 
           <li class="media">
             <div class="panel panel-default">
@@ -42,7 +42,7 @@
                 </div>
                 <div class="media-body">
                   著者 ：<%= book.auther %><br>
-                  評価 ：<% book.value.times do %>★<% end %><% (5-book.value).times do %>☆<% end %>
+                  評価 ：<% @book_values[book.id].times do %>★<% end %><% (5-@book_values[book.id]).times do %>☆<% end %>
                 </div>
               </div>
             </div>

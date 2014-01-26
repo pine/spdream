@@ -15,14 +15,16 @@ class OpacTopsController < ApplicationController
 	end
     
     def index_category
-        @books = Book.find(:all, :conditions => {:category_id => params[:category_id]})
+        @books = Book.find(:all, :conditions => {:category_id => params[:id] })
+        @book_values = book_values(@books)
         @category = Category.find(params[:id])
         @categories = Category.find(:all, :order => "priority")
         @child_categories = ChildCategory.find(params[:id])
     end
 
 	def index_child_category
-        @books = Book.find(:all, :conditions => {:category_id => params[:category_id], :child_category_id => params[:child_category_id]})
+        @books = Book.find(:all, :conditions => { :child_category_id => params[:id]})
+        @book_values = book_values(@books)
         @categories = Category.find(:all, :order => "priority")
         @child_categories = ChildCategory.find(params[:id])
 	end
@@ -49,6 +51,7 @@ class OpacTopsController < ApplicationController
   
   def show_book
     @books = Book.find(params[:id])
+    @book_value = book_value(@books)
     @reviews = Review.find(:all, :conditions => { :book_id => params[:id], :request => true })
     @categories = Category.find(:all, :order => "priority")
     @child_categories = ChildCategory.find(params[:id])
@@ -127,6 +130,27 @@ class OpacTopsController < ApplicationController
         format.json { render json: tag_name, status: :unprocessable_entity }
       end
     end
+  end
+  
+private
+  def book_values(books)
+    values = { }
+    
+    books.each do |book|
+      values[book.id] = book_value(book)
+    end
+    
+    values
+  end
+  
+  def book_value(book)
+    value = book.value
+    
+    book.reviews.each do |review|
+      value += review.value_book
+    end
+    
+    value / (book.reviews.size + 1)
   end
 end
 
