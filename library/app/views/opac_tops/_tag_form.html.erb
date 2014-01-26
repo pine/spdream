@@ -1,46 +1,33 @@
-<%= simple_form_for(
-      @tag_new,
-      html: { class: 'form-horizontal', role: 'form' },
-      
-      # 以下2行で、ReviewTops コントローラの create メソッドに送信するように指定
-      # opacplus_reviews_path は routes.rb 参照
-      url: opacplus_reviews_path,
-      action: :post
-    ) do |f|
+<%= form_tag(
+      opacplus_add_tag_path,
+      method: :post,
+      remote: true,
+      class: 'form-horizontal',
+      id: 'tag_add_form',
+      role: 'form'
+    ) do
 %>
-  <% if @tag_new.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tag_new.errors.count, "error") %> prohibited this review from being saved:</h2>
-
-      <ul>
-      <% @tag_new.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  
-  <%= f.hidden_field(:priority) %>
+  <%= hidden_field_tag(:book_id, @books.id) %>
   
   <div class="form-group">
-    <%= f.label(
-        :name,
-        label: '名前&nbsp;:',
+    <%= label_tag(
+        :tag_id,
+        "名前\u00a0:",
         class: 'control-label col-sm-3'
       ) %>
     
     <div class="col-sm-8">
-      <%= f.text_field(
-          :name,
-          autofocus: true,
-          class: 'form-control'
+      <%= select_tag(
+          :tag_id,
+          [],
+          class: 'form-control', id: 'modal_tags'
         ) %>
     </div>
   </div>
   
   <div class="form-group">
     <div class="col-sm-12 text-center">
-      <%= f.button :submit, 'この内容でタグを追加する', class: 'btn btn-default' %>
+      <%= button_tag 'この内容でタグを追加する', class: 'btn btn-default' %>
     </div>
   </div>
 <% end %>

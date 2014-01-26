@@ -53,17 +53,16 @@
                     <ul>
                       <%= br(@books.outline) %>
                     </ul>
+                    
                   <ul>
+                  
                   この本に付いているタグ : <br>
-                  <div class="text-center">
-                  <% 8.times do |i| %>
-                    <% if (@books.send("tag" + i.to_s)) then %>
-                      <span class="label label-default">
-                        <a href="<%= opacplus_tag_path(:name => @books.send('tag' + i.to_s)) %>"><%= @books.send("tag" + i.to_s) %></a>
-                      </span>
-                    <% end %>
-                  <% end %>
-                </div>
+                  <div class="text-center" id="book_tags">
+                    <span class="label label-default template" style="display: none">
+                      <a href="<%= opacplus_tag_path(:name => '') %>"></a>
+                    </span>
+                  </div>
+                  
                   </ul>
                   </div>
                 </div>
@@ -110,8 +109,26 @@
           </div>
         </div>
       </div>
+      
+      <div class="modal fade" id="tag_added_modal">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button class="close" data-dismiss="modal">&times;</button>
+              タグ付けに成功
+            </div>
+            <div class="modal-body">
+              本にタグ「<span id="tag_added_modal_name"></span>」をつけました。
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </div>
-
+      
 <!-- inner contents - book review -->
         <div class="book_review">
           <li class="media">
@@ -153,7 +170,6 @@
 
 <script>
 // レビューの参考になる、ならないの処理
-
 !function(){
   var reviewValueElements = $('.review-value');
   var valueStrings = ['参考になった', '参考にならなかった'];
@@ -188,6 +204,79 @@
   }
   
   addReviewListener();
+}();
+
+// タグの処理
+!function(){
+  var tags = <%= raw Tag.all.to_json %>;
+  var bookTags = <%= raw 8.times.map {|i| @books.send("tag#{i}") }.to_json %>;
+  var bookTagsElement = $('#book_tags');
+  var bookTagTemplate = $("#book_tags .template");
+  var modalTagsElement = $('#modal_tags');
+  
+  // イベントの追加
+  function addListener() {
+    $('#tag_add_form').on('ajax:success', function(e, data, status, xhr) {
+      $('#tag_modal').modal('hide');                  // 現在のダイアログを非表示に
+      $('#tag_added_modal_name').text(data.tag.name); // ダイログに値を設定
+      $('#tag_added_modal').modal('show');            // ダイアログを表示
+      
+      // タグの変更を画面に反映
+      bookTags[data.index] = data.tag.name;
+      updateBookTags();
+      updateModalTags();
+    });
+  }
+  
+  function updateModalTags() {
+    var list = enabledTags();
+    
+    modalTagsElement.find('option').remove();
+    
+    $.each(list, function () {
+      $('<option />')
+        .text(this.name)
+        .val(this.id)
+        .appendTo(modalTagsElement);
+    });
+  }
+  
+  function updateBookTags() {
+    bookTagsElement.find(':not(.template)').remove();
+    
+    $.each(bookTags, function (i, val) {
+      if(val){
+        bookTagTemplate
+          .clone()
+          .text(this)
+          .show()
+          .removeClass('template')
+          .appendTo(bookTagsElement);
+      }
+    });
+  }
+  
+  function enabledTags() {
+    var list = [];
+    
+    $.each(tags, function(i, tag) {
+      for (var j = 0; j < bookTags.length; ++j) {
+        if (tag.name == bookTags[j]) {
+          break;
+        }
+      }
+      
+      if (j == bookTags.length) {
+        list.push(tag);
+      }
+    });
+    
+    return list;
+  }
+  
+  addListener();
+  updateBookTags();
+  updateModalTags();
 }();
 
 </script>
