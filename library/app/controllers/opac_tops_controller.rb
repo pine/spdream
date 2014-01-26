@@ -53,7 +53,7 @@ class OpacTopsController < ApplicationController
     @categories = Category.find(:all, :order => "priority")
     @child_categories = ChildCategory.find(params[:id])
     @review_new = Review.new
-    @tags = Tag.all
+    @tags = Tag.find(:all, :conditions => { :request => true })
     @tag_new = Tag.new
 
     respond_to do |format|
@@ -71,6 +71,36 @@ class OpacTopsController < ApplicationController
         format.json { render json: @tag, status: :created, location: @tag }
       else
         format.json { render json: @tag.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  # ƒ^ƒO’Ç‰Á
+  def add_tag
+    @tag = Tag.find(params[:tag_id])
+    @book = Book.find(params[:book_id])
+    
+    respond_to do |format|
+      error = proc do
+        format.json { render json: @tag, status: :unprocessable_entity }
+      end
+      
+      tag_index = -1
+      
+      8.times do |i|
+        if @book.send("tag#{i}") == nil or @book.send("tag#{i}").size == 0
+          @book.send("tag#{i}=", @tag.name)
+          tag_index = i
+          break
+        end
+      end
+      
+      if tag_index > 0
+        if @book.save
+          format.json { render json: { book: @book, tag: @tag, index: tag_index }, status: :created }
+        else
+          error.call
+        end
       end
     end
   end
