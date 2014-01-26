@@ -86,16 +86,14 @@ textarea {
   margin: 5px 15px 15px;
   padding: 5px;
   border-bottom: dotted $maincolor;
-}
-
-.inner_title > h3 {
-  margin: 5px;
-}
-
-.inner_title > .btn {
-  font-size: 0.9em;
-  letter-spacing: 1px;
-  padding: 4px 12px;
+  .pull-right {
+    margin: 5px;
+  }
+  .btn {
+    font-size: 0.9em;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+  }
 }
 
 .inner_contents {
@@ -106,7 +104,6 @@ textarea {
     margin: 5px 2px;
     display: inline-block;
   }
-
   .label > a {
     color: #fff;
   }

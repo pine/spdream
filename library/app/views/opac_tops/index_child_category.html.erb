@@ -18,8 +18,8 @@
 
 <!-- inner title -->
       <div class="inner_title">
-        <button type="button" class="btn btn-default">
-          <%= link_to '戻る', opacplus_index_path %>
+        <button type="button" class="btn btn-default" onclick="location.href = '<%= opacplus_index_path %>'">
+            戻る
         </button>
         <h3 class="pull-right">Child category : <%= @child_categories.name %></h3>
       </div>

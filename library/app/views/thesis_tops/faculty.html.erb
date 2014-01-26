@@ -47,8 +47,8 @@
 
 <!-- inner title -->
       <div class="inner_title">
-        <button type="button" class="btn btn-default">
-          <%= link_to '戻る', thesis_tops_path %>
+        <button type="button" class="btn btn-default" onclick="location.href = '<%= thesis_tops_path %>'">
+            戻る
         </button>
         <h3 class="pull-right">Faculty : <%= @faculty.name %></h3>
       </div>
